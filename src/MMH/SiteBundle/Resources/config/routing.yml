@@ -1,3 +1,9 @@
 mmh_site_homepage:
     path:     /
-    defaults: { _controller: MMHSiteBundle:Default:index }
+    defaults:
+        _controller: MMHSiteBundle:Projets:index
+
+mmh_site_association:
+    path:     /qui-sommes-nous
+    defaults:
+        _controller: MMHSiteBundle:Projets:association
