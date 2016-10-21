@@ -1,0 +1,3 @@
+mmh_site_homepage:
+    path:     /
+    defaults: { _controller: MMHSiteBundle:Default:index }
