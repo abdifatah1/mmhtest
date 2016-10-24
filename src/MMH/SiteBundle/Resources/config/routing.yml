@@ -7,3 +7,23 @@ mmh_site_association:
     path:     /qui-sommes-nous
     defaults:
         _controller: MMHSiteBundle:Projets:association
+
+mmh_site_souteninr:
+    path:     /nous-soutenir
+    defaults:
+        _controller: MMHSiteBundle:Projets:soutenir
+
+mmh_site_contact:
+    path:     /contact
+    defaults:
+        _controller: MMHSiteBundle:Projets:contact
+
+mmh_site_decouvrir:
+    path:     /decouvrir
+    defaults:
+        _controller: MMHSiteBundle:Projets:decouvrir
+
+mmh_site_deposer:
+    path:     /deposer
+    defaults:
+        _controller: MMHSiteBundle:Projets:deposer
