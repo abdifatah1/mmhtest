@@ -12,28 +12,14 @@ class ProjetsController extends Controller
         return new Response('Vous voici sur la page d\'accueil');
     }
 
-    public function associationAction()
-    {
-        return new Response('Vous voici sur la page qui sommes nous');
-    }
-
-    public function soutenirAction()
-    {
-        return new Response('Vous voici sur la page qui Nous Soutenir');
-    }
-
-    public function contactAction()
-    {
-        return new Response('Vous voici sur la page de contact');
-    }
-
-    public function decouvrirAction()
+    public function decouvrirAction($categorie)
     {
         return new Response('Vous voici sur la page decouvrir les projet');
     }
 
-    public function deposerAction()
+    public function projetAction($nom)
     {
-        return new Response('Vous voici sur la page deposer un projet');
+        return new Response('Vous voici sur une page de projet');
     }
+
 }

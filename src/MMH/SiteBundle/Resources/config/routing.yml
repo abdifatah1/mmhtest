@@ -1,29 +1,93 @@
+# Dynamic content taking care of the projects
+
 mmh_site_homepage:
     path:     /
     defaults:
         _controller: MMHSiteBundle:Projets:index
 
+
+mmh_site_decouvrir:
+    path:     /decouvrir-les-projets/{categorie}
+    defaults:
+        _controller: MMHSiteBundle:Projets:decouvrir
+        categorie:          generale
+    requirements:
+        categorie: \w*
+
+mmh_site_projet:
+    path:     /projet/{nom}
+    defaults:
+        _controller: MMHSiteBundle:Projets:projet
+
+# Static content for the information
+
 mmh_site_association:
     path:     /qui-sommes-nous
     defaults:
-        _controller: MMHSiteBundle:Projets:association
+        _controller: MMHSiteBundle:Static:association
 
 mmh_site_souteninr:
     path:     /nous-soutenir
     defaults:
-        _controller: MMHSiteBundle:Projets:soutenir
+        _controller: MMHSiteBundle:Static:soutenir
 
 mmh_site_contact:
     path:     /contact
     defaults:
-        _controller: MMHSiteBundle:Projets:contact
-
-mmh_site_decouvrir:
-    path:     /decouvrir
-    defaults:
-        _controller: MMHSiteBundle:Projets:decouvrir
+        _controller: MMHSiteBundle:Static:contact
 
 mmh_site_deposer:
-    path:     /deposer
+    path:     /deposer-un-projet
     defaults:
-        _controller: MMHSiteBundle:Projets:deposer
+        _controller: MMHSiteBundle:Static:deposer
+
+mmh_site_mentions:
+    path:     /mentions-legales
+    defaults:
+        _controller: MMHSiteBundle:Static:mentions
+
+mmh_site_conditions:
+    path:     /conditions-generales
+    defaults:
+        _controller: MMHSiteBundle:Static:conditions
+
+mmh_site_blog:
+    path:     /blog/{year}/{article}
+    defaults:
+        _controller: MMHSiteBundle:Static:blog
+    requirements:
+        year: \d{4}
+
+# Routes for the registration the connexion and the paiement
+
+mmh_site_inscription:
+    path:    /inscription
+    defaults:
+        _controller: MMHSiteBundle:Transaction:inscription
+
+mmh_site_connexion:
+    path:    /connexion
+    defaults:
+        _controller: MMHSiteBundle:Transaction:connexion
+
+mmh_site_financement:
+    path:    /financement/{projet}
+    defaults:
+        _controller: MMHSiteBundle:Transaction:financement
+
+mmh_site_membre:
+    path:    /espace/{membre}
+    defaults:
+        _controller: MMHSiteBundle:Transaction:membre
+
+# Routes for the administration
+
+mmh_site_admin:
+    path:    /administration
+    defaults:
+        _controller: MMHSiteBundle:Admin:admin
+
+mmh_site_tableau:
+    path:    /administration/tableau-de-bord/{nom}
+    defaults:
+        _controller: MMHSiteBundle:Admin:tableau
