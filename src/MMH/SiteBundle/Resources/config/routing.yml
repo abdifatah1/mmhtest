@@ -41,15 +41,3 @@ mmh_site_membre:
     path:    /espace/{membre}
     defaults:
         _controller: MMHSiteBundle:Transaction:membre
-
-# Routes for the administration
-
-mmh_site_admin:
-    path:    /administration
-    defaults:
-        _controller: MMHSiteBundle:Admin:admin
-
-mmh_site_tableau:
-    path:    /administration/tableau-de-bord/{nom}
-    defaults:
-        _controller: MMHSiteBundle:Admin:tableau

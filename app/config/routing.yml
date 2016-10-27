@@ -1,3 +1,7 @@
+mmh_admin:
+    resource: "@MMHAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 mmh_static:
     resource: "@MMHStaticBundle/Resources/config/routing.yml"
     prefix:   /
