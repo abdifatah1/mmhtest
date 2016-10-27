@@ -1,6 +1,6 @@
 <?php
 
-namespace MMH\SiteBundle\Controller;
+namespace MMH\StaticBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
