@@ -60,19 +60,19 @@
             </div>
             <ul class="menu-list">
                 <!-- List of nav items -->
-                <li class="title acceuil"><a href="{{ path('mmh_site_homepage')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_homepage' or app.request.attributes.get('_route') == 'mmh_site_conditions' or app.request.attributes.get('_route') == 'mmh_site_mentions' or app.request.attributes.get('_route') == 'mmh_site_blog' %}active {% endif %}">Accueil</a></li>
-                <li class="title under-menu {% if app.request.attributes.get('_route') == 'mmh_site_association' or app.request.attributes.get('_route') == 'mmh_site_soutenir' or app.request.attributes.get('_route') == 'mmh_site_contact' %} active {% endif %}">
+                <li class="title acceuil"><a href="{{ path('mmh_site_homepage')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_homepage' or app.request.attributes.get('_route') == 'mmh_static_conditions' or app.request.attributes.get('_route') == 'mmh_static_mentions' or app.request.attributes.get('_route') == 'mmh_static_blog' %}active {% endif %}">Accueil</a></li>
+                <li class="title under-menu {% if app.request.attributes.get('_route') == 'mmh_static_association' or app.request.attributes.get('_route') == 'mmh_static_soutenir' or app.request.attributes.get('_route') == 'mmh_static_contact' %} active {% endif %}">
                     <!-- List item with title + under menu -->
                     <div class="mmh">Mymoneyhelp +</div>
                     <div class="under-menu-link">
-                        <a href="{{ path('mmh_site_association')}}">Qui sommes-nous ?</a>
-                        <a href="{{ path('mmh_site_soutenir')}}">Nous soutenir</a>
-                        <a href="{{ path('mmh_site_contact')}}">Contact</a>
+                        <a href="{{ path('mmh_static_association')}}">Qui sommes-nous ?</a>
+                        <a href="{{ path('mmh_static_soutenir')}}">Nous soutenir</a>
+                        <a href="{{ path('mmh_static_contact')}}">Contact</a>
                     </div>
                 </li>
                 <!-- end of mmh tab -->
                 <li class="title"><a href="{{ path('mmh_site_decouvrir')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_decouvrir' or app.request.attributes.get('_route') == 'mmh_site_projet' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/telescope.png') }}" alt="homme tenant un telescope" class="menu-image">Découvrir les projets</a></li>
-                <li class="title"><a href="{{ path('mmh_site_deposer')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_deposer' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/board.png') }}" alt="homme devant un tableau" class="menu-image">Déposer un projet</a></li>
+                <li class="title"><a href="{{ path('mmh_static_deposer')}}" class="{% if app.request.attributes.get('_route') == 'mmh_static_deposer' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/board.png') }}" alt="homme devant un tableau" class="menu-image">Déposer un projet</a></li>
                 <li class="language">EN</li>
             </ul>
             <!-- End of list -->
@@ -122,17 +122,17 @@
             <div class="wrapper flex">
                 <ul>
                     <li class="title-list">MyMoneyHelp</li>
-                    <li><a href="{{ path('mmh_site_association')}}">Qui sommes-nous ?</a></li>
-                    <li><a href="{{ path('mmh_site_soutenir')}}">Nous soutenir</a></li>
-                    <li><a href="{{ path('mmh_site_conditions')}}">Conditions générales<br> d'utilisation</a></li>
-                    <li><a href="{{ path('mmh_site_mentions')}}">Mentions légales</a></li>
-                    <li><a href="{{ path('mmh_site_contact')}}">Contact</a></li>
+                    <li><a href="{{ path('mmh_static_association')}}">Qui sommes-nous ?</a></li>
+                    <li><a href="{{ path('mmh_static_soutenir')}}">Nous soutenir</a></li>
+                    <li><a href="{{ path('mmh_static_conditions')}}">Conditions générales<br> d'utilisation</a></li>
+                    <li><a href="{{ path('mmh_static_mentions')}}">Mentions légales</a></li>
+                    <li><a href="{{ path('mmh_static_contact')}}">Contact</a></li>
                 </ul>
                 <ul>
                     <li><a href="{{ path('mmh_site_decouvrir')}}" class="title-list">Découvrir les projets</a></li>
                 </ul>
                 <ul>
-                    <li><a href="{{ path('mmh_site_deposer')}}" class="title-list">Déposer un projet</a></li>
+                    <li><a href="{{ path('mmh_static_deposer')}}" class="title-list">Déposer un projet</a></li>
                 </ul>
 
                 <div class="twitter-container">

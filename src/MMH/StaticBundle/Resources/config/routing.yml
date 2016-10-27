@@ -1,9 +1,9 @@
-mmh_static_assiociation:
+mmh_static_association:
     path:     /qui-sommes-nous
     defaults:
         _controller: MMHStaticBundle:Static:association
 
-mmh_static_souteninr:
+mmh_static_soutenir:
     path:     /nous-soutenir
     defaults:
         _controller: MMHStaticBundle:Static:soutenir

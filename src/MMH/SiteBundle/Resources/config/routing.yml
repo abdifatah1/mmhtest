@@ -19,44 +19,6 @@ mmh_site_projet:
     defaults:
         _controller: MMHSiteBundle:Projets:projet
 
-# Static content for the information
-
-mmh_site_association:
-    path:     /qui-sommes-nous
-    defaults:
-        _controller: MMHSiteBundle:Static:association
-
-mmh_site_soutenir:
-    path:     /nous-soutenir
-    defaults:
-        _controller: MMHSiteBundle:Static:soutenir
-
-mmh_site_contact:
-    path:     /contact
-    defaults:
-        _controller: MMHSiteBundle:Static:contact
-
-mmh_site_deposer:
-    path:     /deposer-un-projet
-    defaults:
-        _controller: MMHSiteBundle:Static:deposer
-
-mmh_site_mentions:
-    path:     /mentions-legales
-    defaults:
-        _controller: MMHSiteBundle:Static:mentions
-
-mmh_site_conditions:
-    path:     /conditions-generales
-    defaults:
-        _controller: MMHSiteBundle:Static:conditions
-
-mmh_site_blog:
-    path:     /blog/{year}/{article}
-    defaults:
-        _controller: MMHSiteBundle:Static:blog
-    requirements:
-        year: \d{4}
 
 # Routes for the registration the connexion and the paiement
 
