@@ -9,7 +9,7 @@ class ProjetsController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('::baselayout.html.twig');
+        return $this->render('MMHSiteBundle:Home:home.html.twig');
     }
 
     public function decouvrirAction($categorie)
