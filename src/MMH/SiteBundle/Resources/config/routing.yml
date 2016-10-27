@@ -26,7 +26,7 @@ mmh_site_association:
     defaults:
         _controller: MMHSiteBundle:Static:association
 
-mmh_site_souteninr:
+mmh_site_soutenir:
     path:     /nous-soutenir
     defaults:
         _controller: MMHSiteBundle:Static:soutenir

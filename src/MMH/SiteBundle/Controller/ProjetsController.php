@@ -9,17 +9,17 @@ class ProjetsController extends Controller
 {
     public function indexAction()
     {
-        return new Response('Vous voici sur la page d\'accueil');
+        return $this->render('::baselayout.html.twig');
     }
 
     public function decouvrirAction($categorie)
     {
-        return new Response('Vous voici sur la page decouvrir les projet');
+        return $this->render('::baselayout.html.twig');
     }
 
     public function projetAction($nom)
     {
-        return new Response('Vous voici sur une page de projet');
+        return $this->render('::baselayout.html.twig');
     }
 
 }

@@ -9,36 +9,36 @@ class StaticController extends Controller
 {
   public function associationAction()
   {
-      return new Response('Vous voici sur la page qui sommes nous');
+      return $this->render('::baselayout.html.twig');
   }
 
   public function soutenirAction()
   {
-      return new Response('Vous voici sur la page qui Nous Soutenir');
+      return $this->render('::baselayout.html.twig');
   }
 
   public function contactAction()
   {
-      return new Response('Vous voici sur la page de contact');
+      return $this->render('::baselayout.html.twig');
   }
 
   public function deposerAction()
   {
-      return new Response('Vous voici sur la page deposer un projet');
+      return $this->render('::baselayout.html.twig');
   }
 
   public function mentionsAction()
   {
-      return new Response('Vous voici sur la page des mentions légales');
+      return $this->render('::baselayout.html.twig');
   }
 
   public function conditionsAction()
   {
-      return new Response('Vous voici sur la page des conditions générales d\'utilisation');
+      return $this->render('::baselayout.html.twig');
   }
 
   public function blogAction($year, $article)
   {
-      return new Response('Vous voici sur la page d\'un article de blog');
+      return $this->render('::baselayout.html.twig');
   }
 }
