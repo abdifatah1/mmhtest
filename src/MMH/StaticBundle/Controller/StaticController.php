@@ -29,16 +29,16 @@ class StaticController extends Controller
 
   public function mentionsAction()
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:Mention:mention.html.twig');
   }
 
   public function conditionsAction()
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:Conditions:conditions.html.twig');
   }
 
   public function blogAction($year, $article)
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:Blog:blog.html.twig');
   }
 }
