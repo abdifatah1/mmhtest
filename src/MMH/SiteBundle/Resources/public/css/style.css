@@ -56,7 +56,7 @@ ul {
 }
 
 .menu-list a:hover, .mmh:hover, .under-menu-link a:hover, .slider-button:hover, .slider-button:hover:visited, .backup-button:hover, .join-button:hover, .project-button:hover,
-.card-home-title, .login-button:hover
+.card-home-title, .login-button:hover, footer a:hover
 {
     color: #0a749c;
 }
