@@ -9,22 +9,22 @@ class StaticController extends Controller
 {
   public function associationAction()
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:About:about.html.twig');
   }
 
   public function soutenirAction()
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:Support:support.html.twig');
   }
 
   public function contactAction()
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:Contact:contact.html.twig');
   }
 
   public function deposerAction()
   {
-      return $this->render('::baselayout.html.twig');
+      return $this->render('MMHStaticBundle:Submit:submit.html.twig');
   }
 
   public function mentionsAction()
