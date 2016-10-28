@@ -14,12 +14,15 @@ class ProjetsController extends Controller
 
     public function decouvrirAction($categorie)
     {
-        return $this->render('::baselayout.html.twig');
+
+      return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig');
     }
 
-    public function projetAction($nom)
+    public function projetAction()
     {
-        return $this->render('::baselayout.html.twig');
+
+        return $this->render('MMHSiteBundle:Projet:projet.html.twig');
     }
+
 
 }

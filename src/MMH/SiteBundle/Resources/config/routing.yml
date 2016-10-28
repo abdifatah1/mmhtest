@@ -15,7 +15,7 @@ mmh_site_decouvrir:
         categorie: \w*
 
 mmh_site_projet:
-    path:     /projet/{nom}
+    path:     /projet
     defaults:
         _controller: MMHSiteBundle:Projets:projet
 
