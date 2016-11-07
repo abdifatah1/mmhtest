@@ -507,6 +507,29 @@ p, .login-button {
     margin: .8em .5em;
 }
 
+#menuderoulant ul{
+  position: absolute;
+  top: 22px;
+  background-color: white;
+  width: 150px;
+  border: solid 3px #2da555;
+  display: none;
+}
+
+#menuderoulant {
+  position: relative;
+}
+
+#menuderoulant li{
+  margin-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: solid 2px #2da555;
+}
+
+#menuderoulant li:nth-child(9){
+  border-bottom: 0px;
+}
+
 
 /* /Social Icons */
 

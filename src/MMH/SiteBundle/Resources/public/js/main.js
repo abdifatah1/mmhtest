@@ -173,3 +173,16 @@ function autoSlide() {
 }
 /* /Main function: AutoSlide */
 autoSlide();
+
+/****************** Categorie menu déroulant ***********************/
+
+
+$(document).ready(function(){
+	$("#menuderoulant , menuderoulant ul").hover(function(){
+		$("#menuderoulant ul").fadeIn(100);
+	});
+
+  $("#menuderoulant , menuderoulant ul").mouseleave(function(){
+		$("#menuderoulant ul").fadeOut(100);
+	});
+});
