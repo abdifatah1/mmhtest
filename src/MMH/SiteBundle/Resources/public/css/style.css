@@ -425,8 +425,9 @@ p, .login-button {
 
 .slider h2 {
     /* Slide Title */
-    margin: .75em auto 0;
+    margin: 1.75em auto 0;
     font-size: 1em;
+    min-height: 50px;
 }
 
 .slide-stats span {
@@ -1582,7 +1583,7 @@ section .static-social-medias {
     /* Set the final size */
     .slider-wrapper {
         width: 1152px;
-        margin: 0 auto;
+        margin: 1.5em auto 0;
     }
     /* --------------------------Footer------------------------- */
     footer ul {
