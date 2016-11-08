@@ -921,31 +921,34 @@ p {
 
 .contributors {
   margin-top: 10%;
+  width:100%;
 }
-
-.contributors p {
+.contributors img {
+  width: 20px;
+  height: 20px;
+  margin-left: 5%;
+}
+.span span{
+  display: inline-block;
+  margin-right: 10%;
   box-shadow: 4px 8px 5px rgba(0, 0, 0, 0.25);
-  padding-left: 10%;
-}
-
-.ten, .twenty, .thirty {
   background-color: green;
+  color: white;
+  text-align: center;
 }
-
-.ten {
-  width: 50%;
-  font-size: 20px;
-}
-
-.twenty {
-  width: 60%;
-  font-size: 20px;
-}
-
-.thirty {
+.ten span {
   width: 70%;
-  font-size: 20px;
 }
+
+.twenty span {
+  width: 70%;
+
+}
+.thirty span {
+  width: 70%;
+
+}
+
 
 
 /*================================/contributors========================*/
@@ -1468,9 +1471,7 @@ section .static-social-medias {
   }
   /*=============/project proposer================ */
   /*=================================contributors=========================*/
-  .contributors {
-    text-align: left;
-  }
+
   /********* /Projet************/
 }
 
@@ -1717,9 +1718,13 @@ section .static-social-medias {
   .container{
     padding:2% 0 0 10%;
   }
-  .wrapper, .wrapper-static-content, .wrap {
+  .wrapper, .wrapper-static-content  {
     width: 80%;
+  }
+  .wrap{
+    width:80%;
     padding-left: 10%;
+
   }
   .first-wrap, .second-wrap {
     width: 50%;
@@ -1741,6 +1746,7 @@ section .static-social-medias {
   }
   .proposer{
     right: 11%;
+    width: 23%;
   }
   .left-bar {
     margin-right: -16%;
