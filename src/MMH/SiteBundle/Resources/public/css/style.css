@@ -1,5 +1,3 @@
-
-
 /****************************GENERAL SETTINGS***********************************/
 
 * {
@@ -421,7 +419,7 @@ p, .login-button {
 
 .slider h2 {
   /* Slide Title */
-  margin: .75em auto 0;
+  margin: 1.5em auto 0;
   font-size: 1em;
   min-height: 50px;
 }
@@ -507,9 +505,40 @@ p, .login-button {
 
 /* /Social Icons */
 
-
 /******************************* /SLIDER  **************************************/
 
+/******************************* Sub Menu with category ************************************/
+
+#menuderoulant ul{
+  position: absolute;
+  top: 22px;
+  background-color: white;
+  width: 160px;
+  border: solid 3px #2da555;
+  display: none;
+}
+
+#menuderoulant {
+  position: relative;
+}
+
+#menuderoulant li{
+  margin-top: 7px;
+  padding-bottom: 7px;
+  border-bottom: solid 2px #2da555;
+  text-align: center;
+  font-size: 0.5em;
+}
+
+#menuderoulant li a {
+  font-size: 12px;
+}
+
+#menuderoulant li:last-child{
+  border-bottom: 0px;
+}
+
+/******************************* /Sub Menu with category ************************************/
 
 /******************************** FOOTER  **************************************/
 
@@ -825,7 +854,6 @@ p {
 
 .left-bar {
   width: 50%;
-  margin-right: -16%;
 }
 
 .left-bar p {
@@ -1287,6 +1315,19 @@ section .static-social-medias {
   }
   /* Shadow */
   /******************************* /Slider ************************************/
+
+  /******************************* Sub Menu with category ************************************/
+
+  #menuderoulant ul{
+    width: 200px;
+  }
+
+  #menuderoulant li a {
+    font-size: 15px;
+  }
+
+  /******************************* /Sub Menu with category ************************************/
+
   /********************************* Footer ***********************************/
   footer section a, footer aside a {
     margin: .5em 0;
@@ -1555,6 +1596,11 @@ section .static-social-medias {
 }
 
 @media (min-width: 1200px) {
+
+  .slider h2 {
+    margin-top: 2.25em;
+  }
+
   /*Project*/
   .project-image-container {
     margin: 0 8% 0;
@@ -1698,6 +1744,11 @@ section .static-social-medias {
     /*right: 10%;*/
   }
 
+  .wrap {
+    width: 95%;
+    margin-left: 5%;
+  }
+
   /* ------ /Project --------*/
 }
 
@@ -1732,14 +1783,14 @@ section .static-social-medias {
   .container {
     padding:2% 0 0 10%;
   }
+
   .wrapper, .wrapper-static-content  {
     width: 80%;
   }
   .wrap{
     width:80%;
     padding-left: 12%;
-
-  }
+}
   .first-wrap, .second-wrap {
     width: 50%;
     /*margin-left: 10%;*/
@@ -1756,10 +1807,10 @@ section .static-social-medias {
   }
   /*project page*/
   .header-text h1{
-    font-size: 1.5em;
+    font-size: 1em;
   }
   .proposer{
-    right: 11%;
+    right: 10%;
     width: 23%;
   }
   .left-bar {
