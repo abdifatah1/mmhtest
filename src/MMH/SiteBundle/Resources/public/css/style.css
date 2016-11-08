@@ -162,16 +162,12 @@ p, .login-button {
 
 
 /* TEMPORAIRE */
-
-.logo-remplacement {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  font-size: 20px;
-  height: calc(100% - 1em);
-  width: 120px;
+.logo-remplacement{
   margin-right: auto;
+}
+.logo-remplacement img {
+  width: 150px;
+  height: 90px;
 }
 
 
@@ -1701,10 +1697,7 @@ section .static-social-medias {
   .proposer {
     /*right: 10%;*/
   }
-  .wrap {
-    width: 95%;
-    margin-left: 6%;
-  }
+
   /* ------ /Project --------*/
 }
 
@@ -1744,7 +1737,7 @@ section .static-social-medias {
   }
   .wrap{
     width:80%;
-    padding-left: 10%;
+    padding-left: 12%;
 
   }
   .first-wrap, .second-wrap {
