@@ -425,7 +425,7 @@ p, .login-button {
 
 .slider h2 {
   /* Slide Title */
-  margin: .75em auto 0;
+  margin: 1.5em auto 0;
   font-size: 1em;
   min-height: 50px;
 }
@@ -1558,6 +1558,10 @@ section .static-social-medias {
 }
 
 @media (min-width: 1200px) {
+
+  .slider h2 {
+    margin-top: 2.25em;
+  }
   /*Project*/
   .project-image-container {
     margin: 0 8% 0;
