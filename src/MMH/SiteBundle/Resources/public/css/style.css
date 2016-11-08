@@ -423,7 +423,7 @@ p, .login-button {
 
 .slider h2 {
   /* Slide Title */
-  margin: .75em auto 0;
+  margin: 1.5em auto 0;
   font-size: 1em;
   min-height: 50px;
 }
@@ -508,11 +508,16 @@ p, .login-button {
 
 
 /* /Social Icons */
+
+/******************************* /SLIDER  **************************************/
+
+/******************************* Sub Menu with category ************************************/
+
 #menuderoulant ul{
   position: absolute;
   top: 22px;
   background-color: white;
-  width: 150px;
+  width: 160px;
   border: solid 3px #2da555;
   display: none;
 }
@@ -525,14 +530,19 @@ p, .login-button {
   margin-top: 7px;
   padding-bottom: 7px;
   border-bottom: solid 2px #2da555;
+  text-align: center;
+  font-size: 0.5em;
+}
+
+#menuderoulant li a {
+  font-size: 12px;
 }
 
 #menuderoulant li:last-child{
   border-bottom: 0px;
 }
 
-/******************************* /SLIDER  **************************************/
-
+/******************************* /Sub Menu with category ************************************/
 
 /******************************** FOOTER  **************************************/
 
@@ -1307,6 +1317,19 @@ section .static-social-medias {
   }
   /* Shadow */
   /******************************* /Slider ************************************/
+
+  /******************************* Sub Menu with category ************************************/
+
+  #menuderoulant ul{
+    width: 200px;
+  }
+
+  #menuderoulant li a {
+    font-size: 15px;
+  }
+
+  /******************************* /Sub Menu with category ************************************/
+
   /********************************* Footer ***********************************/
   footer section a, footer aside a {
     margin: .5em 0;
@@ -1577,6 +1600,11 @@ section .static-social-medias {
 }
 
 @media (min-width: 1200px) {
+
+  .slider h2 {
+    margin-top: 2.25em;
+  }
+
   /*Project*/
   .project-image-container {
     margin: 0 8% 0;
