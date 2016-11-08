@@ -424,16 +424,10 @@ p, .login-button {
 }
 
 .slider h2 {
-  <<<<<<< HEAD
   /* Slide Title */
   margin: .75em auto 0;
   font-size: 1em;
-  =======
-  /* Slide Title */
-  margin: 1.75em auto 0;
-  font-size: 1em;
   min-height: 50px;
-  >>>>>>> 6e626689465727ca7838659129e3b5ecd53563a3
 }
 
 .slide-stats span {
@@ -1524,6 +1518,12 @@ section .static-social-medias {
   }
 }
 
+@media screen and (min-width: 1000px) {
+  .slide-stats {
+    margin-top: 4em;
+  }
+}
+
 @media screen and (min-width: 1100px) {
   .home-cards {
     margin: 35px;
@@ -1715,7 +1715,28 @@ section .static-social-medias {
 }
 
 @media screen and (min-width: 1500px) {
-  .container{
+    .wrapper, .wrapper-static-content, .wrap {
+        width: 80%;
+    }
+    .first-wrap, .second-wrap {
+        margin-left: 0;
+    }
+    .twitter-container {
+        width: 500px;
+        height: 300px;
+    }
+    .carousel-info {
+        margin-top: 2.6em;
+    }
+    .static-image {
+        width: 80%;
+    }
+    /* Align nav bar margin on footer margin */
+    .menu-list {
+      margin-left: 10%;
+    }
+
+  .container {
     padding:2% 0 0 10%;
   }
   .wrapper, .wrapper-static-content  {
@@ -1751,6 +1772,7 @@ section .static-social-medias {
   .left-bar {
     margin-right: -16%;
   }
+
 }
 
 
