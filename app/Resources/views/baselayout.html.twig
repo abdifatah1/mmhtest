@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{{ asset('bundles/mmhsite/css/main.css') }}">
   <!-- Custom Css -->
   <link rel="stylesheet" href="{{ asset('bundles/mmhsite/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('bundles/mmhsite/circleplugin/styles.css') }}">
   <!-- /Custom Css -->
   <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Noticia+Text%7cOpen+Sans%7cUbuntu+Condensed" rel="stylesheet">
@@ -181,6 +182,15 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="{{ asset('bundles/mmhsite/js/plugins.js')}}"></script>
   <script src="{{ asset('bundles/mmhsite/js/main.js')}}"></script>
+  <script src="{{ asset('bundles/mmhsite/circleplugin/circle-progress.js')}}"></script>
+  <script>
+  $('.second.circle').circleProgress({
+    value: 0.9
+  }).on('circle-animation-progress', function(event, progress) {
+    $(this).find('strong').html(parseInt(90 * progress) + '<i>%</i>');
+  });
+  </script>
+
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
