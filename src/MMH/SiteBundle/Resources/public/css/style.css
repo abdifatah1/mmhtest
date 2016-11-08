@@ -43,6 +43,10 @@ ul {
   padding: 0;
 }
 
+.maxwidth {
+  max-width: 100%;
+}
+
 
 /* Colors */
 
@@ -78,6 +82,10 @@ background-color: #0092c9;
 
 .language, hr, .card-home-loadbar {
   background-color: #2da555;
+}
+
+#menuderoulant li:hover a {
+  color: #2da555;
 }
 
 /* white */
@@ -1442,7 +1450,7 @@ section .static-social-medias {
     font-size: .85em;
   }
   .left-bar {
-    margin-right: -14%;
+    margin-right: -6%;
   }
   /*===========product image and leftbar with social netwokr icons======*/
   /*=============socdial networks icon=============*/
@@ -1551,7 +1559,7 @@ section .static-social-medias {
     margin-bottom: 10%;
   }
   .left-bar{
-    margin-right: -15%;
+    margin-right: -9%;
   }
 }
 
@@ -1602,6 +1610,11 @@ section .static-social-medias {
   }
 
   /*Project*/
+
+  .container {
+    padding-top: 1.5em;
+  }
+
   .project-image-container {
     margin: 0 8% 0;
   }
@@ -1621,7 +1634,7 @@ section .static-social-medias {
     font-size: 1em;
   }
   .left-bar {
-    margin-right: -14%;
+    margin-right: -6%;
   }
   .left-bar p {
     font-size: .9em;
@@ -1784,9 +1797,6 @@ section .static-social-medias {
     padding:2% 0 0 10%;
   }
 
-  .wrapper, .wrapper-static-content  {
-    width: 80%;
-  }
   .wrap{
     width:80%;
     padding-left: 12%;
@@ -1795,13 +1805,7 @@ section .static-social-medias {
     width: 50%;
     /*margin-left: 10%;*/
   }
-  .twitter-container {
-    width: 500px;
-    height: 300px;
-  }
-  .carousel-info {
-    margin-top: 2.6em;
-  }
+
   .static-image {
     width: 80%;
   }
@@ -1814,7 +1818,7 @@ section .static-social-medias {
     width: 23%;
   }
   .left-bar {
-    margin-right: -16%;
+    margin-right: -7%;
   }
 
 }
