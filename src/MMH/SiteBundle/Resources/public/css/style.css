@@ -1798,7 +1798,7 @@ section .static-social-medias {
   }
 
   .wrap{
-    width:80%;
+    width:90%;
     padding-left: 12%;
 }
   .first-wrap, .second-wrap {
@@ -1821,7 +1821,41 @@ section .static-social-medias {
     margin-right: -7%;
   }
 
+.first-wrap-p img{
+  margin-left: 5%;
+}
+.first-wrap-p p{
+
+}
+.img-left img{
+  margin-right: 5%;
+}
+}
+@media screen and (min-width: 1600px) {
+  .proposer{
+    right: 12%;
+  }
+@media screen and (min-width: 1700px) {
+  .proposer{
+    right: 15%;
+  }
+
 }
 
+@media screen and (min-width: 1800px) {
+
+  .proposer{
+    right: 18%;
+    width: 20%;
+  }
+
+}
+@media screen and (min-width: 1900px) {
+
+  .proposer{
+    right: 20%;
+  }
+
+}
 
 /* /Slider Responsive Design for higher Res */
