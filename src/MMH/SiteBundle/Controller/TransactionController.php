@@ -16,7 +16,7 @@ class TransactionController extends Controller
   }
 
   public function financementAction ($projet) {
-    return new Response ('Vous voici sur la page de financement d\'un projet');
+    return $this->render('MMHSiteBundle:Paiement:paiement.html.twig');
   }
 
   public function membreAction ($membre) {
