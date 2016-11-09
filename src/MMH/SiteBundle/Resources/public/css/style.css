@@ -1633,7 +1633,7 @@ section .static-social-medias {
   /*===========image with the text at the middle of the page==========*/
   .img-left img {
     float: left;
-    margin-right: 2%;
+    margin-right: 5%;
   }
   .wrap {
     position: relative;
@@ -1973,7 +1973,7 @@ section .static-social-medias {
 
 @media (min-width: 1322px) {
   .proposer {
-    right: 17%;
+    right: 16.5%;
   }
 }
 
@@ -2045,7 +2045,9 @@ section .static-social-medias {
   .proposer{
     right: 15%;
   }
-
+  .left-bar {
+    margin-right: -8%;
+  }
 }
 
 @media screen and (min-width: 1800px) {
@@ -2054,12 +2056,17 @@ section .static-social-medias {
     right: 18%;
     width: 20%;
   }
-
+  .left-bar {
+    margin-right: -9%;
+  }
 }
 @media screen and (min-width: 1900px) {
 
   .proposer{
     right: 20%;
+  }
+  .left-bar {
+    margin-right: -9.1%;
   }
 
 }
