@@ -1,0 +1,111 @@
+<?php
+
+namespace MMH\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * imageProject
+ *
+ * @ORM\Table(name="image_project")
+ * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\imageProjectRepository")
+ */
+class imageProject
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $project;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="path", type="string", length=255)
+     */
+    private $path;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="headImage", type="boolean")
+     */
+    private $headImage;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="bodyImage", type="boolean")
+     */
+    private $bodyImage;
+
+
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set path
+     *
+     * @param string $path
+     *
+     * @return imageProject
+     */
+    public function setPath($path)
+    {
+        $this->path = $path;
+
+        return $this;
+    }
+
+    /**
+     * Get path
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \MMH\SiteBundle\Entity\Project $project
+     *
+     * @return imageProject
+     */
+    public function setProject(\MMH\SiteBundle\Entity\Project $project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \MMH\SiteBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
+    }
+}

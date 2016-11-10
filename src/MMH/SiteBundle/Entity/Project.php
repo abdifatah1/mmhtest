@@ -31,6 +31,13 @@ class Project
     /**
      * @var string
      *
+     * @ORM\Column(name="headline", type="string", length=65, unique=true)
+     */
+    private $headline;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="text", type="text")
      */
     private $text;
@@ -218,5 +225,29 @@ class Project
     public function getEndDate()
     {
         return $this->endDate;
+    }
+
+    /**
+     * Set headline
+     *
+     * @param string $headline
+     *
+     * @return Project
+     */
+    public function setHeadline($headline)
+    {
+        $this->headline = $headline;
+
+        return $this;
+    }
+
+    /**
+     * Get headline
+     *
+     * @return string
+     */
+    public function getHeadline()
+    {
+        return $this->headline;
     }
 }

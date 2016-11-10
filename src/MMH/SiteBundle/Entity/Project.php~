@@ -31,6 +31,13 @@ class Project
     /**
      * @var string
      *
+     * @ORM\Column(name="headline", type="string", length=65, unique=true)
+     */
+    private $headline;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="text", type="text")
      */
     private $text;
@@ -170,5 +177,53 @@ class Project
     public function getStartDate()
     {
         return $this->startDate;
+    }
+
+    /**
+     * Set finalObjective
+     *
+     * @param integer $finalObjective
+     *
+     * @return Project
+     */
+    public function setFinalObjective($finalObjective)
+    {
+        $this->finalObjective = $finalObjective;
+
+        return $this;
+    }
+
+    /**
+     * Get finalObjective
+     *
+     * @return integer
+     */
+    public function getFinalObjective()
+    {
+        return $this->finalObjective;
+    }
+
+    /**
+     * Set endDate
+     *
+     * @param \DateTime $endDate
+     *
+     * @return Project
+     */
+    public function setEndDate($endDate)
+    {
+        $this->endDate = $endDate;
+
+        return $this;
+    }
+
+    /**
+     * Get endDate
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->endDate;
     }
 }
