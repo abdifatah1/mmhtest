@@ -44,7 +44,13 @@
                 <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
                 <p class="home-card-description">{{project.headline}}</p>
                 <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
+                  <div class = "progressBar">
+                    <div class = "progression">
+                      <span class="value">
+                        50%
+                      </span>
+                    </div>
+                  </div>
                     <div class="card-home-amount">
                         <p class="amount">3370€</p>
                         <p class="contribut">contribués</p>

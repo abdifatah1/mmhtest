@@ -1,5 +1,6 @@
 /****************************GENERAL SETTINGS***********************************/
 
+
 * {
   box-sizing: border-box;
   font-size: 1em;
@@ -80,7 +81,7 @@ background-color: #0092c9;
 
 /* Green */
 
-.language, hr, .card-home-loadbar {
+.language, hr, .card-home-loadbar, .progression {
   background-color: #2da555;
 }
 
@@ -714,7 +715,7 @@ hr {
   flex-direction: column;
   justify-content: space-between;
   width: 300px;
-  height: 390px;
+  height: 395px;
   border: solid 1px #bdbdbd;
   margin: 10px 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -737,6 +738,7 @@ hr {
 .card-home-title {
   text-align: center;
   font-size: 18px;
+  height: 51px;
 }
 
 .img-remplacement {
@@ -749,6 +751,7 @@ hr {
   color: #2da555;
   font-size: 20px;
   text-align: center;
+  margin-top: .7em;
 }
 
 .home-card-description {
@@ -763,14 +766,26 @@ hr {
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 1em;
+  margin-top: .7em;
 }
 
-.card-home-loadbar {
+.progressBar {
+  height: 20px;
   width: 200px;
-  text-align: center;
-  font-weight: bold;
-  margin-right: 10px;
+  background-color: lightgrey;
+  position: relative;
+}
+
+.progression {
+  height: 20px;
+  position:absolute;
+  top:0;
+  width: 90%;
+}
+
+.value {
+  color: #fff;
+  margin-left: 90px;
 }
 
 .card-home-amount {
@@ -781,7 +796,8 @@ hr {
 }
 
 .amount, .contribut {
-  margin: 0px 3px;
+  margin: 0px 8px ;
+  font-size: .9em;
 }
 
 .amount {
@@ -1739,9 +1755,7 @@ section .static-social-medias {
   .home-cards {
     margin: 35px;
   }
-  .slide-text {
-    height: 105px;
-  }
+
   .carousel-info-wrapper {
     margin: 0 5%;
   }
@@ -1831,6 +1845,11 @@ section .static-social-medias {
     width: 1152px;
     margin: 0 auto;
   }
+
+  .slide-text {
+      margin-bottom: 2em;
+  }
+
   /* --------------------------Footer------------------------- */
   footer ul {
     width: 15%;

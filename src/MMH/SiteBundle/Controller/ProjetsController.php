@@ -13,7 +13,7 @@ class ProjetsController extends Controller
 
       $project = $repo->findAll();
 
-        return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project]);
+      return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project]);
     }
 
     public function decouvrirAction($categorie)
