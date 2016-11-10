@@ -22,7 +22,7 @@ class ProjetsController extends Controller
       return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig');
     }
 
-    public function projetAction()
+    public function projetAction($slug)
     {
 
         return $this->render('MMHSiteBundle:Projet:projet.html.twig');

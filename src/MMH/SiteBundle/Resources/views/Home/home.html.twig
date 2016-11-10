@@ -38,7 +38,7 @@
 
         {% for project in project %}
         <div class="home-cards" target="blank">
-            <a href="projet.html">
+            <a href="{{ path('mmh_site_projet', {'slug': project.slug}) }}">
                 <h2 class="card-home-title">{{project.title}}</h2>
                 <div class="img-remplacement"></div>
                 <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new MMH\SiteBundle\MMHSiteBundle(),
             new MMH\StaticBundle\MMHStaticBundle(),
             new MMH\AdminBundle\MMHAdminBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
