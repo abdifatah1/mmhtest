@@ -35,30 +35,14 @@
         </form>
 
         <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="projet.html">
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
 
-        <!-- cards -->
+        {% for project in project %}
         <div class="home-cards" target="blank">
             <a href="projet.html">
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
+                <h2 class="card-home-title">{{project.title}}</h2>
                 <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
+                <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
+                <p class="home-card-description">{{project.headline}}</p>
                 <div class="home-card-stats">
                     <div class="card-home-loadbar">161%</div>
                     <div class="card-home-amount">
@@ -68,79 +52,8 @@
                 </div>
             </a>
         </div>
-        <!-- /cards -->
+        {% endfor %}
 
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="projet.html">
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="projet.html">
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="projet.html">
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="projet.html">
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
     </div>
 </section>
 

@@ -9,7 +9,11 @@ class ProjetsController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('MMHSiteBundle:Home:home.html.twig');
+      $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
+
+      $project = $repo->findAll();
+
+        return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project]);
     }
 
     public function decouvrirAction($categorie)
