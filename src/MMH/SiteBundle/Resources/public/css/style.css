@@ -747,6 +747,13 @@ hr {
   background-color: grey;
 }
 
+.cards-image {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 100%;
+  min-height: 100%;
+}
+
 .finish-banner {
   color: #2da555;
   font-size: 20px;
