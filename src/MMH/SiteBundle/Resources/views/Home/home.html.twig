@@ -47,12 +47,15 @@
                   <div class = "progressBar">
                     <div class = "progression">
                       <span class="value">
-                        50%
+                        {% set total = 0 %}
+                        {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+                        {% set percent = (total / project.finalObjective) *100 %}
+                        {{ percent|round }} % 
                       </span>
                     </div>
                   </div>
                     <div class="card-home-amount">
-                        <p class="amount">3370€</p>
+                        <p class="amount"> {{total}} €</p>
                         <p class="contribut">contribués</p>
                     </div>
                 </div>

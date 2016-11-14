@@ -11,7 +11,7 @@ class ProjetsController extends Controller
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
-      $project = $repo->findAll();
+      $project = $repo->getProjectWithPayment();
 
       return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project]);
     }
