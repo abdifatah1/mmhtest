@@ -1,4 +1,9 @@
 {% extends '::baselayout.html.twig' %}
+
+{% block title %}Découvrir les projets{% endblock %}
+
+{% block metadescription %}Plateforme de financement participatif MyMoneyHelp{% endblock %}
+
 {% block body %}
 
 <section class="static-page-title flex">
@@ -31,120 +36,37 @@
         <form class="card-nav-form-m">
             <input type="text" placeholder="Chercher Un Projet" class="searchbar-cards-home">
         </form>
-
-        <!-- cards -->
+        {% for project in project %}
         <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet') }}">
-
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
+            <a href="{{ path('mmh_site_projet', {'slug': project.slug}) }}">
+                <h2 class="card-home-title">{{project.title}}</h2>
+                <div class="img-remplacement">
+                  {% for image in project.imageproject %}
+                    {% if image.headimage %} <img src="{{ asset("") ~ image.path }}" class="cards-image" /> {% endif %}
+                  {% endfor %}
+                </div>
+                <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
+                <p class="home-card-description">{{project.headline}}</p>
                 <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
+                  <div class = "progressBar">
+                    <div class = "progression">
+                      <span class="value">
+                        {% set total = 0 %}
+                        {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+                        {% set percent = (total / project.finalObjective) *100 %}
+                        {{ percent|round }}%
+                      </span>
+                    </div>
+                  </div>
                     <div class="card-home-amount">
-                        <p class="amount">3370€</p>
+                        <p class="amount"> {{total}} €</p>
                         <p class="contribut">contribués</p>
                     </div>
                 </div>
             </a>
         </div>
-        <!-- /cards -->
+        {% endfor %}
 
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet')}}">
-
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet')}}">
-
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet')}}">
-
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet')}}">
-
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
-
-        <!-- cards -->
-        <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet')}}">
-
-                <h2 class="card-home-title">Inolin : un matériau écologique</h2>
-                <div class="img-remplacement"></div>
-                <h2 class="finish-banner">Terminée</h2>
-                <p class="home-card-description">Devant le succès nous avons décidé de prolonger la campagne</p>
-                <div class="home-card-stats">
-                    <div class="card-home-loadbar">161%</div>
-                    <div class="card-home-amount">
-                        <p class="amount">3370€</p>
-                        <p class="contribut">contribués</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- /cards -->
     </div>
 </section>
 

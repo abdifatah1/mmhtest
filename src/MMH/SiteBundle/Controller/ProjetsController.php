@@ -18,8 +18,11 @@ class ProjetsController extends Controller
 
     public function decouvrirAction($categorie)
     {
+      $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
-      return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig');
+      $project = $repo->getProjectWithPayment();
+
+      return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig', ['project'=>$project]);
     }
 
     public function projetAction($slug)
