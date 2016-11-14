@@ -22,7 +22,7 @@ class imageProject
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project", inversedBy="imageproject")
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;

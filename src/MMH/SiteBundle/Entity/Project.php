@@ -33,6 +33,11 @@ class Project
      */
      private $payment;
 
+     /**
+      * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageProject", mappedBy="project")
+      */
+      private $imageproject;
+
 
     /**
      * @var string
@@ -329,5 +334,41 @@ class Project
     public function getPayment()
     {
         return $this->payment;
+    }
+
+    /**
+     * Add imageproject
+     *
+     * @param \MMH\SiteBundle\Entity\imageProject $imageproject
+     *
+     * @return Project
+     */
+    public function addImageproject(\MMH\SiteBundle\Entity\imageProject $imageproject)
+    {
+        $this->imageproject[] = $imageproject;
+
+        $imageproject->setProject($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove imageproject
+     *
+     * @param \MMH\SiteBundle\Entity\imageProject $imageproject
+     */
+    public function removeImageproject(\MMH\SiteBundle\Entity\imageProject $imageproject)
+    {
+        $this->imageproject->removeElement($imageproject);
+    }
+
+    /**
+     * Get imageproject
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImageproject()
+    {
+        return $this->imageproject;
     }
 }

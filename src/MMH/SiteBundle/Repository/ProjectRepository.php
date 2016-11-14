@@ -16,6 +16,8 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     return $this->createQueryBuilder('p')
     ->innerJoin('p.payment', 'pay')
     ->addSelect('pay')
+    ->innerJoin('p.imageproject', 'img')
+    ->addSelect('img')
     ->getQuery()
     ->getResult();
   }

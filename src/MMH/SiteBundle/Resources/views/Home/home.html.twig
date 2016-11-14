@@ -40,7 +40,11 @@
         <div class="home-cards" target="blank">
             <a href="{{ path('mmh_site_projet', {'slug': project.slug}) }}">
                 <h2 class="card-home-title">{{project.title}}</h2>
-                <div class="img-remplacement"></div>
+                <div class="img-remplacement">
+                  {% for image in project.imageproject %}
+                    {% if image.headimage %} <img src="{{ asset({{ image.path }}) }}"> {% endif %}
+                  {% endfor %}
+                </div>
                 <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
                 <p class="home-card-description">{{project.headline}}</p>
                 <div class="home-card-stats">
@@ -50,7 +54,7 @@
                         {% set total = 0 %}
                         {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
                         {% set percent = (total / project.finalObjective) *100 %}
-                        {{ percent|round }} % 
+                        {{ percent|round }} %
                       </span>
                     </div>
                   </div>
