@@ -22,7 +22,7 @@ class Payment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project", inversedBy="payment")
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;
@@ -222,5 +222,29 @@ class Payment
     public function getPaymentReference()
     {
         return $this->paymentReference;
+    }
+
+    /**
+     * Set project
+     *
+     * @param \MMH\SiteBundle\Entity\Project $project
+     *
+     * @return Payment
+     */
+    public function setProject(\MMH\SiteBundle\Entity\Project $project)
+    {
+        $this->project = $project;
+
+        return $this;
+    }
+
+    /**
+     * Get project
+     *
+     * @return \MMH\SiteBundle\Entity\Project
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

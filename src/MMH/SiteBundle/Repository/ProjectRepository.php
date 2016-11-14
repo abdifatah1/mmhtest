@@ -10,4 +10,14 @@ namespace MMH\SiteBundle\Repository;
  */
 class ProjectRepository extends \Doctrine\ORM\EntityRepository
 {
+
+  public function getProjectWithPayment()
+  {
+    return $this->createQueryBuilder('p')
+    ->innerJoin('p.payment', 'pay')
+    ->addSelect('pay')
+    ->getQuery()
+    ->getResult();
+  }
+
 }

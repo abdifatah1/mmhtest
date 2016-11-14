@@ -29,6 +29,12 @@ class Project
   private $slug;
 
     /**
+     * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Payment", mappedBy="project")
+     */
+     private $payment;
+
+
+    /**
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255, unique=true)
@@ -280,5 +286,48 @@ class Project
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->payment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add payment
+     *
+     * @param \MMH\SiteBundle\Entity\Payment $payment
+     *
+     * @return Project
+     */
+    public function addPayment(\MMH\SiteBundle\Entity\Payment $payment)
+    {
+        $this->payment[] = $payment;
+
+        $payment->setProject($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove payment
+     *
+     * @param \MMH\SiteBundle\Entity\Payment $payment
+     */
+    public function removePayment(\MMH\SiteBundle\Entity\Payment $payment)
+    {
+        $this->payment->removeElement($payment);
+    }
+
+    /**
+     * Get payment
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPayment()
+    {
+        return $this->payment;
     }
 }
