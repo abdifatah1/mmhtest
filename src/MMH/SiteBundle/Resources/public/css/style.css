@@ -780,7 +780,11 @@ hr {
   height: 20px;
   position:absolute;
   top:0;
-  width: 90%;
+  width: 0;
+  transition-property: width;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+  transition-delay: 50ms;
 }
 
 .value {

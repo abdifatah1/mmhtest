@@ -50,7 +50,7 @@
                         {% set total = 0 %}
                         {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
                         {% set percent = (total / project.finalObjective) *100 %}
-                        {{ percent|round }} % 
+                        {{ percent|round }}% 
                       </span>
                     </div>
                   </div>
