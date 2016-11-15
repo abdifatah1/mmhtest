@@ -1,5 +1,5 @@
 
-// Set the width of the progress bar
+// Set the width of the cards progress bar
 $(document).ready(function() {
   // Get every dom object which class ='progression'
   $('.progression').each(function(){

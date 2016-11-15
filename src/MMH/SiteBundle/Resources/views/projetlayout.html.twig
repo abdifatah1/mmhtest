@@ -1,22 +1,33 @@
 {% extends '::baselayout.html.twig' %}
 {% block body %}
+{% for project in project %}
 
 <!-- project image -->
 <div class="container">
   <figure class="project-image-container">
-    <img src="{{ asset('bundles/mmhsite/img/projets/Team-Waterwood.jpg') }}" alt="team waterwood image">
+    {% for image in project.imageproject %}
+    {% if image.headimage %} <img src="{{ asset("") ~ image.path }}" class="cards-image" /> {% endif %}
+
+    {% endfor %}
   </figure>
   <!-- project details -->
   <section class="header-text">
-    <h1>Un winch pour rider sur l'eau<br>avec l'association WaterWood</h1>
+    <h1>{{project.title}}</h1>
+
+    <!-- <h1>Un winch pour rider sur l'eau<br>avec l'association WaterWood</h1> -->
     <div class="row">
       <div class="second circle">
         <strong></strong>
       </div>
       <div class="left-bar">
-        <p>445€ Contribué</p>
-        <p>800€ Objectif</p>
-        <p>11 supporteur</p>
+        {% set total = 0 %}
+        {% set supp = 0 %}
+        {% for payment in project.payment %} {% set total = total + payment.amount %}
+        {% set supp = supp + 1 %}
+        {% endfor %}
+        <p>{{total}} € Contribué</p>
+        <p>{{project.finalObjective}} € Objectif</p>
+        <p> {{supp}} supporteurs</p>
       </div>
     </div>
     <div>
@@ -39,6 +50,7 @@
     </div>
   </section>
 </div>
+{% endfor %}
 {% block section %}{% endblock %}
 <!-- /project details -->
 <aside class="proposer">
