@@ -22,4 +22,21 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     ->getResult();
   }
 
+  public function getProjectWithImage($slug)
+  {
+    $qb =  $this->createQueryBuilder('p');
+    $qb
+      ->where ("p.slug = :slug")
+      ->setParameter("slug",$slug)
+      ;
+      return $qb
+    ->innerJoin('p.payment', 'pay')
+    ->addSelect('pay')
+    ->innerJoin('p.imageproject', 'img')
+    ->addSelect('img')
+
+    ->getQuery()
+    ->getResult();
+  }
+
 }
