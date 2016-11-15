@@ -88,6 +88,42 @@ class Project
      */
     private $startDate;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="slider", type="boolean")
+     */
+    private $slider;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255, unique=true, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255, unique=true, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255, unique=true, nullable=true)
+     */
+    private $linkedin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pinterest", type="string", length=255, unique=true, nullable=true)
+     */
+    private $pinterest;
+
+
 
     /**
      * Get id

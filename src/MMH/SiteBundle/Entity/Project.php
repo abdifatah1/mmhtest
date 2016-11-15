@@ -88,6 +88,42 @@ class Project
      */
     private $startDate;
 
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="slider", type="boolean")
+     */
+    private $slider;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="facebook", type="string", length=255, unique=true, nullable=true)
+     */
+    private $facebook;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="twitter", type="string", length=255, unique=true, nullable=true)
+     */
+    private $twitter;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="linkedin", type="string", length=255, unique=true, nullable=true)
+     */
+    private $linkedin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pinterest", type="string", length=255, unique=true, nullable=true)
+     */
+    private $pinterest;
+
+
 
     /**
      * Get id
@@ -370,5 +406,125 @@ class Project
     public function getImageproject()
     {
         return $this->imageproject;
+    }
+
+    /**
+     * Set slider
+     *
+     * @param boolean $slider
+     *
+     * @return Project
+     */
+    public function setSlider($slider)
+    {
+        $this->slider = $slider;
+
+        return $this;
+    }
+
+    /**
+     * Get slider
+     *
+     * @return boolean
+     */
+    public function getSlider()
+    {
+        return $this->slider;
+    }
+
+    /**
+     * Set facebook
+     *
+     * @param string $facebook
+     *
+     * @return Project
+     */
+    public function setFacebook($facebook)
+    {
+        $this->facebook = $facebook;
+
+        return $this;
+    }
+
+    /**
+     * Get facebook
+     *
+     * @return string
+     */
+    public function getFacebook()
+    {
+        return $this->facebook;
+    }
+
+    /**
+     * Set twitter
+     *
+     * @param string $twitter
+     *
+     * @return Project
+     */
+    public function setTwitter($twitter)
+    {
+        $this->twitter = $twitter;
+
+        return $this;
+    }
+
+    /**
+     * Get twitter
+     *
+     * @return string
+     */
+    public function getTwitter()
+    {
+        return $this->twitter;
+    }
+
+    /**
+     * Set linkedin
+     *
+     * @param string $linkedin
+     *
+     * @return Project
+     */
+    public function setLinkedin($linkedin)
+    {
+        $this->linkedin = $linkedin;
+
+        return $this;
+    }
+
+    /**
+     * Get linkedin
+     *
+     * @return string
+     */
+    public function getLinkedin()
+    {
+        return $this->linkedin;
+    }
+
+    /**
+     * Set pinterest
+     *
+     * @param string $pinterest
+     *
+     * @return Project
+     */
+    public function setPinterest($pinterest)
+    {
+        $this->pinterest = $pinterest;
+
+        return $this;
+    }
+
+    /**
+     * Get pinterest
+     *
+     * @return string
+     */
+    public function getPinterest()
+    {
+        return $this->pinterest;
     }
 }
