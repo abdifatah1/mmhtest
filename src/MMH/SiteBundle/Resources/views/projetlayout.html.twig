@@ -25,9 +25,9 @@
         {% for payment in project.payment %} {% set total = total + payment.amount %}
         {% set supp = supp + 1 %}
         {% endfor %}
-        <p>{{total}} € Contribué</p>
+        <p>{{total}} € Contribué{% if total > 0 %}s{% endif %}</p>
         <p>{{project.finalObjective}} € Objectif</p>
-        <p> {{supp}} supporteurs</p>
+        <p> {{supp}} supporteur{% if supp > 0 %}s{% endif %}</p>
       </div>
     </div>
     <div>
