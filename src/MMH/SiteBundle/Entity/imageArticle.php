@@ -22,7 +22,7 @@ class imageArticle
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Article")
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Article", inversedBy="imagearticle")
      * @ORM\JoinColumn(nullable=false)
      */
     private $article;

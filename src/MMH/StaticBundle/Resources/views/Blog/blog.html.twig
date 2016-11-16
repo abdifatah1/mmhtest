@@ -4,7 +4,7 @@
 
 {% block metadescription %}Plateforme de financement participatif MyMoneyHelp{% endblock %}
 
-{% block headtitle %}Nous supporter{% endblock %}
+{% block headtitle %}Le blog de MyMoneyHelp{% endblock %}
 
 {% block section %}
 
@@ -12,8 +12,16 @@
 <div class="wrapper-static-content flex">
 <!-- Main section on the left with text and image content -->
 <section class="static-content-section">
-    <h2 id="blog-title">Le financement participatif solidaire en France : les raisons du boom</h2>
-    <img src="img/content/Telethon.jpg" alt="" class="static-image blog-image">
-    <p>Texte complet d'article</p>
+
+  {% for article in articleAlone %}
+    <h2 id="blog-title">{{ article.title }}</h2>
+          {% for image in article.imagearticle %}
+            {% if image.headimage %}
+              <img class="static-image blog-image" src="{{ asset('') ~ image.path }}" alt="{{image.description}}">
+            {% endif %}
+          {% endfor %}
+          <p>{{ article.content}}</p>
+          <span>Par {{article.user.firstname}} le {{ article.datecreation|date('d/m/Y')}}</span>
+  {% endfor %}
 
 {% endblock %}

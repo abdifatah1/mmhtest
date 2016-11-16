@@ -20,4 +20,21 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     ->getResult();
   }
 
+  public function getArticleWithAuthor($slug)
+  {
+    $qb =  $this->createQueryBuilder('a');
+    $qb
+      ->where ("a.slug = :slug")
+      ->setParameter("slug",$slug)
+      ;
+      return $qb
+    ->innerJoin('a.imagearticle', 'img')
+    ->addSelect('img')
+    ->innerJoin('a.user', 'use')
+    ->addSelect('use')
+
+    ->getQuery()
+    ->getResult();
+  }
+
 }

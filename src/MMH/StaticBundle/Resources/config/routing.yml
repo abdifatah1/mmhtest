@@ -29,8 +29,6 @@ mmh_static_conditions:
         _controller: MMHStaticBundle:Static:conditions
 
 mmh_static_blog:
-    path:     /blog/{year}/{article}
+    path:     /blog/{slug}
     defaults:
         _controller: MMHStaticBundle:Static:blog
-    requirements:
-        year: \d{4}

@@ -23,6 +23,11 @@ class Article
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageArticle", mappedBy="article")
+     */
+     private $imagearticle;
+
+    /**
      * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -184,5 +189,48 @@ class Article
     public function getSlug()
     {
         return $this->slug;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->imagearticle = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add imagearticle
+     *
+     * @param \MMH\SiteBundle\Entity\imageArticle $imagearticle
+     *
+     * @return Article
+     */
+    public function addImagearticle(\MMH\SiteBundle\Entity\imageArticle $imagearticle)
+    {
+        $this->imagearticle[] = $imagearticle;
+
+        $imagearticle->setArticle($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove imagearticle
+     *
+     * @param \MMH\SiteBundle\Entity\imageArticle $imagearticle
+     */
+    public function removeImagearticle(\MMH\SiteBundle\Entity\imageArticle $imagearticle)
+    {
+        $this->imagearticle->removeElement($imagearticle);
+    }
+
+    /**
+     * Get imagearticle
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getImagearticle()
+    {
+        return $this->imagearticle;
     }
 }

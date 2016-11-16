@@ -70,6 +70,13 @@ class User
      */
     private $projectCarry;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bio", type="text", nullable=true)
+     */
+    private $bio;
+
 
     /**
      * Get id
@@ -247,5 +254,29 @@ class User
     public function getProjectCarry()
     {
         return $this->projectCarry;
+    }
+
+    /**
+     * Set bio
+     *
+     * @param string $bio
+     *
+     * @return User
+     */
+    public function setBio($bio)
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    /**
+     * Get bio
+     *
+     * @return string
+     */
+    public function getBio()
+    {
+        return $this->bio;
     }
 }

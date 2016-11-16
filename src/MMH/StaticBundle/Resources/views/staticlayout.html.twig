@@ -34,24 +34,19 @@
         </ul>
 
         <!-- Blog articles on the left side -->
-        <article>
-          <a href="#">
-            <h3>Le financement participatif solidaire en France : les raisons du boom</h3>
-            <img src="{{ asset('bundles/mmhsite/img/content/Telethon.jpg') }}" alt="célébration du telethon">
-          </a>
-        </article>
-        <article>
-          <a href="#">
-            <h3>Le crowdfunding solidaire dans la troisième révolution industrielle en Nord Pas-de-Calais</h3>
-            <img src="{{ asset('bundles/mmhsite/img/content/fille_fleur.jpg') }}" alt="enfant qui souffle sur un moulin à vent">
-          </a>
-        </article>
-        <article>
-          <a href="#">          
-            <h3>Aux origines du financement participatif en France, le mécénat collectif !</h3>
-            <img src="{{ asset('bundles/mmhsite/img/content/statue_liberte.jpg') }}" alt="statue de la liberté">
-          </a>
-        </article>
+        {% for article in article %}
+          <article>
+            <a href="{{ path('mmh_static_blog', {'slug':article.slug}) }}">
+              <h3>{{article.title}}</h3>
+                {% for image in article.imagearticle %}
+                  {% if image.headimage %}
+                    <img src="{{ asset('') ~ image.path }}" alt="{{image.description}}">
+                  {% endif %}
+                {% endfor %}
+            </a>
+          </article>
+        {% endfor %}
+
       </aside>
 
       <!-- Son wrapper closure -->

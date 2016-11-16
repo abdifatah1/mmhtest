@@ -7,44 +7,48 @@ use Symfony\Component\HttpFoundation\Response;
 
 class StaticController extends Controller
 {
+
+  public function allArticle() {
+    $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Article');
+    $article = $repo->getArticleWithImage();
+    return $article;
+  }
+
   public function associationAction()
   {
-
-    $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Article');
-
-    $article = $repo->findAll();
-
-      return $this->render('MMHStaticBundle:About:about.html.twig', ['article'=>$article]);
-      
+      return $this->render('MMHStaticBundle:About:about.html.twig', ['article'=>$this->allArticle()]);
   }
 
   public function soutenirAction()
   {
-      return $this->render('MMHStaticBundle:Support:support.html.twig');
+      return $this->render('MMHStaticBundle:Support:support.html.twig', ['article'=>$this->allArticle()]);
   }
 
   public function contactAction()
   {
-      return $this->render('MMHStaticBundle:Contact:contact.html.twig');
+      return $this->render('MMHStaticBundle:Contact:contact.html.twig', ['article'=>$this->allArticle()]);
   }
 
   public function deposerAction()
   {
-      return $this->render('MMHStaticBundle:Submit:submit.html.twig');
+      return $this->render('MMHStaticBundle:Submit:submit.html.twig', ['article'=>$this->allArticle()]);
   }
 
   public function mentionsAction()
   {
-      return $this->render('MMHStaticBundle:Mention:mention.html.twig');
+      return $this->render('MMHStaticBundle:Mention:mention.html.twig', ['article'=>$this->allArticle()]);
   }
 
   public function conditionsAction()
   {
-      return $this->render('MMHStaticBundle:Conditions:conditions.html.twig');
+      return $this->render('MMHStaticBundle:Conditions:conditions.html.twig', ['article'=>$this->allArticle()]);
   }
 
-  public function blogAction($year, $article)
+  public function blogAction($slug)
   {
-      return $this->render('MMHStaticBundle:Blog:blog.html.twig');
+      $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Article');
+      $articleAlone = $repo->getArticleWithAuthor($slug);
+
+      return $this->render('MMHStaticBundle:Blog:blog.html.twig', ['article'=>$this->allArticle(), 'articleAlone'=>$articleAlone]);
   }
 }

@@ -70,6 +70,13 @@ class User
      */
     private $projectCarry;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bio", type="text", nullable=true)
+     */
+    private $bio;
+
 
     /**
      * Get id
