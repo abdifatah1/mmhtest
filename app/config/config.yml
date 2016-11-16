@@ -73,3 +73,25 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# liip_imagine
+liip_imagine:
+    resolvers:
+        default:
+            web_path: ~
+
+    filter_sets:
+        cache: ~
+
+        # the name of the "filter set"
+        my_carousel:
+
+            # adjust the image quality to 75%
+            quality: 80
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [700, 400] }
+                thumbnail: { size: [700, 400], mode: outbound }
+
+                background: { size: [700, 400], position: center, color: '#ECF0F4' }

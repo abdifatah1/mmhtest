@@ -163,6 +163,7 @@ class imageProject
     {
         return $this->bodyImage;
     }
+<<<<<<< HEAD
 
     /**
      * Set description
@@ -187,4 +188,6 @@ class imageProject
     {
         return $this->description;
     }
+=======
+>>>>>>> 754c0316e39a21e8638a949fa79ad658244d84e5
 }

@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new MMH\StaticBundle\MMHStaticBundle(),
             new MMH\AdminBundle\MMHAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new Liip\ImagineBundle\LiipImagineBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -9,11 +9,13 @@ class StaticController extends Controller
 {
   public function associationAction()
   {
+
     $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Article');
 
     $article = $repo->findAll();
 
       return $this->render('MMHStaticBundle:About:about.html.twig', ['article'=>$article]);
+      
   }
 
   public function soutenirAction()
