@@ -1,6 +1,7 @@
 /****************************GENERAL SETTINGS***********************************/
 
 
+
 * {
   box-sizing: border-box;
   font-size: 1em;
@@ -447,6 +448,7 @@ p, .login-button {
 
 
 /*Slider pictures*/
+
 
 .slide-picture {
   display: none;
