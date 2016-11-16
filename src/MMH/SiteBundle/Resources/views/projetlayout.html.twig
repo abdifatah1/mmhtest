@@ -1,0 +1,90 @@
+{% extends '::baselayout.html.twig' %}
+{% block body %}
+{% for project in project %}
+
+<!-- project image -->
+<div class="container">
+  <figure class="project-image-container">
+    {% for image in project.imageproject %}
+    {% if image.headimage %} <img src="{{ asset("") ~ image.path }}" class="cards-image" /> {% endif %}
+
+    {% endfor %}
+  </figure>
+  <!-- project details -->
+  <section class="header-text">
+    <h1>{{project.title}}</h1>
+
+    <!-- <h1>Un winch pour rider sur l'eau<br>avec l'association WaterWood</h1> -->
+    <div class="row">
+      <div class="second circle">
+        <strong></strong>
+      </div>
+      <div class="left-bar">
+        {% set total = 0 %}
+        {% set supp = 0 %}
+        {% for payment in project.payment %} {% set total = total + payment.amount %}
+        {% set supp = supp + 1 %}
+        {% endfor %}
+        <p>{{total}} € Contribué{% if total > 0 %}s{% endif %}</p>
+        <p>{{project.finalObjective}} € Objectif</p>
+        <p> {{supp}} supporteur{% if supp > 0 %}s{% endif %}</p>
+      </div>
+    </div>
+    <div>
+      <p>Cette campagne n'a pas réussi à ateindre son objectif de financement il y'a 3 semaines.
+      </p>
+      <ul class="social-networks">
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/google-plus_vert.png') }}" class="social-icons" alt="Google plus" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/linkedin_vert.png') }}" class="social-icons" alt="Linkedin" /></a>
+        </li>
+        <li>
+          <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+{% endfor %}
+{% block section %}{% endblock %}
+<!-- /project details -->
+<aside class="proposer">
+  <!-- contribute button -->
+  <div class="contribute">
+    <button class="project-button " type="button" name="button">Contribuer</button>
+  </div>
+  <!-- /contribute button -->
+  <div class="proposer-info">
+    <h1>Le porteur de projet:</h1>
+    <figure>
+      <img src="{{ asset('bundles/mmhsite/img/businessman.png') }}" alt="proposer image" />
+    </figure>
+    <p>Informations à propos du porteur de projet et de ses valeurs. Informations à propos du porteur de projet et de ses valeurs Informations à propos du porteur de projet et de
+    </p>
+  </div>
+
+  <!-- Top contributors -->
+  <div class="contributors">
+    <h2>Top contributions:</h2>
+    <p class="ten span"><span>10€</span><i>6</i><img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+    <p class="twenty span"><span>20€</span><i>8</i><img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+    <p class="thirty span"><span>30€</span><i>9</i><img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+  </div>
+
+  <!-- social networks-->
+  <ul class="social-networks">
+    <li>
+      <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+    </li>
+    <li>
+      <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+    </li>
+  </ul>
+</aside>
+</div>
+{% endblock %}

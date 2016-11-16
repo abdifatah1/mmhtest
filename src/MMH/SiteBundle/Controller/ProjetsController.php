@@ -1,0 +1,41 @@
+<?php
+
+namespace MMH\SiteBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
+class ProjetsController extends Controller
+{
+  public function indexAction()
+  {
+    $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
+
+    $project = $repo->getProjectWithPayment();
+
+    return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project]);
+  }
+
+
+    public function decouvrirAction($categorie)
+    {
+      $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
+
+      $project = $repo->getProjectWithPayment();
+
+      return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig', ['project'=>$project]);
+    }
+
+
+  public function projetAction($slug)
+  {
+    $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
+
+    $project = $repo->getProjectWithImage($slug);
+
+    return $this->render('MMHSiteBundle:Projet:projet.html.twig',['project'=>$project]);
+
+  }
+
+
+}
