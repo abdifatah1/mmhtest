@@ -59,9 +59,9 @@
                     <div class="slide-text">
                         <p>
                           {% set char = project.text | split('') %}
-                          {% for i in 0..179 %}
-                          {{ char[i] }}
-                          {% endfor %}
+                          {% set char = char | slice(0, 179) %}
+                          {% set char = char | join('') %}
+                          {{char}}...
                         </p>
                     </div>
                     <!-- /Texte -->
