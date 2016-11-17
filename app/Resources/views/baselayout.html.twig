@@ -186,21 +186,28 @@
   <script src="{{ asset('bundles/mmhsite/js/navbar.js')}}"></script>
   <script src="{{ asset('bundles/mmhsite/js/dropdown.js')}}"></script>
   <script src="{{ asset('bundles/mmhsite/js/main.js')}}"></script>
-  <script src="{{ asset('bundles/mmhsite/circleplugin/circle-progress.js')}}"></script>
-  {% for project in project %}
-  {% set total = 0 %}
-  {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
-  {% set percent = (total / project.finalObjective) *100 %}
-  {% set percentt = percent / 100 %}
 
-  <script>
-  $('.second.circle').circleProgress({
-      value: '{{percentt | round(2, 'floor') }}'
-  }).on('circle-animation-progress', function(event, progress) {
-    $(this).find('strong').html(parseInt('{{percent | round }}' * progress) + '<i>%</i>');
-  });
-  </script>
-  {% endfor %}
+
+  {% if app.request.attributes.get('_route') == 'mmh_site_projet' %}
+
+    <script src="{{ asset('bundles/mmhsite/circleplugin/circle-progress.js')}}"></script>
+    {% for project in project %}
+    {% set total = 0 %}
+    {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+    {% set percent = (total / project.finalObjective) *100 %}
+    {% set percentt = percent / 100 %}
+
+    <script>
+    $('.second.circle').circleProgress({
+        value: '{{percentt | round(2, 'floor') }}'
+    }).on('circle-animation-progress', function(event, progress) {
+      $(this).find('strong').html(parseInt('{{percent | round }}' * progress) + '<i>%</i>');
+    });
+    </script>
+    {% endfor %}
+
+  {% endif %}
+
 
   <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
   <script>
