@@ -6,12 +6,7 @@
 <div class="container">
   <figure class="project-image-container">
     {% for image in project.imageproject %}
-<<<<<<< HEAD
-    {% if image.headimage %} <img src="{{image.path | imagine_filter('my_carousel') }}"  /> {% endif %}
-=======
     {% if image.headimage %} <img src="{{image.path | imagine_filter('my_carousel') }}" /> {% endif %}
->>>>>>> 6914e4189789c0ca84a93c1d46776ce5532d9eaa
-
     {% endfor %}
   </figure>
   <!-- project details -->
