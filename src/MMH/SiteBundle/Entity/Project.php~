@@ -39,6 +39,12 @@ class Project
       */
       private $imageproject;
 
+      /**
+       * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
+       * @ORM\JoinColumn(nullable=false)
+       */
+      private $user;
+
 
     /**
      * @var string
