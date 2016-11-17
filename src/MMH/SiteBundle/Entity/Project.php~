@@ -28,6 +28,7 @@ class Project
      */
   private $slug;
 
+
     /**
      * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Payment", mappedBy="project")
      */
@@ -37,6 +38,12 @@ class Project
       * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageProject", mappedBy="project")
       */
       private $imageproject;
+
+      /**
+       * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
+       * @ORM\JoinColumn(nullable=false)
+       */
+      private $user;
 
 
     /**
@@ -526,5 +533,53 @@ class Project
     public function getPinterest()
     {
         return $this->pinterest;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \MMH\SiteBundle\Entity\User $user
+     *
+     * @return Project
+     */
+    public function setUser(\MMH\SiteBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \MMH\SiteBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * Set projectuser
+     *
+     * @param \MMH\SiteBundle\Entity\User $projectuser
+     *
+     * @return Project
+     */
+    public function setProjectuser(\MMH\SiteBundle\Entity\User $projectuser)
+    {
+        $this->projectuser = $projectuser;
+
+        return $this;
+    }
+
+    /**
+     * Get projectuser
+     *
+     * @return \MMH\SiteBundle\Entity\User
+     */
+    public function getProjectuser()
+    {
+        return $this->projectuser;
     }
 }
