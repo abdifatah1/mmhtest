@@ -18,6 +18,9 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     ->addSelect('pay')
     ->innerJoin('p.imageproject', 'img')
     ->addSelect('img')
+    ->setMaxResults(4)
+    ->setFirstResult(1)
+    ->orderBy('p.startDate', 'DESC')
     ->getQuery()
     ->getResult();
   }
