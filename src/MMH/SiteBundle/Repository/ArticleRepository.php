@@ -16,6 +16,8 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
     return $this->createQueryBuilder('a')
     ->innerJoin('a.imagearticle', 'img')
     ->addSelect('img')
+    ->setMaxResults(3)
+    ->orderBy('a.dateCreation', 'DESC')
     ->getQuery()
     ->getResult();
   }
