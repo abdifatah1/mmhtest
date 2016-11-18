@@ -5,6 +5,7 @@ namespace MMH\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
+
 class ProjetsController extends Controller
 {
   public function indexAction()
@@ -21,7 +22,7 @@ class ProjetsController extends Controller
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
-      $project = $repo->getProjectWithPayment();
+      $project = $repo->getProjectWithPayment($categorie);
 
       return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig', ['project'=>$project]);
     }

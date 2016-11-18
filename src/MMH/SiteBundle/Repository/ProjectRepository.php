@@ -13,14 +13,18 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
 
   public function getProjectWithPayment()
   {
-    return $this->createQueryBuilder('p')
-    ->innerJoin('p.payment', 'pay')
-    ->addSelect('pay')
-    ->innerJoin('p.imageproject', 'img')
-    ->addSelect('img')
-    ->getQuery()
-    ->getResult();
-  }
+
+      return $this->createQueryBuilder('p')
+      ->innerJoin('p.payment', 'pay')
+      ->addSelect('pay')
+      ->innerJoin('p.imageproject', 'img')
+      ->addSelect('img')
+      ->getQuery()
+      ->getResult();
+
+    }
+
+
 
   public function getProjectWithImage($slug)
   {

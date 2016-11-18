@@ -107,7 +107,16 @@
                         </div>
 
                         <div class="stat flex">
-                            <span>J-30</span>
+                            {% set endDate = project.endDate | date('U') %}
+                            {% set currentDate = "now" | date('U') %}
+                            {% set remainingDays = endDate - currentDate %}
+                            <span>
+                              {% if remainingDays <= 0 %}
+                              Finie
+                              {% else %}
+                              J-{{ (remainingDays / 86400) | round }}
+                              {% endif %}
+                            </span>
                         </div>
                     </div>
                     <!-- /Stats -->
