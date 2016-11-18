@@ -82,6 +82,13 @@ class Project
     private $status;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="visibility", type="boolean")
+     */
+    private $visibility;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="datetime")
