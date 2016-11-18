@@ -82,6 +82,13 @@ class Project
     private $status;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="visibility", type="boolean")
+     */
+    private $visibility;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="datetime")
@@ -581,5 +588,29 @@ class Project
     public function getProjectuser()
     {
         return $this->projectuser;
+    }
+
+    /**
+     * Set visibility
+     *
+     * @param boolean $visibility
+     *
+     * @return Project
+     */
+    public function setVisibility($visibility)
+    {
+        $this->visibility = $visibility;
+
+        return $this;
+    }
+
+    /**
+     * Get visibility
+     *
+     * @return boolean
+     */
+    public function getVisibility()
+    {
+        return $this->visibility;
     }
 }
