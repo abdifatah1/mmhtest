@@ -13,13 +13,18 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
 
   public function getProjectWithPayment()
   {
+
+    // $query = $this->_em->createQuery('SELECT p, pay, img FROM MMHSiteBundle:Project p JOIN p.payment pay JOIN p.imageproject img WHERE p.visibility=true ORDER BY p.startDate DESC');
+    // $results = $query->setMaxResults(6)->getResult();
+    // return $results;
+
     return $this->createQueryBuilder('p')
+    ->where ("p.visibility = :visibility")
+    ->setParameter("visibility", true)
     ->innerJoin('p.payment', 'pay')
     ->addSelect('pay')
     ->innerJoin('p.imageproject', 'img')
     ->addSelect('img')
-    ->setMaxResults(4)
-    ->setFirstResult(1)
     ->orderBy('p.startDate', 'DESC')
     ->getQuery()
     ->getResult();
