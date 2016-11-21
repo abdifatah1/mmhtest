@@ -111,3 +111,15 @@ liip_imagine:
                 thumbnail: { size: [289, 150], mode: outbound }
 
                 background: { size: [298, 150], position: center, color: '#ECF0F4' }
+
+        my_text_image:
+
+            # adjust the image quality to 75%
+            quality: 70
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [350, 200] }
+                thumbnail: { size: [350, 200], mode: outbound }
+
+                background: { size: [350, 200], position: center, color: '#ECF0F4' }
