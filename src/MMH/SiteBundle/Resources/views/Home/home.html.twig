@@ -14,12 +14,12 @@
         <div id="menuderoulant">
           <a href="#" class="category">Catégories</a>
            <ul>
-             <li><a href="#">Tout</a></li>
-             <li><a href="#">Solidarité, humanitaire, société</a></li>
-             <li><a href="#">Entrepreneuriat, ESS</a></li>
-             <li><a href="#">Sports, santé</a></li>
-             <li><a href="#">Culture, arts, éducation</a></li>
-             <li><a href="#">Autres</a></li>
+             <li><a href="{{ path('mmh_site_homepage') }}">Tout</a></li>
+             <li><a href="{{ path('mmh_site_homepage', {'categorie':1}) }}">Solidarité, humanitaire, société</a></li>
+             <li><a href="{{ path('mmh_site_homepage', {'categorie':2}) }}">Entrepreneuriat, ESS</a></li>
+             <li><a href="{{ path('mmh_site_homepage', {'categorie':3}) }}">Sports, santé</a></li>
+             <li><a href="{{ path('mmh_site_homepage', {'categorie':4}) }}">Culture, arts, éducation</a></li>
+             <li><a href="{{ path('mmh_site_homepage', {'categorie':5}) }}">Autres</a></li>
           </ul>
         </div>
             <form class="card-nav-form-d">
@@ -35,38 +35,83 @@
         </form>
 
         <!-- cards -->
+        {% set cat = app.request.get('categorie') %}
 
-        {% for project in project %}
-        <div class="home-cards" target="blank">
-            <a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}">
-                <h2 class="card-home-title">{{project.title}}</h2>
-                <div class="img-remplacement">
-                  {% for image in project.imageproject %}
-                    {% if image.headimage %} <img src="{{ asset("") ~ image.path }}" class="cards-image" /> {% endif %}
-                  {% endfor %}
-                </div>
-                <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
-                <p class="home-card-description">{{project.headline}}</p>
-                <div class="home-card-stats">
-                  <div class = "progressBar">
-                    <div class = "progression">
-                      <span class="value">
-                        {% set total = 0 %}
-                        {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
-                        {% set percent = (total / project.finalObjective) *100 %}
-                        {{ percent|round }}%
-                      </span>
-                    </div>
+        <!-- Display last projects -->
+        {% if cat == null %}
+          {% for project in project %}
+          <div class="home-cards" target="blank">
+              <a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}">
+                  <h2 class="card-home-title">{{project.title}}</h2>
+                  <div class="img-remplacement">
+                    <!-- Get main image -->
+                    {% for image in project.imageproject %}
+                      {% if image.headimage %} <img src="{{ asset("") ~ image.path }}" class="cards-image" /> {% endif %}
+                    {% endfor %}
                   </div>
-                    <div class="card-home-amount">
-                        <p class="amount"> {{total}} €</p>
-                        <p class="contribut">contribué{% if total > 0 %}s{% endif %}</p>
+                  <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
+                  <p class="home-card-description">{{project.headline}}</p>
+                  <div class="home-card-stats">
+                    <div class = "progressBar">
+                      <div class = "progression">
+                        <!-- Compute project stats -->
+                        <span class="value">
+                          {% set total = 0 %}
+                          {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+                          {% set percent = (total / project.finalObjective) *100 %}
+                          {{ percent|round }}%
+                          <!-- /Compute project stats -->
+                        </span>
+                      </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                      <div class="card-home-amount">
+                          <p class="amount"> {{total}} €</p>
+                          <p class="contribut">contribué{% if total > 0 %}s{% endif %}</p>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          {% endfor %}
+          <!-- /Display last projects -->
+        {% else %}
+        <!-- Display cards by category -->
+        {% for project in project %}
+          {% if project.category.id == cat  %}
+          <div class="home-cards" target="blank">
+              <a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}">
+                  <h2 class="card-home-title">{{project.title}}</h2>
+                  <div class="img-remplacement">
+                    <!-- Get main image -->
+                    {% for image in project.imageproject %}
+                      {% if image.headimage %} <img src="{{ asset("") ~ image.path }}" class="cards-image" /> {% endif %}
+                    {% endfor %}
+                  </div>
+                  <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
+                  <p class="home-card-description">{{project.headline}}</p>
+                  <div class="home-card-stats">
+                    <div class = "progressBar">
+                      <div class = "progression">
+                        <span class="value">
+                          <!-- Compute project stats -->
+                          {% set total = 0 %}
+                          {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+                          {% set percent = (total / project.finalObjective) *100 %}
+                          {{ percent|round }}%
+                          <!-- /Compute project stats -->
+                        </span>
+                      </div>
+                    </div>
+                      <div class="card-home-amount">
+                          <p class="amount"> {{total}} €</p>
+                          <p class="contribut">contribué{% if total > 0 %}s{% endif %}</p>
+                      </div>
+                  </div>
+              </a>
+          </div>
+          {% endif %}
         {% endfor %}
-
+        <!-- /Display cards by category -->
+      {% endif %}
     </div>
 </section>
 

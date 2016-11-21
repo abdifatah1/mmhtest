@@ -12,17 +12,20 @@ class ProjetsController extends Controller
   {
     $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
+
     $project = $repo->getProjectWithPayment();
 
-    return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project]);
+    $projectSlider = $repo->getProjectForSlider();
+
+    return $this->render('MMHSiteBundle:Home:home.html.twig', ['project'=>$project, 'projectSlider' => $projectSlider]);
   }
 
 
-    public function decouvrirAction($categorie)
+    public function decouvrirAction()
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
-      $project = $repo->getProjectWithPayment($categorie);
+      $project = $repo->getProjectWithPayment();
 
       return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig', ['project'=>$project]);
     }

@@ -11,7 +11,7 @@
         <div class="carousel">
             <ul>
               {% set count = 1 %}
-                {% for project in project %}
+                {% for project in projectSlider %}
                   {% if project.slider %}
                     {% for image in project.imageproject %}
                       <li>
@@ -48,84 +48,86 @@
             <div class="carousel-info-wrapper flex">
               <!-- Loop start -->
               {% set count2 = 1 %}
-                {% for project in project %}
+                {% for project in projectSlider %}
                   {% if project.slider %}
-                <!-- Slide 1 -->
-                <div class="slide slide{{count2}}-txt {% if count2 == 1 %} active {% endif %}">
-                    <!-- Title -->
-                    <h2 class="slide-title">{{ project.title }}</h2>
-                    <!-- /Title -->
-                    <!-- Texte -->
-                    <div class="slide-text">
-                        <p>
-                          {% set char = project.text | split('') %}
-                          {% set char = char | slice(0, 179) %}
-                          {% set char = char | join('') %}
-                          {{char}}...
-                        </p>
-                    </div>
-                    <!-- /Texte -->
-                    <!-- Contribute ! -->
-                    <div class="contribute">
-                        <a href="projet.html" class="button slider-button">Contribuer</a>
-                    </div>
-                    <!-- /Contribute -->
-                    <!-- Stats -->
-                    <div class="slide-stats flex">
-                      <!-- Compute stats values -->
-                      {% set backers = 0 %}
-                      {% set contributed = 0 %}
-                      {% for payment in project.payment %}
-                      {% set contributed = contributed + payment.amount %}
-                      {% set backers = backers + 1 %}
-                      {% endfor %}
+                  <!-- Slide 1 -->
+                  <div class="slide slide{{count2}}-txt {% if count2 == 1 %} active {% endif %}">
+                      <!-- Title -->
+                      <h2 class="slide-title">{{ project.title }}</h2>
+                      <!-- /Title -->
+                      <!-- Texte -->
+                      <div class="slide-text">
+                          <p>
+                            {% set char = project.text | split('') %}
+                            {% set char = char | slice(0, 179) %}
+                            {% set char = char | join('') %}
+                            {{char}}...
+                          </p>
+                      </div>
+                      <!-- /Texte -->
+                      <!-- Contribute ! -->
+                      <div class="contribute">
+                          <a href="projet.html" class="button slider-button">Contribuer</a>
+                      </div>
+                      <!-- /Contribute -->
+                      <!-- Stats -->
+                      <div class="slide-stats flex">
+                        <!-- Compute stats values -->
+                        {% set backers = 0 %}
+                        {% set contributed = 0 %}
 
-                        <div class="stat flex">
-                            <span>{{ ((contributed / project.finalObjective) * 100) | round }}%</span>
-                            <p>Financé</p>
-                        </div>
+                        {% for payment in project.payment %}
+                          {% set contributed = contributed + payment.amount %}
+                          {% set backers = backers + 1 %}
+                        {% endfor %}
 
-                        <div class="stat flex">
+                          <div class="stat flex">
+                              <span>{{ ((contributed / project.finalObjective) * 100) | round }}%</span>
+                              <p>Financé</p>
+                          </div>
 
-                            <span>{{contributed}}€</span>
+                          <div class="stat flex">
 
-                            <p>contribués</p>
-                        </div>
+                              <span>{{contributed}}€</span>
 
-                        <div class="stat flex">
+                              <p>contribués</p>
+                          </div>
 
-                            <span>{{ project.finalObjective }}€</span>
+                          <div class="stat flex">
 
-                            <p>objectif</p>
-                        </div>
+                              <span>{{ project.finalObjective }}€</span>
 
-                        <div class="stat flex">
+                              <p>objectif</p>
+                          </div>
 
-                            <span>{{backers}}</span>
+                          <div class="stat flex">
 
-                            <p>Supporteurs</p>
-                        </div>
+                              <span>{{backers}}</span>
 
-                        <div class="stat flex">
-                            {% set endDate = project.endDate | date('U') %}
-                            {% set currentDate = "now" | date('U') %}
-                            {% set remainingDays = endDate - currentDate %}
-                            <span>
-                              {% if remainingDays <= 0 %}
-                              Finie
-                              {% else %}
-                              J-{{ (remainingDays / 86400) | round }}
-                              {% endif %}
-                            </span>
-                        </div>
-                    </div>
-                    <!-- /Stats -->
-                </div>
-                <!-- /Slide 1 -->
+                              <p>Supporteurs</p>
+                          </div>
 
-                {% set count2 = count2 + 1 %}
+                          <div class="stat flex">
+                              {% set endDate = project.endDate | date('U') %}
+                              {% set currentDate = "now" | date('U') %}
+                              {% set remainingDays = endDate - currentDate %}
+
+                              <span>
+                                {% if remainingDays <= 0 %}
+                                Finie
+                                {% else %}
+                                J-{{ (remainingDays / 86400) | round }}
+                                {% endif %}
+                              </span>
+                          </div>
+                      </div>
+                      <!-- /Stats -->
+                  </div>
+                  <!-- /Slide 1 -->
+
+                  {% set count2 = count2 + 1 %}
                 {% endif %}
-                {% endfor %}
+              {% endfor %}
             </div>
             <!-- /Info Panel Wrapper -->
 
