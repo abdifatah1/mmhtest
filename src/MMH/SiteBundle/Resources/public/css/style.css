@@ -767,6 +767,7 @@ hr {
 .home-card-description {
   width: 90%;
   margin: 0 auto;
+  min-height: 44.8px;
 }
 
 .home-card-stats {

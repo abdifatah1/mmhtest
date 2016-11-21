@@ -21,7 +21,7 @@ class ProjetsController extends Controller
   }
 
 
-    public function decouvrirAction()
+    public function decouvrirAction($categorie)
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
