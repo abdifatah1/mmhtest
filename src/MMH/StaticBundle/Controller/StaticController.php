@@ -4,6 +4,8 @@ namespace MMH\StaticBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use MMH\SiteBundle\Entity\Contact;
+use MMH\SiteBundle\Form\ContactType;
 
 class StaticController extends Controller
 {
@@ -31,7 +33,11 @@ class StaticController extends Controller
 
   public function deposerAction()
   {
-      return $this->render('MMHStaticBundle:Submit:submit.html.twig', ['article'=>$this->allArticle()]);
+      $contact = new Contact;
+
+      $form = $this->createForm(ContactType::class, $contact);
+
+      return $this->render('MMHStaticBundle:Submit:submit.html.twig', ['article'=>$this->allArticle(), 'form'=>$form->createView()]);
   }
 
   public function mentionsAction()
