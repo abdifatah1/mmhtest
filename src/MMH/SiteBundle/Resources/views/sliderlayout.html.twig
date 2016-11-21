@@ -12,13 +12,11 @@
             <ul>
               {% set count = 1 %}
                 {% for project in projectSlider %}
-                  {% if project.slider %}
                     {% for image in project.imageproject %}
                       <li>
                           <figure><img src="{{ image.path | imagine_filter('my_carousel')  }}" alt="" class="slide-picture slide{{count}} {% if count == 1 %} active {% endif %}" /></figure>
                       </li>
-                    {% endfor %}
-                  {% endif %}
+                    {% endfor %}                  
                 {% set count = count + 1 %}
               {% endfor %}
             </ul>
