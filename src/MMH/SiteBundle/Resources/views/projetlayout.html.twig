@@ -59,13 +59,18 @@
   </div>
   <!-- /contribute button -->
   <div class="proposer-info">
-    <h1>Le porteur de projet:</h1>
+    {% for project in project %}
+          <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
+
+
     <figure>
       <img src="{{ asset('bundles/mmhsite/img/businessman.png') }}" alt="proposer image" />
     </figure>
-    <p>Informations à propos du porteur de projet et de ses valeurs. Informations à propos du porteur de projet et de ses valeurs Informations à propos du porteur de projet et de
+    <p>
+      {{project.user.bio}}
     </p>
   </div>
+      {% endfor %}
 
   <!-- Top contributors -->
   <div class="contributors">
