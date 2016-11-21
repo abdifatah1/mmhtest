@@ -17,12 +17,12 @@
         <div id="menuderoulant">
           <a href="#" class="category">Catégories</a>
            <ul>
-             <li><a href="#">Tout</a></li>
-             <li><a href="#">Solidarité, humanitaire, société</a></li>
-             <li><a href="#">Entrepreneuriat, ESS</a></li>
-             <li><a href="#">Sports, santé</a></li>
-             <li><a href="#">Culture, arts, éducation</a></li>
-             <li><a href="#">Autres</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir') }}">Tout</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':1}) }}">Solidarité, humanitaire, société</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':2}) }}">Entrepreneuriat, ESS</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':3}) }}">Sports, santé</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':4}) }}">Culture, arts, éducation</a></li>
+             <li><a href="{{ path('mmh_site_decouvrir', {'categorie':5}) }}">Autres</a></li>
           </ul>
         </div>
             <form class="card-nav-form-d">

@@ -21,11 +21,18 @@ class ProjetsController extends Controller
   }
 
 
-    public function decouvrirAction($categorie)
+    public function decouvrirAction($categorie = null)
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
-      $project = $repo->getProjectWithPayment();
+      if($categorie == 'generale') {
+        $project = $repo->getProjectWithPayment();
+      } else {
+        $project = $repo->findBy(
+          array('category' => $categorie)
+        );
+      }
+
 
       return $this->render('MMHSiteBundle:Projet:decouvrir.html.twig', ['project'=>$project]);
     }
