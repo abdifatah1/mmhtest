@@ -28,7 +28,11 @@ class StaticController extends Controller
 
   public function contactAction()
   {
-      return $this->render('MMHStaticBundle:Contact:contact.html.twig', ['article'=>$this->allArticle()]);
+      $contact = new Contact;
+
+      $form = $this->createForm(ContactType::class, $contact);
+
+      return $this->render('MMHStaticBundle:Contact:contact.html.twig', ['article'=>$this->allArticle(), 'form'=>$form->createView()]);
   }
 
   public function deposerAction()

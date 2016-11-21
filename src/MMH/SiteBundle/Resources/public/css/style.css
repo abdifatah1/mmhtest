@@ -161,6 +161,11 @@ p, .login-button {
 /* /Place holders*/
 
 
+/*Form for contact and project submit*/
+
+.formcontact input, .formcontact textarea {
+  width: 300px;
+}
 /*************************** /GENERAL SETTINGS *********************************/
 
 
@@ -682,7 +687,6 @@ footer aside figure img {
 
 form {
   width: 100%;
-  display: flex;
   justify-content: center;
 }
 
@@ -1615,6 +1619,13 @@ section .static-social-medias {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   }
   /********* /STATIC PAGE CONTENT (ASSOCIATION, LEGAL INFORMATIONS...)************/
+
+  /*Contact and submit form*/
+
+  .formcontact input, .formcontact textarea {
+    width: 400px;
+  }
+
   /********* Projet************/
   /*===========product image and leftbar with social netwokr icons======*/
   .container {
