@@ -45,6 +45,12 @@ class Project
        */
       private $user;
 
+      /**
+       * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\category")
+       * @ORM\JoinColumn(nullable=false)
+       */
+      private $category;
+
 
     /**
      * @var string
@@ -591,17 +597,44 @@ class Project
     }
 
     /**
+
+     * Set category
+     *
+     * @param \MMH\SiteBundle\Entity\category $category
+     *
+     * @return Project
+     */
+    public function setCategory(\MMH\SiteBundle\Entity\category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
      * Set visibility
      *
      * @param boolean $visibility
      *
      * @return Project
      */
+
     public function setVisibility($visibility)
     {
         $this->visibility = $visibility;
 
+
         return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \MMH\SiteBundle\Entity\category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 
     /**
@@ -612,5 +645,6 @@ class Project
     public function getVisibility()
     {
         return $this->visibility;
+
     }
 }

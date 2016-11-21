@@ -45,6 +45,12 @@ class Project
        */
       private $user;
 
+      /**
+       * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\category")
+       * @ORM\JoinColumn(nullable=false)
+       */
+      private $category;
+
 
     /**
      * @var string
