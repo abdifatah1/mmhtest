@@ -30,6 +30,32 @@
         Notre équipe vous recontactera dans les meilleurs délais. Attention : Les informations que vous nous communiquez ne sont
         pas transmises à nos partenaires ou à d’autres entreprises.</p>
 
-        {{ form(form) }}
+
+        {{ form_start(form, {'attr': {'class': 'formcontact'}}) }}
+        {{ form_errors(form) }}
+        <div>
+          <p>{{ form_label(form.name) }}</p>
+          {{ form_errors(form.name) }}
+          {{ form_widget(form.name) }}
+        </div>
+        <div>
+          <p>{{ form_label(form.firstname) }}</p>
+          {{ form_errors(form.firstname) }}
+          {{ form_widget(form.firstname) }}
+        </div>
+        <div>
+          <p>{{ form_label(form.email) }}</p>
+          {{ form_errors(form.email) }}
+          {{ form_widget(form.email) }}
+        </div>
+        <div>
+          <p>{{ form_label(form.message) }}</p>
+          {{ form_errors(form.message) }}
+          {{ form_widget(form.message) }}
+        </div>
+         <p>{{ form_row(form.document) }}</p>
+         {{ form_row(form.envoyer) }}
+
+        {{ form_end(form) }}
 
 {% endblock %}
