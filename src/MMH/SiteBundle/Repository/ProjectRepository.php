@@ -18,14 +18,30 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     // $results = $query->setMaxResults(6)->getResult();
     // return $results;
 
-    return $this->createQueryBuilder('p')
-    ->where ("p.visibility = :visibility")
-    ->setParameter("visibility", true)
+      return $this->createQueryBuilder('p')
+      ->where ("p.visibility = :visibility")
+      ->setParameter("visibility", true)
+      ->innerJoin('p.payment', 'pay')
+      ->addSelect('pay')
+      ->innerJoin('p.imageproject', 'img')
+      ->addSelect('img')
+      ->orderBy('p.startDate', 'DESC')
+      ->getQuery()
+      ->getResult();
+  }
+
+  public function getProjectForSlider() {
+
+    $qb =  $this->createQueryBuilder('p');
+    $qb
+      ->where ("p.slider = :bool")
+      ->setParameter("bool", 1)
+      ;
+      return $qb
     ->innerJoin('p.payment', 'pay')
     ->addSelect('pay')
     ->innerJoin('p.imageproject', 'img')
     ->addSelect('img')
-    ->orderBy('p.startDate', 'DESC')
     ->getQuery()
     ->getResult();
   }
