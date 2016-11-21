@@ -38,8 +38,9 @@
 
 
         <!-- Display last projects -->
-        {% set break = false %}
-        {% for project in project if not break %}
+        {% set break = true %}
+        {% set loopCount = 0 %}
+        {% for project in project if break %}
           <div class="home-cards" target="blank">
               <a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}">
                   <h2 class="card-home-title">{{project.title}}</h2>
@@ -71,8 +72,9 @@
                   </div>
               </a>
           </div>
-          {% if loop.index0 > 5 %}
-          {% set break = true %}
+          {% set loopCount = loopCount + 1 %}
+          {% if loopCount >= 6 %}
+            {% set break = false %}
           {% endif %}
         {% endfor %}
         <!-- /Display last projects -->

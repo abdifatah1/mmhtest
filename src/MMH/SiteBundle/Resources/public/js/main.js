@@ -5,9 +5,11 @@ $(document).ready(function() {
   $('.progression').each(function(){
     // get the width of element from it's children
     var width = $(this).children().text();
-    // Make sure it's not over 100%
-    width >= 100 ? width = 100 : width = width;
-    // set the width of the progress bar
+    // adjust margin if value > 100%
+    if(width.length > 3) {
+      $(this).children().css('margin-left', '82px');  
+    }
+    // Apply
     $(this).css('width', width);
   });
 });
