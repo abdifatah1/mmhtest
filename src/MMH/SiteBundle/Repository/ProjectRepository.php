@@ -11,6 +11,8 @@ namespace MMH\SiteBundle\Repository;
 class ProjectRepository extends \Doctrine\ORM\EntityRepository
 {
 
+  // Fetch Projects + image + paiments
+
   public function getProjectWithPayment()
   {
 
@@ -30,6 +32,8 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
       ->getResult();
   }
 
+  // Fetch showcased Projects
+
   public function getProjectForSlider() {
 
     $qb =  $this->createQueryBuilder('p');
@@ -45,6 +49,8 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     ->getQuery()
     ->getResult();
   }
+
+  // Fetch project matching slug
 
   public function getProjectWithImage($slug)
   {
