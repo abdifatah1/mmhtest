@@ -791,6 +791,7 @@ hr {
   position:absolute;
   top:0;
   width: 0;
+  max-width: 100%;
   transition-property: width;
   transition-duration: 200ms;
   transition-timing-function: linear;
