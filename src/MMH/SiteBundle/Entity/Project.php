@@ -88,6 +88,13 @@ class Project
     private $status;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="visibility", type="boolean")
+     */
+    private $visibility;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="endDate", type="datetime")
@@ -590,6 +597,7 @@ class Project
     }
 
     /**
+
      * Set category
      *
      * @param \MMH\SiteBundle\Entity\category $category
@@ -604,6 +612,22 @@ class Project
     }
 
     /**
+     * Set visibility
+     *
+     * @param boolean $visibility
+     *
+     * @return Project
+     */
+
+    public function setVisibility($visibility)
+    {
+        $this->visibility = $visibility;
+
+
+        return $this;
+    }
+
+    /**
      * Get category
      *
      * @return \MMH\SiteBundle\Entity\category
@@ -611,5 +635,16 @@ class Project
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Get visibility
+     *
+     * @return boolean
+     */
+    public function getVisibility()
+    {
+        return $this->visibility;
+
     }
 }
