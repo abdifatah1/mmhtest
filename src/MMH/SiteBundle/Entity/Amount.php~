@@ -22,7 +22,7 @@ class Amount
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project", inversedBy="amount")
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;
