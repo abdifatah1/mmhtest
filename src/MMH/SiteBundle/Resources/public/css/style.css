@@ -794,9 +794,9 @@ hr {
   width: 0;
   max-width: 100%;
   transition-property: width;
-  transition-duration: 200ms;
+  transition-duration: 300ms;
   transition-timing-function: linear;
-  transition-delay: 50ms;
+  transition-delay: 100ms;
 }
 
 .value {
