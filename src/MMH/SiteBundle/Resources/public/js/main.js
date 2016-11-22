@@ -20,7 +20,9 @@ $(document).ready(function() {
   var ele = $('.wrapper-nav');
   var hashed = path.slice(-23);
   if(hashed.search('decouvrir') != -1) {
-     $(window).scrollTop(ele.offset().top);
+    $('html, body').animate({
+		    scrollTop:$('.wrapper-nav').offset().top
+    }, 'fast');
   }
 });
 
