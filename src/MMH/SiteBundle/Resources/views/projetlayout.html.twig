@@ -27,10 +27,23 @@
         <p>{{total}} € Contribué{% if total > 0 %}s{% endif %}</p>
         <p>{{project.finalObjective}} € Objectif</p>
         <p> {{supp}} supporteur{% if supp > 0 %}s{% endif %}</p>
+
+        {% set endDate = project.endDate | date('U') %}
+        {% set currentDate = "now" | date('U') %}
+        {% set remainingDays = endDate - currentDate %}
+
+        <p>
+          {% if remainingDays <= 0 %}
+          Finie
+          {% else %}
+          J-{{ (remainingDays / 86400) | round }}
+          {% endif %}
+        </p>
       </div>
     </div>
     <div>
-      <p>Cette campagne n'a pas réussi à ateindre son objectif de financement il y'a 3 semaines.
+      <p>
+        {{project.headline}}.
       </p>
       <ul class="social-networks">
         <li>
