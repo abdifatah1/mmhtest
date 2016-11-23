@@ -23,7 +23,7 @@ class ContactType extends AbstractType
         ->add('firstname', TextType::class)
         ->add('email', EmailType::class)
         ->add('message', TextareaType::class)
-        ->add('document', FileType::class)
+        ->add('document', FileType::class, array('required'=>false))
         ->add('envoyer', SubmitType::class)        ;
     }
 
