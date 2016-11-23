@@ -64,6 +64,8 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     ->addSelect('pay')
     ->innerJoin('p.imageproject', 'img')
     ->addSelect('img')
+    ->innerJoin('p.amount', 'amou')
+    ->addSelect('amou')
 
     ->getQuery()
     ->getResult();

@@ -27,10 +27,23 @@
         <p>{{total}} € Contribué{% if total > 0 %}s{% endif %}</p>
         <p>{{project.finalObjective}} € Objectif</p>
         <p> {{supp}} supporteur{% if supp > 0 %}s{% endif %}</p>
+
+        {% set endDate = project.endDate | date('U') %}
+        {% set currentDate = "now" | date('U') %}
+        {% set remainingDays = endDate - currentDate %}
+
+        <p>
+          {% if remainingDays <= 0 %}
+          Finie
+          {% else %}
+          J-{{ (remainingDays / 86400) | round }}
+          {% endif %}
+        </p>
       </div>
     </div>
     <div>
-      <p>Cette campagne n'a pas réussi à ateindre son objectif de financement il y'a 3 semaines.
+      <p>
+        {{project.headline}}.
       </p>
       <ul class="social-networks">
         <li>
@@ -60,8 +73,7 @@
   <!-- /contribute button -->
   <div class="proposer-info">
     {% for project in project %}
-          <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
-
+    <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
 
     <figure>
       <img src="{{ asset('bundles/mmhsite/img/businessman.png') }}" alt="proposer image" />
@@ -70,25 +82,76 @@
       {{project.user.bio}}
     </p>
   </div>
-      {% endfor %}
+  {% endfor %}
 
   <!-- Top contributors -->
+
   <div class="contributors">
     <h2>Top contributions:</h2>
-    <p class="ten span"><span>10€</span><i>6</i><img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
-    <p class="twenty span"><span>20€</span><i>8</i><img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
-    <p class="thirty span"><span>30€</span><i>9</i><img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
-  </div>
+    <p class="ten span">
+      <span>
+        {% for project in project %}
+        {% for amount in project.amount if amount.amount == 10 %}
+        {{amount.amount}}
 
-  <!-- social networks-->
-  <ul class="social-networks">
-    <li>
-      <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="Twitter" /></a>
-    </li>
-    <li>
-      <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="Twitter" /></a>
-    </li>
-  </ul>
-</aside>
-</div>
-{% endblock %}
+      </span>
+      <i>
+
+        {% set ten = 0 %}
+        {% for payment in project.payment if  payment.amount == 10 %}
+        {% set ten = ten + 1 %}
+        {% endfor %}
+        {{ten}}
+
+      </i>
+      <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+      {% endfor %}
+
+      <p class="twenty span">
+        <span>
+          {% for amount in project.amount if amount.amount == 20 %}
+          {{amount.amount}}
+
+        </span>
+        <i>
+
+          {% set twenty = 0 %}
+          {% for payment in project.payment if  payment.amount == 20 %}
+          {% set twenty = twenty + 1 %}
+          {% endfor %}
+          {{twenty}}
+
+        </i>
+        <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+        {% endfor %}
+
+        <p class="thirty span">
+          <span>
+            {% for amount in project.amount if amount.amount == 30 %}
+            {{amount.amount}}
+
+          </span>
+          <i>
+            {% set thirty = 0 %}
+            {% for payment in project.payment if  payment.amount == 30 %}
+            {% set thirty = thirty + 1 %}
+            {% endfor %}
+            {{thirty}}
+          </i>
+          <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+          {% endfor %}
+          {% endfor %}
+        </div>
+
+        <!-- social networks-->
+        <ul class="social-networks">
+          <li>
+            <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+          </li>
+          <li>
+            <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+          </li>
+        </ul>
+      </aside>
+    </div>
+    {% endblock %}

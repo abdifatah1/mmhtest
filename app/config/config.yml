@@ -107,10 +107,10 @@ liip_imagine:
 
             # list of transformations to apply (the "filters")
             filters:
-                upscale: { min: [298, 150] }
-                thumbnail: { size: [289, 150], mode: outbound }
+                upscale: { min: [300, 150] }
+                thumbnail: { size: [300, 150], mode: outbound }
 
-                background: { size: [298, 150], position: center, color: '#ECF0F4' }
+                background: { size: [302, 150], position: center, color: '#fff' }
 
         my_text_image:
 

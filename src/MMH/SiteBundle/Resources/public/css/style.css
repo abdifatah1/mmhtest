@@ -695,7 +695,7 @@ form {
   height: 28px;
   line-height: 25px;
   font-size: 18px;
-  margin: 15px auto;
+  margin: 15px 15px;
 }
 
 hr {
@@ -794,9 +794,9 @@ hr {
   width: 0;
   max-width: 100%;
   transition-property: width;
-  transition-duration: 200ms;
+  transition-duration: 300ms;
   transition-timing-function: linear;
-  transition-delay: 50ms;
+  transition-delay: 100ms;
 }
 
 .value {
@@ -984,11 +984,11 @@ p {
 .contributors img {
   width: 20px;
   height: 20px;
-  margin-left: 5%;
+  margin-left: 3%;
 }
 .span span{
   display: inline-block;
-  margin-right: 10%;
+  margin-right: 5%;
   box-shadow: 4px 8px 5px rgba(0, 0, 0, 0.25);
   background-color: green;
   color: white;

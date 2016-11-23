@@ -21,7 +21,7 @@ class ProjetsController extends Controller
   }
 
 
-    public function decouvrirAction($categorie = null)
+    public function decouvrirAction($categorie)
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
@@ -29,7 +29,7 @@ class ProjetsController extends Controller
         $project = $repo->getProjectWithPayment();
       } else {
         $project = $repo->findBy(
-          array('category' => $categorie)
+          array('category' => $categorie)          
         );
       }
 
