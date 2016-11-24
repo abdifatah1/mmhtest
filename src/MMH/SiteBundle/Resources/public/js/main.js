@@ -56,3 +56,8 @@ $(window).scroll(function() {
     });
   }
 });
+
+// Make the message on the contact for disapear after a time
+setTimeout(function(){
+  $(".flashmessage").fadeOut('slow');
+}, 3000);

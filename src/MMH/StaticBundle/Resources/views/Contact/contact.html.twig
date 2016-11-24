@@ -48,4 +48,16 @@
 
       {{ form_end(form) }}
 
+        {% for flashMessage in app.session.flashbag.get('success') %}
+        <div class="flashmessage">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
+        {% for flashMessage in app.session.flashbag.get('error') %}
+        <div class="errormessage">
+          {{ flashMessage }}
+        </div>
+        {% endfor %}
+
 {% endblock %}

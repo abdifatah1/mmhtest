@@ -1262,6 +1262,26 @@ section .static-social-medias {
 }
 
 
+.flashmessage, .errormessage {
+  background-color: #ecf0f4;
+  border-radius: 5px;
+  position: absolute;
+  top: 15%;
+  z-index: 1000;
+  padding-left: 1%;
+  padding-right: 1%;
+  padding-top: 2%;
+}
+
+.flashmessage {
+  border: 1px solid #2da555;
+}
+
+.errormessage {
+  border: 1px solid red;
+}
+
+
 /*                        END STATIC PAGE CONTENT                             */
 
 
@@ -1277,6 +1297,12 @@ section .static-social-medias {
 /* #####################   SMARTPHONE & SMALL TABLETS   ##################### */
 
 @media screen and (min-width: 360px) {
+
+  .flashmessage, .errormessage {
+    height: 100px;
+    width: 200px;
+  }
+
   footer section a {
     margin: .5em .7em;
   }
@@ -1492,6 +1518,14 @@ section .static-social-medias {
 /*                    Tablets and small Desktop : 768 px                       */
 
 @media screen and (min-width: 768px) {
+
+/*Contact and submission message*/
+  .flashmessage, .errormessage {
+    height: 100px;
+    width: 300px;
+    left: 25%;
+  }
+
   /********************************* Slider ***********************************/
   /*Layout*/
   .slider {
@@ -1863,6 +1897,12 @@ section .static-social-medias {
 
 @media screen and (min-width: 1280px) {
 
+  /*Contact and submission message*/
+    .flashmessage, .errormessage {
+      width: 400px;
+      left: 30%;
+    }
+
   /* Set the final size */
   .slider-wrapper {
     width: 1152px;
@@ -2020,6 +2060,15 @@ section .static-social-medias {
 }
 
 @media screen and (min-width: 1500px) {
+
+  /*Contact and submission message*/
+    .flashmessage, .errormessage {
+      width: 500px;
+      left: 30%;
+      padding-left: 1%;
+      padding-top: 1%;
+    }
+
     .wrapper, .wrapper-static-content, .wrap {
         width: 80%;
     }
