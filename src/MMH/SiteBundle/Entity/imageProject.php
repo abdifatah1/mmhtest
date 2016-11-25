@@ -187,4 +187,11 @@ class imageProject
     {
         return $this->description;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->path;
+    }
 }

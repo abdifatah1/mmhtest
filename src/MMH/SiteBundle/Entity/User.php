@@ -279,4 +279,11 @@ class User
     {
         return $this->bio;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->name;
+    }
 }

@@ -687,4 +687,11 @@ class Project
     {
         return $this->amount;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->title;
+    }
 }

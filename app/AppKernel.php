@@ -20,7 +20,10 @@ class AppKernel extends Kernel
             new MMH\StaticBundle\MMHStaticBundle(),
             new MMH\AdminBundle\MMHAdminBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            // Image filter & resizer
             new Liip\ImagineBundle\LiipImagineBundle(),
+            // Easy Admin
+            new JavierEguiluz\Bundle\EasyAdminBundle\EasyAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
