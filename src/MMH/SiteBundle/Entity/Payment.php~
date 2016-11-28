@@ -247,4 +247,11 @@ class Payment
     {
         return $this->project;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->name;
+    }
 }

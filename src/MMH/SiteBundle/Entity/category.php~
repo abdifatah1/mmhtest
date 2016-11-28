@@ -62,4 +62,11 @@ class category
     {
         return $this->title;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->title;
+    }
 }

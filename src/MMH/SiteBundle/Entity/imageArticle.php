@@ -3,12 +3,15 @@
 namespace MMH\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * imageArticle
  *
  * @ORM\Table(name="image_article")
  * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\imageArticleRepository")
+ * @Vich\Uploadable
  */
 class imageArticle
 {
@@ -55,6 +58,18 @@ class imageArticle
      * @ORM\Column(name="bodyImage", type="boolean")
      */
     private $bodyImage;
+
+    /**
+     * @Vich\UploadableField(mapping="article_images", fileNameProperty="path")
+     * @var File
+     */
+    private $imageFile;
+
+    /**
+     * @ORM\Column(type="datetime")
+     * @var \DateTime
+     */
+    private $updatedAt;
 
 
     /**
@@ -192,5 +207,49 @@ class imageArticle
     public function __toString() {
 
       return $this->path;
+    }
+
+    // Image file functions
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+
+        // VERY IMPORTANT:
+        // It is required that at least one field changes if you are using Doctrine,
+        // otherwise the event listeners won't be called and the file is lost
+        if ($image) {
+            // if 'updatedAt' is not defined in your entity, use another property
+            $this->updatedAt = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
+
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return imageArticle
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
     }
 }
