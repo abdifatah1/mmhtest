@@ -7,10 +7,12 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.project_images: MyMoneyHelp/web/bundles/mmhsite/img/projets
+    app.path.article_images: /src/MMH/SiteBundle/Resources/public/img/content
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -76,11 +78,21 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# File and images uploading bundle
+vich_uploader:
+    db_driver: orm
+    mappings:
+        project_images:
+            uri_prefix:         %app.path.project_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/projets
+
 # liip_imagine
 liip_imagine:
     resolvers:
         default:
-            web_path: ~
+            web_path:
+                web_root: "%kernel.root_dir%/../web"
+                cache_prefix: "media/cache"
 
     filter_sets:
         cache: ~
@@ -125,20 +137,33 @@ liip_imagine:
                 background: { size: [350, 200], position: center, color: '#ECF0F4' }
 
 
-
-
-
-
 # app/config/config.yml
 easy_admin:
+    site_name: 'MyMoneyHelp'
     entities:
-        - MMH\SiteBundle\Entity\Project
-        - MMH\SiteBundle\Entity\Amount
-        - MMH\SiteBundle\Entity\Article
+        Amount:
+          class: MMH\SiteBundle\Entity\Amount
+        Article:
+          class: MMH\SiteBundle\Entity\Article
+        Payment:
+          class: MMH\SiteBundle\Entity\Payment
+        User:
+          class: MMH\SiteBundle\Entity\User
+        Project:
+          class: MMH\SiteBundle\Entity\Project
+          label: 'Projets'
+          list:
+                fields:
+                    - { property: 'imageFile', type: 'image', base_path: %app.path.project_images% }
+          form:
+            fields:
+              - 'title'
+              - { property: 'text', type: 'ckeditor' }
+
         # - MMH\SiteBundle\Entity\category
         # - MMH\SiteBundle\Entity\Comment
         # - MMH\SiteBundle\Entity\Contact
         # - MMH\SiteBundle\Entity\imageArticle
         # - MMH\SiteBundle\Entity\imageProject
-        - MMH\SiteBundle\Entity\Payment
-        - MMH\SiteBundle\Entity\User
+    design:
+        brand_color: '#2da555'

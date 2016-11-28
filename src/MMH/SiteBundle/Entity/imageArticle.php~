@@ -186,4 +186,11 @@ class imageArticle
     {
         return $this->article;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->path;
+    }
 }

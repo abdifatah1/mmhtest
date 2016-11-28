@@ -49,7 +49,7 @@
                   <div class="img-remplacement">
                     <!-- Get main image -->
                     {% for image in project.imageproject %}
-                      {% if image.headimage %} <img src="{{ image.path | imagine_filter("my_cards") }}" class="cards-image" /> {% endif %}
+                      {% if image.headimage %} <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_cards') }}" class="cards-image" /> {% endif %}
                     {% endfor %}
                   </div>
                   <h2 class="finish-banner">{% if project.status %}En cours {% else %}Terminée {% endif %}</h2>
