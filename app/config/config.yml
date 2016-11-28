@@ -10,7 +10,7 @@ parameters:
 
 framework:
     #esi:             ~
-    #translator:      { fallbacks: ["%locale%"] }
+    translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -131,14 +131,22 @@ liip_imagine:
 
 # app/config/config.yml
 easy_admin:
-    entities:
-        - MMH\SiteBundle\Entity\Project
-        - MMH\SiteBundle\Entity\Amount
-        - MMH\SiteBundle\Entity\Article
-        # - MMH\SiteBundle\Entity\category
-        # - MMH\SiteBundle\Entity\Comment
-        # - MMH\SiteBundle\Entity\Contact
-        # - MMH\SiteBundle\Entity\imageArticle
-        # - MMH\SiteBundle\Entity\imageProject
-        - MMH\SiteBundle\Entity\Payment
-        - MMH\SiteBundle\Entity\User
+  entities:
+    Project:
+         class: MMH\SiteBundle\Entity\Project
+         label: 'Projets'
+         list:
+           fields:
+             - id
+             - title
+            #  - { property: 'headImage', type: 'image' }
+             - headImage
+             - imageproject
+             - finalObjective
+             - { property: 'status', type: 'boolean', label: 'En Cours' }
+             - { property : 'visibility', label: 'Activé' }
+             - endDate
+         form:
+           fields:
+             - 'title'
+            #  - { property: 'imageproject', type: 'image' }
