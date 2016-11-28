@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-    app.path.article_images: MyMoneyHelp/web
+    app.path.article_images: /MyMoneyHelp/web/bundles/mmhsite/img/content
 
 framework:
     #esi:             ~
