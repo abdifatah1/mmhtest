@@ -7,8 +7,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
-    app.path.project_images: MyMoneyHelp/web/bundles/mmhsite/img/projets
-    app.path.article_images: /src/MMH/SiteBundle/Resources/public/img/content
+    app.path.project_images: bundles/mmhsite/img/projets
+    app.path.article_images: bundles/mmhsite/img/content
 
 framework:
     #esi:             ~
@@ -85,13 +85,16 @@ vich_uploader:
         project_images:
             uri_prefix:         %app.path.project_images%
             upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/projets
+        article_images:
+            uri_prefix:         %app.path.article_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/content
 
 # liip_imagine
 liip_imagine:
     resolvers:
         default:
             web_path:
-                web_root: "%kernel.root_dir%/../web"
+                web_root: "%kernel.root_dir%/../web/bundles/mmhsite/img/projets"
                 cache_prefix: "media/cache"
 
     filter_sets:
@@ -122,7 +125,7 @@ liip_imagine:
                 upscale: { min: [300, 150] }
                 thumbnail: { size: [300, 150], mode: outbound }
 
-                background: { size: [302, 150], position: center, color: '#fff' }
+                background: { size: [300, 150], position: center, color: '#fff' }
 
         my_text_image:
 

@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="image_project")
  * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\imageProjectRepository")
+ * @Vich\Uploadable
  */
 class imageProject
 {
