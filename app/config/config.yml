@@ -131,22 +131,11 @@ liip_imagine:
 
 # app/config/config.yml
 easy_admin:
-  entities:
-    Project:
-         class: MMH\SiteBundle\Entity\Project
-         label: 'Projets'
-         list:
-           fields:
-             - id
-             - title
-            #  - { property: 'headImage', type: 'image' }
-             - headImage
-             - imageproject
-             - finalObjective
-             - { property: 'status', type: 'boolean', label: 'En Cours' }
-             - { property : 'visibility', label: 'Activé' }
-             - endDate
-         form:
-           fields:
-             - 'title'
-            #  - { property: 'imageproject', type: 'image' }
+  entities:    
+    imageProject:
+          class: MMH\SiteBundle\Entity\imageProject
+          label: 'Images des Projets'
+          list:
+            fields:
+              - id
+              - project
