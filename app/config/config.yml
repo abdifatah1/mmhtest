@@ -152,12 +152,25 @@ easy_admin:
           class: MMH\SiteBundle\Entity\Payment
         User:
           class: MMH\SiteBundle\Entity\User
+        imageProject:
+          class: MMH\SiteBundle\Entity\imageProject
+          list:
+                fields:
+                    - id
+                    - { property: 'path', type: 'image', base_path: %app.path.project_images% }
+                    - project
+                    - headImage
+                    - bodyImage                             
         Project:
           class: MMH\SiteBundle\Entity\Project
           label: 'Projets'
           list:
                 fields:
+                    - id
+                    - title
                     - { property: 'imageFile', type: 'image', base_path: %app.path.project_images% }
+                    - { property: 'status', type: 'boolean', label: 'En cours'}
+                    - endDate
           form:
             fields:
               - 'title'
