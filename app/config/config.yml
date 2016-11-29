@@ -140,7 +140,33 @@ liip_imagine:
                 background: { size: [350, 200], position: center, color: '#ECF0F4' }
 
 
-# app/config/config.yml
-easy_admin:
-    entities:
-        - MMH\SiteBundle\Entity\Project
+# # app/config/config.yml
+# easy_admin:
+#    site_name: 'MyMoneyHelp'
+#    entities:
+#        Amount:
+#          class: MMH\SiteBundle\Entity\Amount
+#        Article:
+#          class: MMH\SiteBundle\Entity\Article
+#          list:
+#              fields:
+#                  - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+#        Payment:
+#          class: MMH\SiteBundle\Entity\Payment
+#        User:
+#          class: MMH\SiteBundle\Entity\User
+#        Project:
+#          class: MMH\SiteBundle\Entity\Project
+#          label: 'Projets'
+#          list:
+#              fields:
+#                  - id
+#                  - title
+#                  - { property: 'imageFile', type: 'image', base_path: %app.path.project_images% }
+#                  - { property: 'status', type: 'boolean', label : 'activé'}
+#                  - endDate
+#          form:
+#              fields:
+#                  - 'title'
+#                  - { property: 'text', type: 'ckeditor' }
+#
