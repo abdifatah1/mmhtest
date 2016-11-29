@@ -233,4 +233,11 @@ class Article
     {
         return $this->imagearticle;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->title;
+    }
 }

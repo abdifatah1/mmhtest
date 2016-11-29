@@ -8,7 +8,7 @@
     <h3>{{project.title}}</h3>
     <div class="first-wrap-p">
       {% for image in project.imageproject %}
-      {% if image.headimage %} <img src="{{image.path | imagine_filter('my_text_image') }}"  /> {% endif %}
+      {% if image.headimage %} <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_text_image') }}"  /> {% endif %}
             {% endfor %}
       <p>
         {{project.text}}

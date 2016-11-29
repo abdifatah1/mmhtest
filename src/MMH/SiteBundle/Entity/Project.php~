@@ -43,7 +43,7 @@ class Project
   * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Amount", mappedBy="project")
   */
   private $amount;
-  
+
   /**
   * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
   * @ORM\JoinColumn(nullable=false)
@@ -652,4 +652,46 @@ class Project
     return $this->visibility;
 
   }
+
+    /**
+     * Add amount
+     *
+     * @param \MMH\SiteBundle\Entity\Amount $amount
+     *
+     * @return Project
+     */
+    public function addAmount(\MMH\SiteBundle\Entity\Amount $amount)
+    {
+        $this->amount[] = $amount;
+        $amount->setProject($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove amount
+     *
+     * @param \MMH\SiteBundle\Entity\Amount $amount
+     */
+    public function removeAmount(\MMH\SiteBundle\Entity\Amount $amount)
+    {
+        $this->amount->removeElement($amount);
+    }
+
+    /**
+     * Get amount
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAmount()
+    {
+        return $this->amount;
+    }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->title;
+    }
 }

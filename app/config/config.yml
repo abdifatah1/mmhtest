@@ -7,6 +7,8 @@ imports:
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: en
+    app.path.project_images: bundles/mmhsite/img/projets
+    app.path.article_images: bundles/mmhsite/img/content
 
 framework:
     #esi:             ~
@@ -27,7 +29,7 @@ framework:
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        save_path:   /var/lib/php5/sessions
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -76,11 +78,24 @@ swiftmailer:
     password:  "%mailer_password%"
     spool:     { type: memory }
 
+# File and images uploading bundle
+vich_uploader:
+    db_driver: orm
+    mappings:
+        project_images:
+            uri_prefix:         %app.path.project_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/projets
+        article_images:
+            uri_prefix:         %app.path.article_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/content
+
 # liip_imagine
 liip_imagine:
     resolvers:
         default:
-            web_path: ~
+            web_path:
+                web_root: "%kernel.root_dir%/../web/bundles/mmhsite/img/projets"
+                cache_prefix: "media/cache"
 
     filter_sets:
         cache: ~
@@ -110,7 +125,7 @@ liip_imagine:
                 upscale: { min: [300, 150] }
                 thumbnail: { size: [300, 150], mode: outbound }
 
-                background: { size: [302, 150], position: center, color: '#fff' }
+                background: { size: [300, 150], position: center, color: '#fff' }
 
         my_text_image:
 
@@ -125,28 +140,33 @@ liip_imagine:
                 background: { size: [350, 200], position: center, color: '#ECF0F4' }
 
 
-
-
-
-
 # app/config/config.yml
 easy_admin:
-  entities:
-    Project:
-         class: MMH\SiteBundle\Entity\Project
-         label: 'Projets'
-         list:
-           fields:
-             - id
-             - title
-            #  - { property: 'headImage', type: 'image' }
-             - headImage
-             - imageproject
-             - finalObjective
-             - { property: 'status', type: 'boolean', label: 'En Cours' }
-             - { property : 'visibility', label: 'Activé' }
-             - endDate
-         form:
-           fields:
-             - 'title'
-            #  - { property: 'imageproject', type: 'image' }
+    site_name: 'MyMoneyHelp'
+    entities:
+        Amount:
+          class: MMH\SiteBundle\Entity\Amount
+        Article:
+          class: MMH\SiteBundle\Entity\Article
+        Payment:
+          class: MMH\SiteBundle\Entity\Payment
+        User:
+          class: MMH\SiteBundle\Entity\User
+        Project:
+          class: MMH\SiteBundle\Entity\Project
+          label: 'Projets'
+          list:
+                fields:
+                    - { property: 'imageFile', type: 'image', base_path: %app.path.project_images% }
+          form:
+            fields:
+              - 'title'
+              - { property: 'text', type: 'ckeditor' }
+
+        # - MMH\SiteBundle\Entity\category
+        # - MMH\SiteBundle\Entity\Comment
+        # - MMH\SiteBundle\Entity\Contact
+        # - MMH\SiteBundle\Entity\imageArticle
+        # - MMH\SiteBundle\Entity\imageProject
+    design:
+        brand_color: '#2da555'
