@@ -97,6 +97,6 @@ class Amount
 
     public function __toString() {
 
-      return 'test';
+      return 'test  ';
     }
 }
