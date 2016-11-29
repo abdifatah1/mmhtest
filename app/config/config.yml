@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-    app.path.article_images: /MyMoneyHelp/web/bundles/mmhsite/img/content
+    app.path.article_images: /mymoneyhelp/web/bundles/mmhsite/img/content
 
 framework:
     #esi:             ~
@@ -140,6 +140,7 @@ liip_imagine:
                 background: { size: [350, 200], position: center, color: '#ECF0F4' }
 
 
+
 # app/config/config.yml
 easy_admin:
     site_name: 'MyMoneyHelp'
@@ -155,26 +156,34 @@ easy_admin:
           class: MMH\SiteBundle\Entity\Payment
         User:
           class: MMH\SiteBundle\Entity\User
+        imageProject:
+          class: MMH\SiteBundle\Entity\imageProject
+          list:
+                fields:
+                    - id
+                    - { property: 'path', type: 'image', base_path: %app.path.project_images% }
+                    - project
+                    - headImage
+                    - bodyImage
+          form:
+              fields:
+                  - id
+                  - { property: 'imageFile', type: 'vich_image' }
+
         Project:
           class: MMH\SiteBundle\Entity\Project
           label: 'Projets'
           list:
               fields:
+                  - id
+                  - title
                   - { property: 'imageFile', type: 'image', base_path: %app.path.project_images% }
+                  - { property: 'status', type: 'boolean', label: 'En cours'}
+                  - endDate
           form:
               fields:
                   - 'title'
                   - { property: 'text', type: 'ckeditor' }
-        imageProject:
-          class: MMH\SiteBundle\Entity\imageProject
-          list:
-              fields:
-                  - id
-                  - { property: 'path', type: 'image', base_path: %app.path.project_images% }
-          form:
-              fields:
-                  - id
-                  - { property: 'imageFile', type: 'vich_image' }
 
         # - MMH\SiteBundle\Entity\category
         # - MMH\SiteBundle\Entity\Comment

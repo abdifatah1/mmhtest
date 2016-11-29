@@ -4,6 +4,7 @@ namespace MMH\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+// use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
 * Project
@@ -692,6 +693,6 @@ class Project
 
     public function __toString() {
 
-      return $this-getTitle();
+      return $this->title;
     }
 }
