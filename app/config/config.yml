@@ -168,6 +168,7 @@ easy_admin:
          class: MMH\SiteBundle\Entity\User
        imageProject:
          class: MMH\SiteBundle\Entity\imageProject
+         label: 'Images'
          list:
                fields:
                    - id
