@@ -184,20 +184,29 @@ easy_admin:
           label: 'Projets'
           list:
               fields:
-                  - id
-                  - title
-                  - { property: 'path', type: 'image', base_path: %app.path.project_images% }
+                  - { property: 'title', label: 'Titre du projet'}
+                  - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
                   - { property: 'finalObjective', label: 'Objectif final'}
                   - { property: 'status', type: 'boolean', label: 'En cours'}
-                  - endDate
+                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                  - { property: 'category', label: 'Categorie'}
           form:
               fields:
                   - 'title'
+                  - 'headline'
                   - { property: 'text', type: 'ckeditor' }
+                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                  - amount
+                  - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
+                  - { property: 'category', label: 'Categorie'}
+                  - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
+                  - facebook
+                  - twitter
+                  - linkedin
+                  - pinterest
 
         # - MMH\SiteBundle\Entity\category
         # - MMH\SiteBundle\Entity\Comment
         # - MMH\SiteBundle\Entity\Contact
-        # - MMH\SiteBundle\Entity\imageArticle
     design:
         brand_color: '#2da555'

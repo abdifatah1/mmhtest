@@ -97,6 +97,7 @@ class Amount
 
     public function __toString() {
 
-      return 'test  ';
+      return (string)$this->getAmount();
+
     }
 }
