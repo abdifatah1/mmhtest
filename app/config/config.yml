@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-    app.path.article_images: /mymoneyhelp/web/bundles/mmhsite/img/content
+    app.path.article_images: bundles/mmhsite/img/content
     app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
 
 
