@@ -41,13 +41,13 @@ class Project
   private $imageproject;
 
   /**
-  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Amount", mappedBy="project")
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Amount", mappedBy="project", cascade={"remove"})
   */
   private $amount;
 
   /**
   * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
-  * @ORM\JoinColumn(nullable=false)
+  * @ORM\JoinColumn(nullable=true)
   */
   private $user;
 
@@ -360,6 +360,7 @@ class Project
   public function __construct()
   {
     $this->payment = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->startDate = new \DateTime();
   }
 
   /**
@@ -709,18 +710,18 @@ class Project
     }
 
     // Public function made to display headImage on project for Easy Admin
-    public function adminImage() {
+   public function adminImage() {
 
-      $images = $this->imageproject;
-      $display;
+     $images = $this->imageproject;
+     $display;
 
-      foreach($images as $image) {
-        if($image->getHeadImage() ) {
-          $display = $image->getPath();
-        }
-      }
-      return $display;
-    }
+     foreach($images as $image) {
+       if($image->getHeadImage() ) {
+         $display = $image->getPath();
+       }
+     }
+     return $display;
+   }
 
     // Trying to implement magic function __toString()
 
