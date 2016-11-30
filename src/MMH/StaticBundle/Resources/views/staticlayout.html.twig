@@ -40,7 +40,7 @@
               <h3>{{article.title}}</h3>
                 {% for image in article.imagearticle %}
                   {% if image.headimage %}
-                    <img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{image.description}}">
+                    <img src="{{ app.request.basePath }}{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{image.description}}">
                   {% endif %}
                 {% endfor %}
             </a>

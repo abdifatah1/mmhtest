@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-    app.path.article_images: /mymoneyhelp/web/bundles/mmhsite/img/content
+    app.path.article_images: /bundles/mmhsite/img/content
 
 framework:
     #esi:             ~
@@ -152,6 +152,13 @@ easy_admin:
           list:
               fields:
                   - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+        imageArticle:
+            class: MMH\SiteBundle\Entity\imageArticle
+            list:
+                  fields:
+                      - id
+                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                      - article
         Payment:
           class: MMH\SiteBundle\Entity\Payment
         User:
@@ -161,13 +168,15 @@ easy_admin:
           list:
                 fields:
                     - id
-                    - { property: 'path', type: 'image', base_path: %app.path.project_images% }
+                    - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
                     - project
                     - headImage
                     - bodyImage
           form:
               fields:
-                  - id
+                  - project
+                  - headImage
+                  - bodyImage
                   - { property: 'imageFile', type: 'vich_image' }
 
         Project:
@@ -177,7 +186,8 @@ easy_admin:
               fields:
                   - id
                   - title
-                  - { property: 'imageFile', type: 'image', base_path: %app.path.project_images% }
+                  - { property: 'path', type: 'image', base_path: %app.path.project_images% }
+                  - { property: 'finalObjective', label: 'Objectif final'}
                   - { property: 'status', type: 'boolean', label: 'En cours'}
                   - endDate
           form:
