@@ -8,7 +8,9 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
+
     app.path.article_images: /bundles/mmhsite/img/content
+
 
 framework:
     #esi:             ~
@@ -185,7 +187,7 @@ easy_admin:
           list:
               fields:
                   - { property: 'title', label: 'Titre du projet'}
-                  - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
+                  - { property: 'adminImage', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
                   - { property: 'total', label: 'Total'}
                   - { property: 'finalObjective', label: 'Objectif final'}
                   - { property: 'status', type: 'boolean', label: 'En cours'}
