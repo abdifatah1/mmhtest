@@ -77,6 +77,13 @@ class User
      */
     private $bio;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userImage", type="text", nullable=true)
+     */
+    private $userImage;
+
 
     /**
      * Get id

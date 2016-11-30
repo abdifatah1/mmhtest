@@ -8,8 +8,8 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-
     app.path.article_images: /bundles/mmhsite/img/content
+    app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
 
 
 framework:
@@ -90,6 +90,9 @@ vich_uploader:
         article_images:
             uri_prefix:         %app.path.article_images%
             upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/content
+        user_images:
+            uri_prefix:         %app.path.user_images%
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/user_images
 
 # liip_imagine
 liip_imagine:
@@ -144,7 +147,6 @@ liip_imagine:
 
 
 # app/config/config.yml
-# app/config/config.yml
 easy_admin:
    site_name: 'MyMoneyHelp'
    entities:
@@ -154,7 +156,9 @@ easy_admin:
          class: MMH\SiteBundle\Entity\Article
          list:
              fields:
-                 - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+                 - title
+                #  - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+                 - dateCreation
        imageArticle:
            class: MMH\SiteBundle\Entity\imageArticle
            list:
@@ -210,9 +214,7 @@ easy_admin:
                  - twitter
                  - linkedin
                  - pinterest
-
-       # - MMH\SiteBundle\Entity\category
-       # - MMH\SiteBundle\Entity\Comment
-       # - MMH\SiteBundle\Entity\Contact
+         Comment:
+             class: MMH\SiteBundle\Entity\Comment
    design:
        brand_color: '#2da555'
