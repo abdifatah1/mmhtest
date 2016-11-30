@@ -186,17 +186,19 @@ easy_admin:
               fields:
                   - { property: 'title', label: 'Titre du projet'}
                   - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
+                  - { property: 'total', label: 'Total'}
                   - { property: 'finalObjective', label: 'Objectif final'}
                   - { property: 'status', type: 'boolean', label: 'En cours'}
                   - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
                   - { property: 'category', label: 'Categorie'}
           form:
               fields:
-                  - 'title'
-                  - 'headline'
-                  - { property: 'text', type: 'ckeditor' }
+                  - { property: 'title', label: 'Titre'}
+                  - { property: 'headline', label: "Phrase d'accroche (65 caractères max)"}
+                  - { property: 'text', label: 'texte', type: 'ckeditor' }
+                  - { property: 'finalObjective', label: "Montant à atteindre"}
                   - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
-                  - amount
+                  - { property: 'amount', label: 'Montants autorisés'}
                   - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
                   - { property: 'category', label: 'Categorie'}
                   - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
