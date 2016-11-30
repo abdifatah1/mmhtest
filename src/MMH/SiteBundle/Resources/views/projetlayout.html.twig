@@ -75,9 +75,14 @@
     {% for project in project %}
     <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
 
+
+
     <figure>
-      <img src="{{ asset('bundles/mmhsite/img/businessman.png') }}" alt="proposer image" />
+      <img src="{{ vich_uploader_asset(project.user, 'imageFile') }}" />
+
     </figure>
+
+
     <p>
       {{project.user.bio}}
     </p>

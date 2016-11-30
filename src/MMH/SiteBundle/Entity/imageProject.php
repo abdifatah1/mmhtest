@@ -207,7 +207,7 @@ class imageProject
 
     public function __toString() {
 
-      return $this->path;
+      return $this->imageFile;
     }
 
     /**

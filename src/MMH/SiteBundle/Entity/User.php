@@ -3,12 +3,15 @@
 namespace MMH\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\UserRepository")
+ * @Vich\Uploadable
  */
 class User
 {
@@ -77,6 +80,18 @@ class User
      */
     private $bio;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="userImage", type="text", nullable=true)
+     */
+    private $userImage;
+
+    /**
+     * @Vich\UploadableField(mapping="user_images", fileNameProperty="userImage")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * Get id
@@ -285,5 +300,29 @@ class User
     public function __toString() {
 
       return $this->name;
+    }
+
+    /**
+     * Set userImage
+     *
+     * @param string $userImage
+     *
+     * @return User
+     */
+    public function setUserImage($userImage)
+    {
+        $this->userImage = $userImage;
+
+        return $this;
+    }
+
+    /**
+     * Get userImage
+     *
+     * @return string
+     */
+    public function getUserImage()
+    {
+        return $this->userImage;
     }
 }
