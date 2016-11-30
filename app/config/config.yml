@@ -206,9 +206,7 @@ easy_admin:
                   - twitter
                   - linkedin
                   - pinterest
-
-        # - MMH\SiteBundle\Entity\category
-        # - MMH\SiteBundle\Entity\Comment
-        # - MMH\SiteBundle\Entity\Contact
+        Comment:
+            class: MMH\SiteBundle\Entity\Comment
     design:
         brand_color: '#2da555'
