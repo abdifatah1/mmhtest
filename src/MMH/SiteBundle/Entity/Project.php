@@ -689,6 +689,39 @@ class Project
         return $this->amount;
     }
 
+    // Public function made to generate virtual property for Easy Admin
+    public function getTotal() {
+
+      $payments = $this->getPayment();
+
+      $arr = [];
+      $cash = 0;
+
+      foreach( $payments as $payment) {
+        $arr[] = $payment->getAmount();
+      }
+
+      for($i = 0; $i < count($arr); $i++) {
+        $cash = $cash + $arr[$i];
+      }
+
+      return $cash;
+    }
+
+    // Public function made to display headImage on project for Easy Admin
+    public function adminImage() {
+
+      $images = $this->imageproject;
+      $display;
+
+      foreach($images as $image) {
+        if($image->getHeadImage() ) {
+          $display = $image->getPath();
+        }
+      }
+      return $display;
+    }
+
     // Trying to implement magic function __toString()
 
     public function __toString() {

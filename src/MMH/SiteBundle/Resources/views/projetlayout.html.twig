@@ -75,8 +75,6 @@
     {% for project in project %}
     <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
 
-
-
     <figure>
       <img src="{{ vich_uploader_asset(project.user, 'imageFile') }}" />
 
