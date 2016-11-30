@@ -8,7 +8,6 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-
     app.path.article_images: /bundles/mmhsite/img/content
 
 
@@ -195,6 +194,7 @@ easy_admin:
                   - { property: 'category', label: 'Categorie'}
           form:
               fields:
+                  - status
                   - { property: 'title', label: 'Titre'}
                   - { property: 'headline', label: "Phrase d'accroche (65 caractères max)"}
                   - { property: 'text', label: 'texte', type: 'ckeditor' }
@@ -204,6 +204,8 @@ easy_admin:
                   - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
                   - { property: 'category', label: 'Categorie'}
                   - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
+                  - {property: 'slider', label: 'Ajouter au slider'}
+                  - amount
                   - facebook
                   - twitter
                   - linkedin
