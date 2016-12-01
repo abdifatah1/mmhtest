@@ -9,7 +9,7 @@ parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
     app.path.article_images: /bundles/mmhsite/img/content
-    app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
+    app.path.user_images: /MyMoneyHelp/web/bundles/mmhsite/img/user_images
 
 
 framework:
@@ -86,13 +86,13 @@ vich_uploader:
     mappings:
         project_images:
             uri_prefix:         %app.path.project_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/projets
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/projets
         article_images:
             uri_prefix:         %app.path.article_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/content
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/content
         user_images:
             uri_prefix:         %app.path.user_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/user_images
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/user_images
 
 # liip_imagine
 liip_imagine:

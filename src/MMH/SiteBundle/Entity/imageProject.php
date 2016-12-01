@@ -252,4 +252,12 @@ class imageProject
     {
         return $this->imageFile;
     }
+
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+      $this->updatedAt = new \DateTime();
+    }
 }
