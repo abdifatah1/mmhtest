@@ -148,73 +148,73 @@ liip_imagine:
 
 # app/config/config.yml
 easy_admin:
-    site_name: 'MyMoneyHelp'
-    entities:
-        Amount:
-          class: MMH\SiteBundle\Entity\Amount
-        Article:
-          class: MMH\SiteBundle\Entity\Article
-          list:
-              fields:
-                  - { property: 'path', type: 'image', base_path: %app.path.article_images% }
-        imageArticle:
-            class: MMH\SiteBundle\Entity\imageArticle
-            list:
-                  fields:
-                      - id
-                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
-                      - article
-        Payment:
-          class: MMH\SiteBundle\Entity\Payment
-        User:
-          class: MMH\SiteBundle\Entity\User
-        imageProject:
-          class: MMH\SiteBundle\Entity\imageProject
-          list:
-                fields:
-                    - id
-                    - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
-                    - project
-                    - headImage
-                    - bodyImage
-          form:
-              fields:
-                  - project
-                  - headImage
-                  - bodyImage
-                  - { property: 'imageFile', type: 'vich_image' }
+   site_name: 'MyMoneyHelp'
+   entities:
+       Amount:
+         class: MMH\SiteBundle\Entity\Amount
+       Article:
+         class: MMH\SiteBundle\Entity\Article
+         list:
+             fields:
+                 - title
+                #  - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+                 - dateCreation
+       imageArticle:
+           class: MMH\SiteBundle\Entity\imageArticle
+           list:
+                 fields:
+                     - id
+                     - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                     - article
+       Payment:
+         class: MMH\SiteBundle\Entity\Payment
+       User:
+         class: MMH\SiteBundle\Entity\User
+       imageProject:
+         class: MMH\SiteBundle\Entity\imageProject
+         label: 'Images'
+         list:
+               fields:
+                   - id
+                   - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
+                   - project
+                   - headImage
+                   - bodyImage
+         form:
+             fields:
+                 - project
+                 - headImage
+                 - bodyImage
+                 - { property: 'imageFile', type: 'vich_image' }
 
-        Project:
-          class: MMH\SiteBundle\Entity\Project
-          label: 'Projets'
-          list:
-              fields:
-                  - { property: 'title', label: 'Titre du projet'}
-                  - { property: 'adminImage', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
-                  - { property: 'total', label: 'Total'}
-                  - { property: 'finalObjective', label: 'Objectif final'}
-                  - { property: 'status', type: 'boolean', label: 'En cours'}
-                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
-                  - { property: 'category', label: 'Categorie'}
-          form:
-              fields:
-                  - status
-                  - { property: 'title', label: 'Titre'}
-                  - { property: 'headline', label: "Phrase d'accroche (65 caractères max)"}
-                  - { property: 'text', label: 'texte', type: 'ckeditor' }
-                  - { property: 'finalObjective', label: "Montant à atteindre"}
-                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
-                  - { property: 'amount', label: 'Montants autorisés'}
-                  - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
-                  - { property: 'category', label: 'Categorie'}
-                  - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
-                  - {property: 'slider', label: 'Ajouter au slider'}
-                  - amount
-                  - facebook
-                  - twitter
-                  - linkedin
-                  - pinterest
-        Comment:
-            class: MMH\SiteBundle\Entity\Comment
-    design:
-        brand_color: '#2da555'
+       Project:
+         class: MMH\SiteBundle\Entity\Project
+         label: 'Projets'
+         list:
+             fields:
+                 - { property: 'title', label: 'Titre du projet'}
+                 - { property: 'adminImage', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
+                 - { property: 'total', label: 'Total'}
+                 - { property: 'finalObjective', label: 'Objectif final'}
+                 - { property: 'status', type: 'boolean', label: 'En cours'}
+                 - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                 - { property: 'category', label: 'Categorie'}
+         form:
+             fields:
+                 - 'title'
+                 - { property: 'headline', label: "Phrase d'accroche (65 caractères max)"}
+                 - { property: 'text', label: 'texte', type: 'ckeditor' }
+                 - { property: 'finalObjective', label: "Montant à atteindre"}
+                 - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                 - amount
+                 - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
+                 - { property: 'category', label: 'Categorie'}
+                 - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
+                 - facebook
+                 - twitter
+                 - linkedin
+                 - pinterest
+         Comment:
+             class: MMH\SiteBundle\Entity\Comment
+   design:
+       brand_color: '#2da555'
