@@ -730,18 +730,4 @@ class Project
       return $this->title;
     }
 
-
-// Public function made to display headImage on project for Easy Admin
-   public function adminImage() {
-
-     $images = $this->imageproject;
-     $display;
-
-     foreach($images as $image) {
-       if($image->getHeadImage() ) {
-         $display = $image->getPath();
-       }
-     }
-     return $display;
-   }
 }
