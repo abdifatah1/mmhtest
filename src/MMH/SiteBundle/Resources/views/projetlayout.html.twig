@@ -73,7 +73,7 @@
   <!-- /contribute button -->
   {% for project in project %}
   <div class="proposer-info">
-    {% if project.user.admin %}
+    {% if project.user%}
     <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
     <figure>
       <img src="{{ vich_uploader_asset(project.user, 'imageFile') }}" />
