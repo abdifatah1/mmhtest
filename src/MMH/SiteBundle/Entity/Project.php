@@ -4,6 +4,7 @@ namespace MMH\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+
 // use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -710,7 +711,7 @@ class Project
     }
 
     // Public function made to display headImage on project for Easy Admin
-   public function adminImage() {
+    public function adminImage() {
 
      $images = $this->imageproject;
      $display;

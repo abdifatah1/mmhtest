@@ -207,6 +207,7 @@ class imageProject
 
     public function __toString() {
 
+
       return $this->imageFile;
     }
 

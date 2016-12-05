@@ -43,6 +43,7 @@
         {% set break = true %}
         {% set loopCount = 0 %}
         {% for project in project if break %}
+        {% if project.visibility %}
           <div class="home-cards" target="blank">
               <a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}">
                   <h2 class="card-home-title">{{project.title}}</h2>
@@ -74,6 +75,7 @@
                   </div>
               </a>
           </div>
+          {% endif %}
           {% set loopCount = loopCount + 1 %}
           {% if loopCount >= 6 %}
             {% set break = false %}

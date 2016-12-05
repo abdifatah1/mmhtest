@@ -24,7 +24,7 @@ framework:
     validation:      { enable_annotations: true }
     #serializer:      { enable_annotations: true }
     templating:
-        engines: ['twig']
+        engines: ['twig', 'php']
     default_locale:  "%locale%"
     trusted_hosts:   ~
     trusted_proxies: ~
@@ -86,13 +86,13 @@ vich_uploader:
     mappings:
         project_images:
             uri_prefix:         %app.path.project_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/projets
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/projets
         article_images:
             uri_prefix:         %app.path.article_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/content
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/content
         user_images:
             uri_prefix:         %app.path.user_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Ressources/public/img/user_images
+            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/user_images
 
 # liip_imagine
 liip_imagine:
@@ -198,6 +198,7 @@ easy_admin:
                  - { property: 'finalObjective', label: 'Objectif final'}
                  - { property: 'status', type: 'boolean', label: 'En cours'}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                 - { property: 'slider', label: 'Carousel'}
                  - { property: 'category', label: 'Categorie'}
          form:
              fields:
@@ -218,3 +219,13 @@ easy_admin:
              class: MMH\SiteBundle\Entity\Comment
    design:
        brand_color: '#2da555'
+
+
+
+ivory_ck_editor:
+  default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
+  configs:
+      my_custom_config:
+          language:                   %locale%
+          toolbar:                    standard
+          # filebrowserBrowseRoute:           "/admin/ckeditor/plugins/imageuploader/imgbrowser.php"

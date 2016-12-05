@@ -3,7 +3,7 @@ easy_admin_bundle:
   resource: "@EasyAdminBundle/Controller/"
   type:     annotation
   prefix:   /admin
-  
+
 mmh_admin:
     resource: "@MMHAdminBundle/Resources/config/routing.yml"
     prefix:   /
