@@ -41,10 +41,3 @@ mmh_site_membre:
     path:    /espace/{membre}
     defaults:
         _controller: MMHSiteBundle:Transaction:membre
-
-
-# Route for imageuploader in admin
-# mmh_site_upload:
-#     path:    /admin/ckeditor/plugins/imageuploader/imgbrowser.php
-#     defaults:
-#         _controller:  MMHSiteBundle:Projets:upload

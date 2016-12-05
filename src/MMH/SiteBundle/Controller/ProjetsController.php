@@ -47,5 +47,4 @@ class ProjetsController extends Controller
     return $this->render('MMHSiteBundle:Projet:projet.html.twig',['project'=>$project]);
 
   }
-
 }

@@ -9,7 +9,7 @@ parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
     app.path.article_images: /bundles/mmhsite/img/content
-    app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
+    app.path.user_images: /MyMoneyHelp/web/bundles/mmhsite/img/user_images
 
 
 framework:
@@ -172,7 +172,7 @@ easy_admin:
          class: MMH\SiteBundle\Entity\User
        imageProject:
          class: MMH\SiteBundle\Entity\imageProject
-         label: 'Images'
+         label: 'Images des projets'
          list:
                fields:
                    - id
@@ -182,10 +182,10 @@ easy_admin:
                    - bodyImage
          form:
              fields:
-                 - project
+                 - { property: 'project', label: 'Projet associé', type_options: { required: false }}
                  - headImage
                  - bodyImage
-                 - { property: 'imageFile', type: 'vich_image' }
+                 - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
 
        Project:
          class: MMH\SiteBundle\Entity\Project
@@ -197,17 +197,19 @@ easy_admin:
                  - { property: 'total', label: 'Total'}
                  - { property: 'finalObjective', label: 'Objectif final'}
                  - { property: 'status', type: 'boolean', label: 'En cours'}
+                 - { property: 'visibility', type: 'boolean', label: 'Visible'}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
                  - { property: 'slider', label: 'Carousel'}
                  - { property: 'category', label: 'Categorie'}
          form:
              fields:
-                 - 'title'
+                 - { property: 'title', label: "Titre du projet"}
                  - { property: 'headline', label: "Phrase d'accroche (65 caractères max)"}
                  - { property: 'text', label: 'texte', type: 'ckeditor' }
                  - { property: 'finalObjective', label: "Montant à atteindre"}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
-                 - amount
+                 - { property: 'slider', label: 'Mettre ce projet dans le slider'}
+                 - { property: 'values', label: 'Montant de dons'}
                  - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
                  - { property: 'category', label: 'Categorie'}
                  - { property: 'user', label: 'Porteur de projet', type_options: { required: false }}
@@ -221,11 +223,9 @@ easy_admin:
        brand_color: '#2da555'
 
 
-
 ivory_ck_editor:
-  default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
-  configs:
-      my_custom_config:
-          language:                   %locale%
-          toolbar:                    standard
-          # filebrowserBrowseRoute:           "/admin/ckeditor/plugins/imageuploader/imgbrowser.php"
+   default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
+   configs:
+       my_custom_config:
+           language:                   %locale%
+           toolbar:                    standard

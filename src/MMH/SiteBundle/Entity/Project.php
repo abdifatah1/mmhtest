@@ -32,12 +32,12 @@ class Project
 
 
   /**
-  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Payment", mappedBy="project")
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Payment", mappedBy="project", cascade={"remove"})
   */
   private $payment;
 
   /**
-  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageProject", mappedBy="project")
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageProject", mappedBy="project", cascade={"remove"})
   */
   private $imageproject;
 
@@ -149,6 +149,12 @@ class Project
   * @ORM\Column(name="pinterest", type="string", length=255, unique=true, nullable=true)
   */
   private $pinterest;
+
+  /**
+   * @ORM\ManyToMany(targetEntity="MMH\SiteBundle\Entity\Value", cascade={"persist"})
+   */
+
+  private $values;
 
 
 
@@ -361,7 +367,9 @@ class Project
   public function __construct()
   {
     $this->payment = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->values = new \Doctrine\Common\Collections\ArrayCollection();
     $this->startDate = new \DateTime();
+    $this->status = true;
   }
 
   /**
@@ -691,6 +699,47 @@ class Project
         return $this->amount;
     }
 
+    /**
+     * Add value
+     *
+     * @param \MMH\SiteBundle\Entity\Value $value
+     *
+     * @return Project
+     */
+    public function addValue(\MMH\SiteBundle\Entity\Value $value)
+    {
+        $this->values[] = $value;
+
+        return $this;
+    }
+
+    /**
+     * Remove value
+     *
+     * @param \MMH\SiteBundle\Entity\Value $value
+     */
+    public function removeValue(\MMH\SiteBundle\Entity\Value $value)
+    {
+        $this->values->removeElement($value);
+    }
+
+    /**
+     * Get values
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getValues()
+    {
+        return $this->values;
+    }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->title;
+    }
+
     // Public function made to generate virtual property for Easy Admin
     public function getTotal() {
 
@@ -723,11 +772,4 @@ class Project
      }
      return $display;
    }
-
-    // Trying to implement magic function __toString()
-
-    public function __toString() {
-
-      return $this->title;
-    }
 }
