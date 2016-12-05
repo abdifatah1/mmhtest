@@ -23,13 +23,13 @@ class Article
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageArticle", mappedBy="article")
+     * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageArticle", mappedBy="article", cascade="remove")
      */
      private $imagearticle;
 
     /**
      * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
@@ -196,6 +196,7 @@ class Article
     public function __construct()
     {
         $this->imagearticle = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateCreation = new \DateTime();
     }
 
     /**
@@ -233,6 +234,20 @@ class Article
     {
         return $this->imagearticle;
     }
+
+    // Public function made to display headImage on article for Easy Admin
+    public function adminImage() {
+
+     $images = $this->imagearticle;
+     $display;
+
+     foreach($images as $image) {
+       if($image->getHeadImage() ) {
+         $display = $image->getPath();
+       }
+     }
+     return $display;
+   }
 
     // Trying to implement magic function __toString()
 

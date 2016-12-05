@@ -13,7 +13,7 @@
 <section class="cards-home-section">
     <div class="wrapper-nav">
         <nav class="cards-home-navbar">
-          <a href="#" class="popular">En cours</a>
+          <a href="{{ path('mmh_site_decouvrir', {'categorie':0}) }}" class="popular">En cours</a>
         <div id="menuderoulant">
           <a href="#" class="category">Catégories</a>
            <ul>
@@ -37,6 +37,7 @@
             <input type="text" placeholder="Chercher Un Projet" class="searchbar-cards-home">
         </form>
         {% for project in project %}
+        {% if project.visibility %}
         <div class="home-cards" target="blank">
             <a href="{{ path('mmh_site_projet', {'slug': project.slug}) }}">
                 <h2 class="card-home-title">{{project.title}}</h2>
@@ -65,6 +66,7 @@
                 </div>
             </a>
         </div>
+        {% endif %}
         {% endfor %}
 
     </div>

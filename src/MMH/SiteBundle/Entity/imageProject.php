@@ -207,6 +207,7 @@ class imageProject
 
     public function __toString() {
 
+
       return $this->imageFile;
     }
 
@@ -251,5 +252,13 @@ class imageProject
     public function getImageFile()
     {
         return $this->imageFile;
+    }
+
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+      $this->updatedAt = new \DateTime();
     }
 }
