@@ -59,7 +59,7 @@
                             {% set char = project.text | split('') %}
                             {% set char = char | slice(0, 179) %}
                             {% set char = char | join('') %}
-                            {{char}}...
+                            {{char | raw}}...
                           </p>
                       </div>
                       <!-- /Texte -->
