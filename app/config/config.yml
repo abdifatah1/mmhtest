@@ -14,6 +14,7 @@ parameters:
 
 framework:
     #esi:             ~
+    translator: ~
     translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
@@ -246,3 +247,8 @@ ivory_ck_editor:
        my_custom_config:
            language:                   %locale%
            toolbar:                    standard
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\User

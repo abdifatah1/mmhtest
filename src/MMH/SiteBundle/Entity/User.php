@@ -5,6 +5,8 @@ namespace MMH\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use FOS\UserBundle\Model\User as BaseUser;
+
 
 /**
  * User
@@ -13,7 +15,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\UserRepository")
  * @Vich\Uploadable
  */
-class User
+class User extends BaseUser
 {
     /**
      * @var int
@@ -22,7 +24,7 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
@@ -45,12 +47,12 @@ class User
      */
     private $mail;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="password", type="string", length=15, unique=true)
-     */
-    private $password;
+    // /**
+    //  * @var string
+    //  *
+    //  * @ORM\Column(name="password", type="string", length=15, unique=true)
+    //  */
+    // protected $password;
 
     /**
      * @var \DateTime
