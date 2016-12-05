@@ -29,7 +29,7 @@ class ProjetsController extends Controller
         $project = $repo->getProjectWithPayment();
       } else {
         $project = $repo->findBy(
-          array('category' => $categorie)          
+          array('category' => $categorie)
         );
       }
 
@@ -47,6 +47,13 @@ class ProjetsController extends Controller
     return $this->render('MMHSiteBundle:Projet:projet.html.twig',['project'=>$project]);
 
   }
+
+  public function uploadAction()
+  {
+    return $this->render('MMHSiteBundle:imageuploader:imgbrowser.html.php');
+
+  }
+
 
 
 }

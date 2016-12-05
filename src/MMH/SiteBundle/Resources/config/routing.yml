@@ -4,7 +4,7 @@ mmh_site_homepage:
     path:     /
     defaults:
         _controller: MMHSiteBundle:Projets:index
-        
+
 
 mmh_site_decouvrir:
     path:     /decouvrir-les-projets/{categorie}
@@ -41,3 +41,8 @@ mmh_site_membre:
     path:    /espace/{membre}
     defaults:
         _controller: MMHSiteBundle:Transaction:membre
+
+mmh_site_upload:
+    path:    /admin/ckeditor/plugins/imageuploader/imgbrowser.php
+    defaults:
+        _controller: MMHSiteBundle:Projets:upload
