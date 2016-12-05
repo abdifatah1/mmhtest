@@ -25,9 +25,16 @@ class ProjetsController extends Controller
     {
       $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
 
+      // Get every project & every category
       if($categorie == 'generale') {
         $project = $repo->getProjectWithPayment();
-      } else {
+        // Get project which are not over
+      } elseif($categorie == 0) {
+        $project = $repo->findBy(
+          array('status' => 1 )
+        );
+        // Get projects according to category
+      }  else {
         $project = $repo->findBy(
           array('category' => $categorie)
         );

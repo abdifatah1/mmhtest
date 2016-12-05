@@ -84,7 +84,7 @@ background-color: #0092c9;
   background-color: #2da555;
 }
 
-#menuderoulant li:hover a {
+#menuderoulant li:hover a, .popular:hover {
   color: #2da555;
 }
 
