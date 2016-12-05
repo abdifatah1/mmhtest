@@ -23,7 +23,7 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
       return $this->createQueryBuilder('p')
       ->where ("p.visibility = :visibility")
       ->setParameter("visibility", true)
-      ->innerJoin('p.payment', 'pay')
+      ->leftJoin('p.payment', 'pay')
       ->addSelect('pay')
       ->innerJoin('p.imageproject', 'img')
       ->addSelect('img')
