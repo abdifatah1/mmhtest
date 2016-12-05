@@ -150,26 +150,42 @@ liip_imagine:
 easy_admin:
    site_name: 'MyMoneyHelp'
    entities:
-       Amount:
-         class: MMH\SiteBundle\Entity\Amount
        Article:
          class: MMH\SiteBundle\Entity\Article
+         label: 'Articles du blog'
          list:
              fields:
-                 - title
-                #  - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+                 - { property: 'adminImage', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                 - { property: 'title', label: 'Titre' }
+                 - { property: 'user', label: 'Utilisateur associé'}
                  - dateCreation
+         form:
+             fields:
+                 - { property: 'title', label: 'Titre'}
+                 - { property: 'content', label: 'Votre article', type: 'ckeditor' }
+                 - { property: 'user', label: 'Auteur', type_options: { required: false }}
        imageArticle:
            class: MMH\SiteBundle\Entity\imageArticle
+           label: 'Images des articles'
            list:
                  fields:
-                     - id
                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
                      - article
+                     - description
+                     - { property: 'headImage', type: 'boolean', label: 'Image principale' }
+           form:
+               fields:
+                     - { property: 'article', label: 'Article associé', type_options: { required: false }}
+                     - headImage
+                     - bodyImage
+                     - description
+                     - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
        Payment:
          class: MMH\SiteBundle\Entity\Payment
+         label: 'Paiments'
        User:
          class: MMH\SiteBundle\Entity\User
+         label: 'Utilisateurs'
        imageProject:
          class: MMH\SiteBundle\Entity\imageProject
          label: 'Images des projets'
@@ -201,6 +217,7 @@ easy_admin:
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
                  - { property: 'slider', label: 'Carousel'}
                  - { property: 'category', label: 'Categorie'}
+                 - { property: 'user', label: 'Utilisateur'}
          form:
              fields:
                  - { property: 'title', label: "Titre du projet"}
