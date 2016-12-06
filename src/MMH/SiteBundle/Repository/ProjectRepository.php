@@ -42,7 +42,7 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
       ->setParameter("bool", 1)
       ;
       return $qb
-    ->innerJoin('p.payment', 'pay')
+    ->leftJoin('p.payment', 'pay')
     ->addSelect('pay')
     ->innerJoin('p.imageproject', 'img')
     ->addSelect('img')
