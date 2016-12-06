@@ -186,6 +186,10 @@ easy_admin:
        User:
          class: MMH\SiteBundle\Entity\User
          label: 'Utilisateurs'
+         list:
+             fields:
+                  - { property: 'name', label: 'Nom' }
+                  - { property: 'firstname', label: 'Prénom' }
        imageProject:
          class: MMH\SiteBundle\Entity\imageProject
          label: 'Images des projets'
@@ -213,7 +217,7 @@ easy_admin:
                  - { property: 'total', label: 'Total'}
                  - { property: 'finalObjective', label: 'Objectif final'}
                  - { property: 'status', type: 'boolean', label: 'En cours'}
-                 - { property: 'visibility', type: 'boolean', label: 'Visible'}
+                 - { property: 'visibility', label: 'Visible'}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
                  - { property: 'slider', label: 'Carousel'}
                  - { property: 'category', label: 'Categorie'}
