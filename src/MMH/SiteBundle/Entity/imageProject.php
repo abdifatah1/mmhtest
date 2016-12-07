@@ -208,7 +208,9 @@ class imageProject
     public function __toString() {
 
 
-      return $this->imageFile;
+      // return $this->imageFile;
+      // fix to make project clickable from imageproject list view in easyadmin
+      return $this->path;
     }
 
     /**

@@ -8,8 +8,8 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-    app.path.article_images: /bundles/mmhsite/img/content
-    app.path.user_images: /MyMoneyHelp/web/bundles/mmhsite/img/user_images
+    app.path.article_images: bundles/mmhsite/img/content
+    app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
 
 
 framework:
@@ -99,7 +99,7 @@ liip_imagine:
     resolvers:
         default:
             web_path:
-                web_root: "%kernel.root_dir%/../web/bundles/mmhsite/img/projets"
+                web_root: "%kernel.root_dir%/../web"
                 cache_prefix: "media/cache"
 
     filter_sets:
@@ -165,6 +165,13 @@ easy_admin:
                  fields:
                      - id
                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                     - article
+           form:
+                 fields:
+                     - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
+                     - description
+                     - headImage
+                     - bodyImage
                      - article
        Payment:
          class: MMH\SiteBundle\Entity\Payment
