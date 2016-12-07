@@ -45,6 +45,13 @@ class User extends BaseUser
     /**
      * @var string
      *
+     * @ORM\Column(name="familyname", type="text", nullable=true)
+     */
+    private $familyname;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="bio", type="text", nullable=true)
      */
     private $bio;
@@ -171,4 +178,28 @@ class User extends BaseUser
         return $this->imageFile;
     }
 
+
+    /**
+     * Set familyname
+     *
+     * @param string $familyname
+     *
+     * @return User
+     */
+    public function setFamilyname($familyname)
+    {
+        $this->familyname = $familyname;
+
+        return $this;
+    }
+
+    /**
+     * Get familyname
+     *
+     * @return string
+     */
+    public function getFamilyname()
+    {
+        return $this->familyname;
+    }
 }

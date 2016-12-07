@@ -73,8 +73,9 @@
   <!-- /contribute button -->
   {% for project in project %}
   <div class="proposer-info">
-    {% if project.user%}
-    <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
+
+    {% if project.user %}
+    <h1>{{[project.user.username,project.user.familyname]|join(' ')}}</h1>
     <figure>
       <img src="{{ vich_uploader_asset(project.user, 'imageFile') }}" />
     </figure>
@@ -91,70 +92,57 @@
 
   <div class="contributors">
     <h2>Top contributions:</h2>
-    <p class="ten span">
-      <span>
-        {% for project in project %}
-        {% for amount in project.value if amount.value == 10 %}
-        {{amount.value}}
 
-      </span>
-      <i>
 
-        {% set ten = 0 %}
-        {% for payment in project.payment if  payment.value == 10 %}
-        {% set ten = ten + 1 %}
-        {% endfor %}
-        {{ten}}
+    {% for project in project %}
 
-      </i>
-      <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+<!-- Loop to get the different payment value available -->
+      {% for value in project.values %}
+        <p class= "ten span">
+          <span>{{ value }}</span>
+
+<!-- Variable to count the number of payments for a specifique amount/value -->
+          {% set totalpayments = 0 %}
+
+          {% for payment in project.payment %}
+            {% if payment.amount == value.__toString %}
+              {% set totalpayments = totalpayments + 1 %}
+            {% endif %}
+          {% endfor %}
+
+
+<!-- Display the total number of matched payments with the value and the image -->
+          <i>{{ totalpayments}}</i>
+          <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
+        </p>
       {% endfor %}
 
-      <p class="twenty span">
-        <span>
-          {% for amount in project.value if amount.value == 20 %}
-          {{amount.value}}
-
-        </span>
-        <i>
-
-          {% set twenty = 0 %}
-          {% for payment in project.payment if  payment.value == 20 %}
-          {% set twenty = twenty + 1 %}
-          {% endfor %}
-          {{twenty}}
-
-        </i>
-        <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
-        {% endfor %}
-
-        <p class="thirty span">
-          <span>
-            {% for amount in project.value if amount.value == 30 %}
-            {{amount.amount}}
-
-          </span>
-          <i>
-            {% set thirty = 0 %}
-            {% for payment in project.payment if  payment.value == 30 %}
-            {% set thirty = thirty + 1 %}
-            {% endfor %}
-            {{thirty}}
-          </i>
-          <img src="{{ asset('bundles/mmhsite/img/group.png') }}" alt="" /></p>
-          {% endfor %}
-          {% endfor %}
-        </div>
-
-        <!-- social networks-->
-        <ul class="social-networks">
+      <ul class="social-networks">
+        {% if project.facebook %}
           <li>
-            <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+            <a href="{{ project.facebook }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/facebook_vert.png') }}" class="social-icons" alt="logo facebook" /></a>
           </li>
+        {% endif %}
+        {% if project.twitter %}
           <li>
-            <a href="#"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="Twitter" /></a>
+            <a href="{{ project.twitter }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/twitter_vert.png') }}" class="social-icons" alt="logo twitter" /></a>
           </li>
-        </ul>
+        {% endif %}
+        {% if project.linkedin %}
+          <li>
+            <a href="{{ project.linkedin }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/linkedin_vert.png') }}" class="social-icons" alt="logo linkedin" /></a>
+          </li>
+        {% endif %}
+        {% if project.pinterest %}
+          <li>
+            <a href="{{ project.pinterest }}" target="_blank"><img src="{{ asset('bundles/mmhsite/img/logos_RS/pinterest_vert.png') }}" class="social-icons" alt="logo pinterest" /></a>
+          </li>
+        {% endif %}
+      </ul>
+
+
+    {% endfor %}
+
       </aside>
     </div>
     {% endblock %}
