@@ -94,14 +94,14 @@
     <p class="ten span">
       <span>
         {% for project in project %}
-        {% for amount in project.amount if amount.amount == 10 %}
-        {{amount.amount}}
+        {% for amount in project.value if amount.value == 10 %}
+        {{amount.value}}
 
       </span>
       <i>
 
         {% set ten = 0 %}
-        {% for payment in project.payment if  payment.amount == 10 %}
+        {% for payment in project.payment if  payment.value == 10 %}
         {% set ten = ten + 1 %}
         {% endfor %}
         {{ten}}
@@ -112,14 +112,14 @@
 
       <p class="twenty span">
         <span>
-          {% for amount in project.amount if amount.amount == 20 %}
-          {{amount.amount}}
+          {% for amount in project.value if amount.value == 20 %}
+          {{amount.value}}
 
         </span>
         <i>
 
           {% set twenty = 0 %}
-          {% for payment in project.payment if  payment.amount == 20 %}
+          {% for payment in project.payment if  payment.value == 20 %}
           {% set twenty = twenty + 1 %}
           {% endfor %}
           {{twenty}}
@@ -130,13 +130,13 @@
 
         <p class="thirty span">
           <span>
-            {% for amount in project.amount if amount.amount == 30 %}
+            {% for amount in project.value if amount.value == 30 %}
             {{amount.amount}}
 
           </span>
           <i>
             {% set thirty = 0 %}
-            {% for payment in project.payment if  payment.amount == 30 %}
+            {% for payment in project.payment if  payment.value == 30 %}
             {% set thirty = thirty + 1 %}
             {% endfor %}
             {{thirty}}

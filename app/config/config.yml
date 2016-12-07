@@ -14,7 +14,6 @@ parameters:
 
 framework:
     #esi:             ~
-    translator: ~
     translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
@@ -87,7 +86,7 @@ vich_uploader:
     mappings:
         project_images:
             uri_prefix:         %app.path.project_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/projets
+            upload_destination: %kernel.root_dir%/../web/bundles/mmhsite/img/projets
         article_images:
             uri_prefix:         %app.path.article_images%
             upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/content
@@ -151,6 +150,15 @@ liip_imagine:
 easy_admin:
    site_name: 'MyMoneyHelp'
    entities:
+       User:
+            class: MMH\SiteBundle\Entity\User
+            form:
+                fields:
+                    - lastLogin
+                    - { property: 'username' }
+                    - { property: 'email', type: 'email' }
+                    - { property: 'plainPassword', type: 'password', label: 'Password', help: 'Passwords must have at least 8 characters' }
+                    - { property: 'enabled', type: 'checkbox' }
        Article:
          class: MMH\SiteBundle\Entity\Article
          label: 'Articles du blog'
@@ -226,6 +234,7 @@ easy_admin:
                  - { property: 'text', label: 'texte', type: 'ckeditor' }
                  - { property: 'finalObjective', label: "Montant à atteindre"}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                # - { property: 'imageFile', type: 'file', label: 'Upload logo', help: 'Select file to upload / change logo' }
                  - { property: 'slider', label: 'Mettre ce projet dans le slider'}
                  - { property: 'values', label: 'Montant de dons'}
                  - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
@@ -237,6 +246,7 @@ easy_admin:
                  - pinterest
          Comment:
              class: MMH\SiteBundle\Entity\Comment
+
    design:
        brand_color: '#2da555'
 
@@ -251,4 +261,4 @@ ivory_ck_editor:
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: MMH\SiteBundle\Entity\User
