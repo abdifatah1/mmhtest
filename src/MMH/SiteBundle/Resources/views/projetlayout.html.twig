@@ -73,8 +73,9 @@
   <!-- /contribute button -->
   {% for project in project %}
   <div class="proposer-info">
+
     {% if project.user %}
-    <h1>{{[project.user.firstname,project.user.name]|join(' ')}}</h1>
+    <h1>{{[project.user.username,project.user.familyname]|join(' ')}}</h1>
     <figure>
       <img src="{{ vich_uploader_asset(project.user, 'imageFile') }}" />
     </figure>
@@ -92,6 +93,7 @@
   <div class="contributors">
     <h2>Top contributions:</h2>
 
+
     {% for project in project %}
 
 <!-- Loop to get the different payment value available -->
@@ -107,6 +109,7 @@
               {% set totalpayments = totalpayments + 1 %}
             {% endif %}
           {% endfor %}
+
 
 <!-- Display the total number of matched payments with the value and the image -->
           <i>{{ totalpayments}}</i>
