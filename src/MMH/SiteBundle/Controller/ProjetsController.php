@@ -54,4 +54,8 @@ class ProjetsController extends Controller
     return $this->render('MMHSiteBundle:Projet:projet.html.twig',['project'=>$project]);
 
   }
+
+  public function browseAction() {
+    return $this->render('../vendor/egeloen/ckeditor-bundle/Resources/public/plugins/imageuploader/imgbrowser.php');
+  }
 }

@@ -19,6 +19,11 @@ mmh_site_projet:
     defaults:
         _controller: MMHSiteBundle:Projets:projet
 
+mmh_site_browse:
+    path:    /admin/ckeditor/plugins/imageuploader/imgbrowser.php
+    defaults:
+        _controller: MMHSiteBundle:Projets:browse
+
 
 # Routes for the registration the connexion and the paiement
 
