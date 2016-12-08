@@ -22,7 +22,7 @@ class Comment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;
@@ -153,5 +153,11 @@ class Comment
     public function getUser()
     {
         return $this->user;
+    }
+
+    public function __toString() {
+
+
+      return ' '. $this->id;
     }
 }

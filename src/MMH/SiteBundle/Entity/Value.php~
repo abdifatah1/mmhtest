@@ -5,12 +5,12 @@ namespace MMH\SiteBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * category
+ * Value
  *
- * @ORM\Table(name="category")
- * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\categoryRepository")
+ * @ORM\Table(name="value")
+ * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\ValueRepository")
  */
-class category
+class Value
 {
     /**
      * @var int
@@ -22,11 +22,11 @@ class category
     private $id;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="title", type="string", length=255, unique=true)
+     * @ORM\Column(name="value", type="integer")
      */
-    private $title;
+    private $value;
 
 
     /**
@@ -40,33 +40,34 @@ class category
     }
 
     /**
-     * Set title
+     * Set value
      *
-     * @param string $title
+     * @param integer $value
      *
-     * @return category
+     * @return Value
      */
-    public function setTitle($title)
+    public function setValue($value)
     {
-        $this->title = $title;
+        $this->value = $value;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get value
      *
-     * @return string
+     * @return int
      */
-    public function getTitle()
+    public function getValue()
     {
-        return $this->title;
+        return $this->value;
     }
 
     // Trying to implement magic function __toString()
 
     public function __toString() {
 
-      return $this->title;
+      return " " . $this->value;
     }
+
 }

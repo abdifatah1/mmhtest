@@ -4,6 +4,7 @@ namespace MMH\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+
 // use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
@@ -31,12 +32,12 @@ class Project
 
 
   /**
-  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Payment", mappedBy="project")
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Payment", mappedBy="project", cascade={"remove"})
   */
   private $payment;
 
   /**
-  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageProject", mappedBy="project")
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\imageProject", mappedBy="project", cascade={"remove"})
   */
   private $imageproject;
 
@@ -154,6 +155,11 @@ class Project
    */
 
   private $values;
+
+  /**
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Comment", mappedBy="project", cascade={"remove"})
+  */
+  private $comments;
 
 
 
@@ -698,47 +704,6 @@ class Project
         return $this->amount;
     }
 
-    // Public function made to generate virtual property for Easy Admin
-    public function getTotal() {
-
-      $payments = $this->getPayment();
-
-      $arr = [];
-      $cash = 0;
-
-      foreach( $payments as $payment) {
-        $arr[] = $payment->getAmount();
-      }
-
-      for($i = 0; $i < count($arr); $i++) {
-        $cash = $cash + $arr[$i];
-      }
-
-      return $cash;
-    }
-
-    // Public function made to display headImage on project for Easy Admin
-   public function adminImage() {
-
-     $images = $this->imageproject;
-     $display;
-
-     foreach($images as $image) {
-       if($image->getHeadImage() ) {
-         $display = $image->getPath();
-       }
-     }
-     return $display;
-   }
-
-    // Trying to implement magic function __toString()
-
-    public function __toString() {
-
-      return $this->title;
-    }
-
-
     /**
      * Add value
      *
@@ -772,4 +737,44 @@ class Project
     {
         return $this->values;
     }
+
+    // Trying to implement magic function __toString()
+
+    public function __toString() {
+
+      return $this->title;
+    }
+
+    // Public function made to generate virtual property for Easy Admin
+    public function getTotal() {
+
+      $payments = $this->getPayment();
+
+      $arr = [];
+      $cash = 0;
+
+      foreach( $payments as $payment) {
+        $arr[] = $payment->getAmount();
+      }
+
+      for($i = 0; $i < count($arr); $i++) {
+        $cash = $cash + $arr[$i];
+      }
+
+      return $cash;
+    }
+
+    // Public function made to display headImage on project for Easy Admin
+    public function adminImage() {
+
+     $images = $this->imageproject;
+     $display;
+
+     foreach($images as $image) {
+       if($image->getHeadImage() ) {
+         $display = $image->getPath();
+       }
+     }
+     return $display;
+   }
 }

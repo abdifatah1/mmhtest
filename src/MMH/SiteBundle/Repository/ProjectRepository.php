@@ -66,6 +66,8 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     ->addSelect('img')
     ->leftJoin('p.values', 'val')
     ->addSelect('val')
+    ->leftJoin('p.comments', 'com')
+    ->addSelect('com')
 
     ->getQuery()
     ->getResult();

@@ -11,6 +11,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  *
  * @ORM\Table(name="image_article")
  * @ORM\Entity(repositoryClass="MMH\SiteBundle\Repository\imageArticleRepository")
+ * @Vich\Uploadable
  */
 class imageArticle
 {
@@ -227,4 +228,28 @@ class imageArticle
         return $this->imageFile;
     }
 
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return imageArticle
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
 }
