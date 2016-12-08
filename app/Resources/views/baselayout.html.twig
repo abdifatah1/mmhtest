@@ -76,22 +76,14 @@
         <!-- end of mmh tab -->
         <li class="title"><a href="{{ path('mmh_site_decouvrir')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_decouvrir' or app.request.attributes.get('_route') == 'mmh_site_projet' or app.request.attributes.get('_route') == 'mmh_site_financement' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/telescope.png') }}" alt="homme tenant un telescope" class="menu-image">Découvrir les projets</a></li>
         <li class="title"><a href="{{ path('mmh_static_deposer')}}" class="{% if app.request.attributes.get('_route') == 'mmh_static_deposer' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/board.png') }}" alt="homme devant un tableau" class="menu-image">Déposer un projet</a></li>
-        <li class="language">
-          {% if app.user|default %}
+        {% if app.user|default %}
+        <li class="sign">
           {{ app.user.username|default('Unnamed User') }} | <a href="{{ path('fos_user_security_logout') }}" title="logout">logout</a>
           {% else %}
-          <form action="{{ path("fos_user_security_check") }}" method="post">
-            <label>Email</label>
-            <input type="text" name="_username" required="required" />
-
-            <label>Password</label>
-            <input type="password" name="_password" required="required" />
-
-            <button  class="login-button" type="submit">Se Connecter</button>
-          </form>
+          <a class = "conn" href="{{ path('mmh_site_connexion')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_connexion' %} active {% endif %}"> S'inscrire/Se Connecter </a>
           {% endif %}
-          |EN
         </li>
+        <li>EN</li>
       </ul>
       <!-- End of list -->
     </nav>
