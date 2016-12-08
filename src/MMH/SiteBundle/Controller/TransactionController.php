@@ -12,9 +12,8 @@ class TransactionController extends Controller
   }
 
   public function connexionAction () {
-    return new Response ('Vous voici sur la page de connexion');
-  }
-
+    return $this->render('MMHSiteBundle:Connexion:connexion.html.twig');
+}
   public function financementAction ($projet) {
     return $this->render('MMHSiteBundle:Paiement:paiement.html.twig');
   }

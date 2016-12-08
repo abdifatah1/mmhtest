@@ -1,0 +1,19 @@
+{% extends '::baselayout.html.twig' %}
+{% block body %}
+
+{% if app.user|default %}
+          {{ app.user.username|default('Unnamed User') }} | <a href="{{ path('fos_user_security_logout') }}" title="logout">logout</a>
+          {% else %}
+          <br>
+          <form action="{{ path("fos_user_security_check") }}" method="post">
+            <label>Email</label>
+            <input type="text" name="_username" required="required" />
+
+            <label>Password</label>
+            <input type="password" name="_password" required="required" />
+
+            <button  class="login-button" type="submit">Se Connecter</button>
+          </form>
+          {% endif %}
+
+{% endblock %}
