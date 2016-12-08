@@ -255,7 +255,9 @@ easy_admin:
    design:
        brand_color: '#2da555'
 
+# *******************************************************************************************************
 
+# Ivory ck editor ( rich text editor for admin)
 ivory_ck_editor:
    default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
    configs:
@@ -263,6 +265,8 @@ ivory_ck_editor:
            language:                   %locale%
            toolbar:                    standard
 
+
+# FOSUSER, authentification manager
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
