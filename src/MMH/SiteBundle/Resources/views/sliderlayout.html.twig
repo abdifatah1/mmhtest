@@ -13,6 +13,7 @@
               {% set count = 1 %}
                 {% for project in projectSlider %}
                     {% for image in project.imageproject %}
+                    <!-- Display project head image -->
                       <li>
                           <figure><a href="{{ path('mmh_site_projet',{'slug':project.slug}) }}"><img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter('my_carousel')  }}" alt="" class="slide-picture slide{{count}} {% if count == 1 %} active {% endif %}" /></a></figure>
                       </li>
@@ -20,8 +21,8 @@
                 {% set count = count + 1 %}
               {% endfor %}
             </ul>
-            <!-- Arrows -->
 
+            <!-- Arrows -->
             <div class="arrow-left arrow">
                 <img src="{{ asset('bundles/mmhsite/img/left-arrow.png') }}" class="arrows" onclick="changeImage('previous')" alt="flèche gauche" />
             </div>
@@ -48,7 +49,7 @@
               {% set count2 = 1 %}
                 {% for project in projectSlider %}
                   {% if project.slider %}
-                  <!-- Slide 1 -->
+                  <!-- Slide  -->
                   <div class="slide slide{{count2}}-txt {% if count2 == 1 %} active {% endif %}">
                       <!-- Title -->
                       <h2 class="slide-title">{{ project.title }}</h2>
@@ -80,31 +81,33 @@
                         {% endfor %}
 
                           <div class="stat flex">
+                            <!-- % of project objective already backed up -->
                               <span>{{ ((contributed / project.finalObjective) * 100) | round }}%</span>
                               <p>Financé</p>
                           </div>
 
                           <div class="stat flex">
-
+                            <!-- Amount contributed -->
                               <span>{{contributed}}€</span>
 
                               <p>contribués</p>
                           </div>
 
                           <div class="stat flex">
-
+                            <!-- Final Objective -->
                               <span>{{ project.finalObjective }}€</span>
 
                               <p>objectif</p>
                           </div>
 
                           <div class="stat flex">
-
+                            <!-- Number of backers -->
                               <span>{{backers}}</span>
 
                               <p>Supporteurs</p>
                           </div>
 
+                          <!-- Project remaining days -->
                           <div class="stat flex">
                               {% set endDate = project.endDate | date('U') %}
                               {% set currentDate = "now" | date('U') %}
