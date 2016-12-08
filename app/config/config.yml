@@ -86,7 +86,7 @@ vich_uploader:
     mappings:
         project_images:
             uri_prefix:         %app.path.project_images%
-            upload_destination: %kernel.root_dir%/../web/media/cache/my_cards/bundles/mmhsite/projets
+            upload_destination: %kernel.root_dir%/../web/bundles/mmhsite/img/projets
         article_images:
             uri_prefix:         %app.path.article_images%
             upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/content
@@ -99,7 +99,7 @@ liip_imagine:
     resolvers:
         default:
             web_path:
-                web_root: "%kernel.root_dir%/../web/bundles/mmhsite/img/projets"
+                web_root: "%kernel.root_dir%/../web/"
                 cache_prefix: "media/cache"
 
     filter_sets:
