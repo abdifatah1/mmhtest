@@ -1,17 +1,22 @@
 <?php
-
+// src/AppBundle/Controller/AdminController.php
 namespace MMH\AdminBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
+use JavierEguiluz\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
-class AdminController extends Controller
+class AdminController extends BaseAdminController
 {
-  public function adminAction () {
-    return new Response ('Vous voici sur la page de connexion à l\'administration');
-  }
+    public function createNewUserEntity()
+    {
+        return $this->get('fos_user.user_manager')->createUser();
+    }
 
-  public function tableauAction () {
-    return new Response ('Vous voici sur le tableau de bord d\'un administrateur');
+    public function prePersistUserEntity($user)
+    {
+        $this->get('fos_user.user_manager')->updateUser($user, false);
+    }
+    public function preUpdateUserEntity($user)
+  {
+      $this->get('fos_user.user_manager')->updateUser($user, false);
   }
 }

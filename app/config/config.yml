@@ -8,7 +8,7 @@ imports:
 parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
-    app.path.article_images: bundles/mmhsite/img/content
+    app.path.article_images: /bundles/mmhsite/img/content
     app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
 
 
@@ -86,7 +86,7 @@ vich_uploader:
     mappings:
         project_images:
             uri_prefix:         %app.path.project_images%
-            upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/projets
+            upload_destination: %kernel.root_dir%/../web/bundles/mmhsite/img/projets
         article_images:
             uri_prefix:         %app.path.article_images%
             upload_destination: %kernel.root_dir%/../src/MMH/SiteBundle/Resources/public/img/content
@@ -99,7 +99,7 @@ liip_imagine:
     resolvers:
         default:
             web_path:
-                web_root: "%kernel.root_dir%/../web"
+                web_root: "%kernel.root_dir%/../web/"
                 cache_prefix: "media/cache"
 
     filter_sets:
@@ -150,33 +150,56 @@ liip_imagine:
 easy_admin:
    site_name: 'MyMoneyHelp'
    entities:
-       Amount:
-         class: MMH\SiteBundle\Entity\Amount
+       User:
+            class: MMH\SiteBundle\Entity\User
+            form:
+                fields:
+                    - lastLogin
+                    - { property: 'username' }
+                    - { property: 'email', type: 'email' }
+                    - { property: 'plainPassword', type: 'password', label: 'Password', help: 'Passwords must have at least 8 characters' }
+                    - { property: 'enabled', type: 'checkbox' }
        Article:
          class: MMH\SiteBundle\Entity\Article
+         label: 'Articles du blog'
          list:
              fields:
-                 - title
-                #  - { property: 'path', type: 'image', base_path: %app.path.article_images% }
+                 - { property: 'adminImage', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
+                 - { property: 'title', label: 'Titre' }
+                 - { property: 'user', label: 'Utilisateur associé'}
                  - dateCreation
+         form:
+             fields:
+                 - { property: 'title', label: 'Titre'}
+                 - { property: 'content', label: 'Votre article', type: 'ckeditor' }
+                 - { property: 'user', label: 'Auteur', type_options: { required: false }}
        imageArticle:
            class: MMH\SiteBundle\Entity\imageArticle
+           label: 'Images des articles'
            list:
                  fields:
-                     - id
                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
                      - article
+
+
            form:
-                 fields:
-                     - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
-                     - description
+               fields:
+                     - { property: 'article', label: 'Article associé', type_options: { required: false }}
                      - headImage
                      - bodyImage
-                     - article
+                     - description
+                     - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
+
        Payment:
          class: MMH\SiteBundle\Entity\Payment
+         label: 'Paiments'
        User:
          class: MMH\SiteBundle\Entity\User
+         label: 'Utilisateurs'
+         list:
+             fields:
+                  - { property: 'name', label: 'Nom' }
+                  - { property: 'firstname', label: 'Prénom' }
        imageProject:
          class: MMH\SiteBundle\Entity\imageProject
          label: 'Images des projets'
@@ -204,10 +227,11 @@ easy_admin:
                  - { property: 'total', label: 'Total'}
                  - { property: 'finalObjective', label: 'Objectif final'}
                  - { property: 'status', type: 'boolean', label: 'En cours'}
-                 - { property: 'visibility', type: 'boolean', label: 'Visible'}
+                 - { property: 'visibility', label: 'Visible'}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
                  - { property: 'slider', label: 'Carousel'}
                  - { property: 'category', label: 'Categorie'}
+                 - { property: 'user', label: 'Utilisateur'}
          form:
              fields:
                  - { property: 'title', label: "Titre du projet"}
@@ -215,6 +239,7 @@ easy_admin:
                  - { property: 'text', label: 'texte', type: 'ckeditor' }
                  - { property: 'finalObjective', label: "Montant à atteindre"}
                  - { property: 'endDate', label: 'fin du projet', format: 'd/m/Y'}
+                # - { property: 'imageFile', type: 'file', label: 'Upload logo', help: 'Select file to upload / change logo' }
                  - { property: 'slider', label: 'Mettre ce projet dans le slider'}
                  - { property: 'values', label: 'Montant de dons'}
                  - { property: 'visibility', label: 'rendre ce projet visible sur le site' }
@@ -226,6 +251,7 @@ easy_admin:
                  - pinterest
          Comment:
              class: MMH\SiteBundle\Entity\Comment
+
    design:
        brand_color: '#2da555'
 
@@ -236,3 +262,8 @@ ivory_ck_editor:
        my_custom_config:
            language:                   %locale%
            toolbar:                    standard
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: MMH\SiteBundle\Entity\User

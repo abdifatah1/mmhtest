@@ -49,7 +49,7 @@
             <img src="{{ asset('bundles/mmhsite/img/icon/linkedin_vert.png') }}" class="header-logo-social" alt="logo linkedin">
           </a>
         </div>
-        <button class="login-button">S'inscrire/Se connecter</button>
+
         <!-- Login button -->
       </div>
     </section>
@@ -76,7 +76,22 @@
         <!-- end of mmh tab -->
         <li class="title"><a href="{{ path('mmh_site_decouvrir')}}" class="{% if app.request.attributes.get('_route') == 'mmh_site_decouvrir' or app.request.attributes.get('_route') == 'mmh_site_projet' or app.request.attributes.get('_route') == 'mmh_site_financement' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/telescope.png') }}" alt="homme tenant un telescope" class="menu-image">Découvrir les projets</a></li>
         <li class="title"><a href="{{ path('mmh_static_deposer')}}" class="{% if app.request.attributes.get('_route') == 'mmh_static_deposer' %} active {% endif %}"><img src="{{ asset('bundles/mmhsite/img/board.png') }}" alt="homme devant un tableau" class="menu-image">Déposer un projet</a></li>
-        <li class="language">EN</li>
+        <li class="language">
+          {% if app.user|default %}
+          {{ app.user.username|default('Unnamed User') }} | <a href="{{ path('fos_user_security_logout') }}" title="logout">logout</a>
+          {% else %}
+          <form action="{{ path("fos_user_security_check") }}" method="post">
+            <label>Email</label>
+            <input type="text" name="_username" required="required" />
+
+            <label>Password</label>
+            <input type="password" name="_password" required="required" />
+
+            <button  class="login-button" type="submit">Se Connecter</button>
+          </form>
+          {% endif %}
+          |EN
+        </li>
       </ul>
       <!-- End of list -->
     </nav>
@@ -181,7 +196,7 @@
 
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="{{ asset('bundles/mmhsite/js/plugins.js')}}"></script>
-<!-- Custom Js -->
+  <!-- Custom Js -->
   <script src="{{ asset('bundles/mmhsite/js/carousel.js')}}"></script>
   <script src="{{ asset('bundles/mmhsite/js/navbar.js')}}"></script>
   <script src="{{ asset('bundles/mmhsite/js/dropdown.js')}}"></script>
@@ -190,21 +205,21 @@
 
   {% if app.request.attributes.get('_route') == 'mmh_site_projet' %}
 
-    <script src="{{ asset('bundles/mmhsite/circleplugin/circle-progress.js')}}"></script>
-    {% for project in project %}
-    {% set total = 0 %}
-    {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
-    {% set percent = (total / project.finalObjective) *100 %}
-    {% set percentt = percent / 100 %}
+  <script src="{{ asset('bundles/mmhsite/circleplugin/circle-progress.js')}}"></script>
+  {% for project in project %}
+  {% set total = 0 %}
+  {% for payment in project.payment %} {% set total = total + payment.amount %} {% endfor %}
+  {% set percent = (total / project.finalObjective) *100 %}
+  {% set percentt = percent / 100 %}
 
-    <script>
-    $('.second.circle').circleProgress({
-        value: '{{percentt | round(2, 'floor') }}'
-    }).on('circle-animation-progress', function(event, progress) {
-      $(this).find('strong').html(parseInt('{{percent | round }}' * progress) + '<i>%</i>');
-    });
-    </script>
-    {% endfor %}
+  <script>
+  $('.second.circle').circleProgress({
+    value: '{{percentt | round(2, 'floor') }}'
+  }).on('circle-animation-progress', function(event, progress) {
+    $(this).find('strong').html(parseInt('{{percent | round }}' * progress) + '<i>%</i>');
+  });
+  </script>
+  {% endfor %}
 
   {% endif %}
 

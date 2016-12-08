@@ -32,7 +32,7 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
       return $qb
     ->innerJoin('a.imagearticle', 'img')
     ->addSelect('img')
-    ->innerJoin('a.user', 'use')
+    ->leftJoin('a.user', 'use')
     ->addSelect('use')
 
     ->getQuery()

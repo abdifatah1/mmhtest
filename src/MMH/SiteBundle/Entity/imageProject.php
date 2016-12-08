@@ -206,8 +206,6 @@ class imageProject
     // Trying to implement magic function __toString()
 
     public function __toString() {
-
-
       // return $this->imageFile;
       // fix to make project clickable from imageproject list view in easyadmin
       return $this->path;
