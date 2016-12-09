@@ -205,11 +205,10 @@ easy_admin:
          label: 'Images des projets'
          list:
                fields:
-                   - id
                    - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
                    - project
                    - headImage
-                   - bodyImage
+                   - { property: 'localPath', label: 'url', type: 'url' }
          form:
              fields:
                  - { property: 'project', label: 'Projet associé', type_options: { required: false }}
@@ -264,6 +263,8 @@ ivory_ck_editor:
        my_custom_config:
            language:                   %locale%
            toolbar:                    standard
+           filebrowserBrowseRoute: elfinder
+           filebrowserBrowseRouteParameters: []
 
 
 # FOSUSER, authentification manager
@@ -271,3 +272,33 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: MMH\SiteBundle\Entity\User
+
+
+# *********************************************************************************************************
+
+fm_elfinder:
+    assets_path: "/bundles" # default is /assets, this is where css/js elfinder files are
+    instances:
+        default:
+            locale: %locale% # defaults to current request locale
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            path_prefix:  http://localhost/ # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: LocalFileSystem
+                        # path: var/www/html/mymoneyhelp/src/MMH/SiteBundle/Resources/public/img/projets
+                        path: bundles/mmhsite/img/projets
+                        url: ''
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }

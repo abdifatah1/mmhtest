@@ -261,4 +261,11 @@ class imageProject
     {
       $this->updatedAt = new \DateTime();
     }
+
+    // Virtual property function that output image url on server for easy pasting in text editor
+    public function localPath() {
+        $prefix = "http://localhost/mymoneyhelp/web/bundles/mmhsite/img/projets/";
+        $url = $prefix . $this->getPath();
+        return $url;
+    }
 }

@@ -27,6 +27,8 @@ class AppKernel extends Kernel
             new Vich\UploaderBundle\VichUploaderBundle(),
             new Ivory\CKEditorBundle\IvoryCKEditorBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            // El Finder
+            new FM\ElfinderBundle\FMElfinderBundle(),
 
         ];
 
