@@ -1517,7 +1517,6 @@ section .static-social-medias {
 .conn{
   margin-left: auto;
   height: 40px;
-  /*border-radius: 5px;*/
   line-height: 40px !important;
   border: 2px solid #2da555;
   border-radius: 5px;
@@ -1528,6 +1527,15 @@ section .static-social-medias {
   background-color: #2da555;
 }
 
+.fixed .conn {
+  margin-top: .4%;
+}
+.connection form {
+  margin-left:  2%;
+}
+.both{
+  display: flex;
+justify-content: space-around;}
   /******************************** /HEADER  **************************************/
   /******************************** CARDS  **************************************/
   .wrapper-home-cards {

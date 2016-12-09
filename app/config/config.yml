@@ -266,3 +266,7 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: MMH\SiteBundle\Entity\User
+
+    registration:
+        form:
+            type: MMH\SiteBundle\Form\RegistrationType
