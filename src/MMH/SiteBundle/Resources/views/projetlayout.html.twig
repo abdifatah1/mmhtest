@@ -33,7 +33,7 @@
         {% set remainingDays = endDate - currentDate %}
 
         <p>
-          {% if remainingDays <= 0 %}
+          {% if remainingDays <= 0 or remainingDays == 0 %}
           Finie
           {% else %}
           J-{{ (remainingDays / 86400) | round }}

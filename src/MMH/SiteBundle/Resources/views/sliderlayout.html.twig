@@ -57,8 +57,9 @@
                       <!-- Texte -->
                       <div class="slide-text">
                           <p>
-                            {% set char = project.text | split('') %}
-                            {% set char = char | slice(0, 179) %}
+                            {% set char = project.text | replace({"<p>":' ', "</p>":' '})  %}
+                            {% set char = char | split('') %}
+                            {% set char = char | slice(0, 189) %}
                             {% set char = char | join('') %}
                             {{char | raw}}...
                           </p>
