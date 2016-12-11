@@ -1281,6 +1281,18 @@ section .static-social-medias {
   border: 1px solid red;
 }
 
+/*Special div for the cooments on the project page*/
+.comment {
+  padding: 0.5em;
+  background-color: white;
+  border-radius: 5px;
+  font-size: .9em;
+}
+
+.comment span {
+  font-style: italic;
+}
+
 
 /*                        END STATIC PAGE CONTENT                             */
 

@@ -67,6 +67,7 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
     ->leftJoin('p.values', 'val')
     ->addSelect('val')
     ->leftJoin('p.comments', 'com')
+    ->orderBy('com.date', 'desc')
     ->addSelect('com')
 
     ->getQuery()

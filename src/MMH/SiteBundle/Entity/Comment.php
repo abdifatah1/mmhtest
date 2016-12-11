@@ -29,7 +29,7 @@ class Comment
 
     /**
      * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 
@@ -47,6 +47,13 @@ class Comment
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255)
+     */
+    private $author;
 
 
     /**
@@ -155,9 +162,42 @@ class Comment
         return $this->user;
     }
 
+    /**
+     * Set author
+     *
+     * @param string $author
+     *
+     * @return Comment
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * Get author
+     *
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+    * Constructor
+    */
+    public function __construct()
+    {
+      $this->date = new \DateTime();
+    }
+
+
     public function __toString() {
 
 
       return ' '. $this->id;
     }
-}
+  }

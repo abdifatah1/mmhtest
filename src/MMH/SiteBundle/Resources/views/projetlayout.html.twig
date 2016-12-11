@@ -125,14 +125,44 @@
         </p>
       {% endfor %}
 
+<!-- Display the comments associated to the project -->
       <h2>Les derniers commentaires:</h2>
       {% if project.comments %}
-        {% for comment in project.comments %}
-          <p>{{comment.content}}</p>
+
+<!-- Loop to count the number of comments to display -->
+      {% set break = true %}
+      {% set loopCount = 0 %}
+
+        {% for comment in project.comments if break %}
+          <p class="comment">
+            {{comment.content}}<br>
+            <span>{{" Par "}}{{comment.author}}{{" le "}}{{comment.date|date("d/m/Y")}}</span>
+          </p>
+<!-- After three tours the break is set to false and it breaks the loop -->
+          {% set loopCount = loopCount + 1 %}
+          {% if loopCount >= 3 %}
+            {% set break = false %}
+          {% endif %}
         {% endfor %}
+
       {% else %}
       {{"Pas encore de commentaires"}}
       {% endif %}
+
+<!-- Form to leave a comment   -->
+      <h3>Laissez-nous un commentaire</h3>
+
+      {{ form_start(form, {'attr': {'class': 'formcomment'}}) }}
+      {{ form_errors(form) }}
+      <div>
+        {{ form_errors(form.content) }}
+        {{ form_widget(form.content) }}
+      </div>
+      <div>
+        {{ form_errors(form.author) }}
+        {{ form_widget(form.author) }}
+      </div>
+      {{ form_end(form) }}
 
 <!-- List of the social medias -->
       <ul class="social-networks">
