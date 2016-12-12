@@ -59,7 +59,7 @@
                           <p>
                             <!-- Replace every <p> to avoid line break -->
                             {% set char = project.text | replace({"<p>":' ', "</p>":' '})  %}
-                            <!-- Split the text after the first 189 characters -->
+                            <!-- Split the text after the first 189 characters -->                            
                             {% set char = char | split('') %}
                             {% set char = char | slice(0, 189) %}
                             {% set char = char | join('') %}
