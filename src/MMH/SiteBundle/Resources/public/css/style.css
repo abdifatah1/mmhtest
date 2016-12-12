@@ -1,4 +1,4 @@
-/****************************GENERAL SETTINGS***********************************/
+s/****************************GENERAL SETTINGS***********************************/
 
 * {
   box-sizing: border-box;
@@ -312,7 +312,8 @@ p, .login-button {
 }
 
 .main-navbar {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+
 }
 
 .fixed {
@@ -929,7 +930,7 @@ p {
 /*  ==========================project button================*/
 
 .project-button {
-  margin: 0 auto;
+  /*margin: 0 auto;*/
 }
 
 
@@ -939,7 +940,7 @@ p {
 /*===========image with the text at the middle of the page==========*/
 
 .first-wrap {
-  display: none;
+
 }
 
 .second-wrap {
@@ -964,7 +965,7 @@ p {
 }
 
 .proposer figure img {
-  float: left;
+  /*float: left;*/
   margin: 0 10px 10px 0;
   max-width: 60%;
   border-radius: 50%;
@@ -1435,7 +1436,7 @@ section .static-social-medias {
     justify-content: left;
   }
   .menu-list li {
-    font-size: 16px;
+    font-size: 11px;
     width: fit-content;
     width: -moz-fit-content;
   }
@@ -1740,16 +1741,12 @@ justify-content: space-around;}
     margin-right: 5%;
   }
   .wrap {
-    position: relative;
     display: flex;
-    flex-direction: column;
-    width: 100%;
-    margin: 5% 0;
+    margin: 5% auto;
   }
   .first-wrap, .second-wrap {
     display: unset;
     width: 55%;
-    height: 50%;
     margin: 0 3%;
   }
   .first-wrap-p img {
@@ -1769,9 +1766,7 @@ justify-content: space-around;}
   /*=============project proposer================ */
   .proposer {
     width: 30%;
-    position: absolute;
-    top: 0;
-    right: 4%;
+    margin: 5% auto;
     padding: 1%;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
   }
@@ -1824,6 +1819,9 @@ justify-content: space-around;}
     width: 400px;
   }
   /*page projet*/
+  .menu-list li {
+    font-size: 16px;
+  }
   .header-text h1 {
     text-align: center;
     margin-bottom: 10%;
@@ -1888,9 +1886,10 @@ justify-content: space-around;}
   }
   .header-text {
     width: 20%;
+
   }
   .header-text h1 {
-    margin-bottom: 8%;
+    margin: 18% 0;
     text-align: center;
 
   }
@@ -1915,7 +1914,7 @@ justify-content: space-around;}
   }
   .proposer {
     width: 20%;
-    right: 7%;
+    margin-right: 2%;
   }
   .container figure img {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
@@ -2021,9 +2020,7 @@ justify-content: space-around;}
   .row img {
     display: unset;
   }
-  .proposer {
-    right: 13%;
-  }
+
   .wrap {
     width: 95%;
     margin: 5%;
@@ -2069,11 +2066,12 @@ justify-content: space-around;}
   }
   /* ------/Static page content (association, legal informations)--------- */
   /* ------ Project --------*/
+
   .row img {
     display: unset;
   }
   .proposer {
-    /*right: 10%;*/
+    margin-right: 8%;
   }
 
   .wrap {
@@ -2085,8 +2083,10 @@ justify-content: space-around;}
 }
 
 @media (min-width: 1322px) {
+
   .proposer {
-    right: 16.5%;
+  margin: 0 6%;
+  width: 20%;
   }
 }
 
@@ -2125,6 +2125,9 @@ justify-content: space-around;}
     padding:2% 0 0 10%;
   }
 
+  .header-text {
+    width: 26%;
+  }
   .wrap{
     width:90%;
     padding-left: 12%;
@@ -2142,7 +2145,6 @@ justify-content: space-around;}
     font-size: 1em;
   }
   .proposer{
-    right: 10%;
     width: 23%;
   }
   .left-bar {
@@ -2160,12 +2162,11 @@ justify-content: space-around;}
 }
 }
 @media screen and (min-width: 1600px) {
-  .proposer{
-    right: 12%;
+
   }
 @media screen and (min-width: 1700px) {
   .proposer{
-    right: 15%;
+
   }
   .left-bar {
     margin-right: -8%;
@@ -2175,8 +2176,8 @@ justify-content: space-around;}
 @media screen and (min-width: 1800px) {
 
   .proposer{
-    right: 18%;
-    width: 20%;
+    width: 24%;
+      margin: 0 4%;
   }
   .left-bar {
     margin-right: -9%;
@@ -2185,10 +2186,14 @@ justify-content: space-around;}
 @media screen and (min-width: 1900px) {
 
   .proposer{
-    right: 20%;
+
+    /*width: 20%;*/
   }
   .left-bar {
     margin-right: -9.1%;
+  }
+  .first-wrap{
+    width: 43%;
   }
 
 }
