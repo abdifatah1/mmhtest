@@ -61,7 +61,7 @@ class ProjectRepository extends \Doctrine\ORM\EntityRepository
       ;
       return $qb
     ->leftJoin('p.payment', 'pay')
-    ->addSelect('pay')
+    ->addSelect('pay')    
     ->innerJoin('p.imageproject', 'img')
     ->addSelect('img')
     ->leftJoin('p.values', 'val')

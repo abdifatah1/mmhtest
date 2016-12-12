@@ -59,7 +59,7 @@
                           <p>
                             <!-- Replace every <p> to avoid line break -->
                             {% set char = project.text | replace({"<p>":' ', "</p>":' '})  %}
-                            <!-- Split the text after the first 189 characters -->                            
+                            <!-- Split the text after the first 189 characters -->
                             {% set char = char | split('') %}
                             {% set char = char | slice(0, 189) %}
                             {% set char = char | join('') %}
@@ -70,7 +70,7 @@
                       <!-- /Texte -->
                       <!-- Contribute ! -->
                       <div class="contribute">
-                          <a href="projet.html" class="button slider-button">Contribuer</a>
+                          <a href="{{ path('mmh_site_financement',{'slug':project.slug}) }}" class="button slider-button">Contribuer</a>
                       </div>
                       <!-- /Contribute -->
                       <!-- Stats -->

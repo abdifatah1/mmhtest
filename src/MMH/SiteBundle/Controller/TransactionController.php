@@ -14,8 +14,12 @@ class TransactionController extends Controller
   public function connexionAction () {
     return $this->render('MMHSiteBundle:Connexion:connexion.html.twig');
 }
-  public function financementAction ($projet) {
-    return $this->render('MMHSiteBundle:Paiement:paiement.html.twig');
+  public function financementAction ($slug) {
+    $repo = $this->getDoctrine()->getManager()->getRepository('MMHSiteBundle:Project');
+
+    $project = $repo->getProjectWithImage($slug);
+
+    return $this->render('MMHSiteBundle:Paiement:paiement.html.twig', ['project'=>$project]);
   }
 
   public function membreAction ($membre) {

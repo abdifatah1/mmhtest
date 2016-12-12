@@ -33,7 +33,7 @@ mmh_site_connexion:
         _controller: MMHSiteBundle:Transaction:connexion
 
 mmh_site_financement:
-    path:    /financement/{projet}
+    path:    /financement/{slug}
     defaults:
         _controller: MMHSiteBundle:Transaction:financement
 

@@ -1055,8 +1055,9 @@ p {
 }
 
 .euro{                         /********Checkbox €*********/
-  margin-left: 15px;
-  margin-bottom: 15px;
+  /*margin-left: 5px;
+  margin-bottom: 15px;*/
+  margin: 0 15px 15px 5px;
 }
 
 .container-paiement{         /*******Detail du paiement et du projet *********/

@@ -66,11 +66,14 @@
 {% block section %}{% endblock %}
 <!-- /project details -->
 <aside class="proposer">
+  {% for project in project %}
   <!-- contribute button -->
   <div class="contribute">
-    <button class="project-button " type="button" name="button">Contribuer</button>
+      <a href="{{ path('mmh_site_financement',{'slug':project.slug}) }}" class="button slider-button">Contribuer</a>
   </div>
   <!-- /contribute button -->
+  {% endfor %}
+  
   {% for project in project %}
   <div class="proposer-info">
 
