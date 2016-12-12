@@ -206,9 +206,9 @@ class imageProject
     // Trying to implement magic function __toString()
 
     public function __toString() {
-
-
-      return ' '. $this->id;
+      // return $this->imageFile;
+      // fix to make project clickable from imageproject list view in easyadmin
+      return $this->path;
     }
 
     /**
@@ -260,5 +260,12 @@ class imageProject
     public function __construct()
     {
       $this->updatedAt = new \DateTime();
+    }
+
+    // Virtual property function that output image url on server for easy pasting in text editor
+    public function localPath() {
+        $prefix = "http://localhost/mymoneyhelp/web/bundles/mmhsite/img/projets/";
+        $url = $prefix . $this->getPath();
+        return $url;
     }
 }

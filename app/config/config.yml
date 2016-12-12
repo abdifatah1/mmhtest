@@ -12,6 +12,7 @@ parameters:
     app.path.user_images: bundles/mmhsite/img/user_images
 
 
+
 framework:
     #esi:             ~
     translator:      { fallbacks: ["%locale%"] }
@@ -211,8 +212,8 @@ easy_admin:
                  fields:
                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
                      - article
-                     - description
-                     - { property: 'headImage', type: 'boolean', label: 'Image principale' }
+
+
            form:
                fields:
                      - { property: 'article', label: 'Article associé', type_options: { required: false }}
@@ -220,6 +221,7 @@ easy_admin:
                      - bodyImage
                      - description
                      - { property: 'imageFile', label: 'Fichier image', type: 'vich_image' }
+
        Payment:
          class: MMH\SiteBundle\Entity\Payment
          label: 'Paiments'
@@ -235,7 +237,7 @@ easy_admin:
                    - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
                    - { property: 'project', label: 'projet'}
                    - { property: 'headImage', label: 'Image principale'}
-                   - { property: 'bodyImage', label: 'Image secondaire'}
+                   - { property: 'localPath', label: 'url', type: 'url' }
          form:
              fields:
                  - { property: 'project', label: 'Projet associé', type_options: { required: false }}
@@ -285,15 +287,51 @@ easy_admin:
    design:
        brand_color: '#2da555'
 
+# *******************************************************************************************************
 
+# Ivory ck editor ( rich text editor for admin)
 ivory_ck_editor:
    default_config:                     my_custom_config    # Utiliser par defaut la configuration my_custom_config
    configs:
        my_custom_config:
            language:                   %locale%
            toolbar:                    standard
+           filebrowserBrowseRoute: elfinder
+           filebrowserBrowseRouteParameters: []
 
+
+# FOSUSER, authentification manager
 fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: MMH\SiteBundle\Entity\User
+
+
+# *********************************************************************************************************
+
+fm_elfinder:
+    assets_path: "/bundles" # default is /assets, this is where css/js elfinder files are
+    instances:
+        default:
+            locale: %locale% # defaults to current request locale
+            editor: ckeditor # other options are tinymce, tinymce4, fm_tinymce, form, simple, custom
+            #editor_template: custom template for your editor # default null
+            path_prefix:  http://localhost/ # for setting custom assets path prefix, useful for non vhost configurations, i.e. http://127.0.0.1/mysite/
+            #fullscreen: true|false # default is true, applies to simple and ckeditor editors
+            #theme: smoothness # jquery theme, default is 'smoothness'
+            include_assets: true # disable if you want to manage loading of javascript and css assets manually
+            visible_mime_types: ['image/png', 'image/jpg', 'image/jpeg'] # only show these mime types, defaults to show all
+            connector:
+                #debug: true|false # defaults to false
+                roots:       # at least one root must be defined, defines root filemanager directories
+                    uploads:
+                        #show_hidden: true|false # defaults to false, hides dotfiles
+                        driver: LocalFileSystem
+                        # path: var/www/html/mymoneyhelp/src/MMH/SiteBundle/Resources/public/img/projets
+                        path: bundles/mmhsite/img/projets
+                        url: ''
+                        upload_allow: ['image/png', 'image/jpg', 'image/jpeg']
+                        upload_deny: ['all']
+                        upload_max_size: 2M # also file upload sizes restricted in php.ini
+                        #attributes: example of setting attributes permission
+                        #    - { pattern: '/(.*?)/', read: true, write: false, locked: true }
