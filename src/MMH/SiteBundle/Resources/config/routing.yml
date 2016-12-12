@@ -19,7 +19,6 @@ mmh_site_projet:
     defaults:
         _controller: MMHSiteBundle:Projets:projet
 
-
 # Routes for the registration the connexion and the paiement
 
 mmh_site_inscription:

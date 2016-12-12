@@ -57,9 +57,13 @@
                       <!-- Texte -->
                       <div class="slide-text">
                           <p>
-                            {% set char = project.text | split('') %}
-                            {% set char = char | slice(0, 179) %}
+                            <!-- Replace every <p> to avoid line break -->
+                            {% set char = project.text | replace({"<p>":' ', "</p>":' '})  %}
+                            <!-- Split the text after the first 189 characters -->
+                            {% set char = char | split('') %}
+                            {% set char = char | slice(0, 189) %}
                             {% set char = char | join('') %}
+                            <!-- Display text and compute html tags instead of displaying them -->
                             {{char | raw}}...
                           </p>
                       </div>
