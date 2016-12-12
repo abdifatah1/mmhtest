@@ -77,18 +77,26 @@
   {% for project in project %}
   <div class="proposer-info">
 
+<!-- Check if a user is associated to the projetc and display the information otherwise no-->
     {% if project.user %}
-    <h1>{{[project.user.username,project.user.familyname]|join(' ')}}</h1>
-    <figure>
-      <img src="{{ vich_uploader_asset(project.user, 'imageFile') }}" />
-    </figure>
-    <p>
-      {{project.user.bio}}
-    </p>
-    {% else %}
-    <p>Pas d'info sur sur porteur de projet</p>
-  </div>
+      <h1>{{[project.user.username,project.user.familyname]|join(' ')}}</h1>
+
+<!-- Check if the user as an avatar if not display a random avatar -->
+      {% if project.user.userImage %}
+      <figure>
+        <img src="{{ vich_uploader_asset(project.user, 'imageFile') | imagine_filter('my_avatar') }}" />
+      </figure>
+      {% else %}
+        <img src="{{ asset('bundles/mmhsite/img/user_images/avatar.png') }}" alt="icone d'un avatar"/>
+      {% endif %}
+      <p>
+        {{project.user.bio}}
+      </p>
+      {% else %}
+      <p>Pas d'info sur sur porteur de projet</p>
+    </div>
   {% endif %}
+
   {% endfor %}
 
   <!-- Top contributors -->
@@ -120,6 +128,46 @@
         </p>
       {% endfor %}
 
+<!-- Display the comments associated to the project -->
+      <h2>Les derniers commentaires:</h2>
+      {% if project.comments %}
+
+<!-- Loop to count the number of comments to display -->
+      {% set break = true %}
+      {% set loopCount = 0 %}
+
+        {% for comment in project.comments if break %}
+          <p class="comment">
+            {{comment.content}}<br>
+            <span>{{" Par "}}{{comment.author}}{{" le "}}{{comment.date|date("d/m/Y")}}</span>
+          </p>
+<!-- After three tours the break is set to false and it breaks the loop -->
+          {% set loopCount = loopCount + 1 %}
+          {% if loopCount >= 3 %}
+            {% set break = false %}
+          {% endif %}
+        {% endfor %}
+
+      {% else %}
+      {{"Pas encore de commentaires"}}
+      {% endif %}
+
+<!-- Form to leave a comment   -->
+      <h3>Laissez-nous un commentaire</h3>
+
+      {{ form_start(form, {'attr': {'class': 'formcomment'}}) }}
+      {{ form_errors(form) }}
+      <div>
+        {{ form_errors(form.content) }}
+        {{ form_widget(form.content) }}
+      </div>
+      <div>
+        {{ form_errors(form.author) }}
+        {{ form_widget(form.author) }}
+      </div>
+      {{ form_end(form) }}
+
+<!-- List of the social medias -->
       <ul class="social-networks">
         {% if project.facebook %}
           <li>

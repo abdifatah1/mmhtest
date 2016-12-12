@@ -156,6 +156,11 @@ class Project
 
   private $values;
 
+  /**
+  * @ORM\OneToMany(targetEntity="MMH\SiteBundle\Entity\Comment", mappedBy="project", cascade={"remove"})
+  */
+  private $comments;
+
 
 
   /**
@@ -772,4 +777,39 @@ class Project
      }
      return $display;
    }
+
+    /**
+     * Add comment
+     *
+     * @param \MMH\SiteBundle\Entity\Comment $comment
+     *
+     * @return Project
+     */
+    public function addComment(\MMH\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+        $comment->setProject($this);
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \MMH\SiteBundle\Entity\Comment $comment
+     */
+    public function removeComment(\MMH\SiteBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
 }

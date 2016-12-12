@@ -22,7 +22,7 @@ class Comment
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project")
+     * @ORM\ManyToOne(targetEntity="MMH\SiteBundle\Entity\Project", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $project;
@@ -47,6 +47,13 @@ class Comment
      * @ORM\Column(name="date", type="datetime")
      */
     private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="author", type="string", length=255)
+     */
+    private $author;
 
 
     /**
@@ -153,5 +160,11 @@ class Comment
     public function getUser()
     {
         return $this->user;
+    }
+
+    public function __toString() {
+
+
+      return ' '. $this->id;
     }
 }

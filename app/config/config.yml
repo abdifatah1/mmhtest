@@ -9,7 +9,8 @@ parameters:
     locale: en
     app.path.project_images: bundles/mmhsite/img/projets
     app.path.article_images: /bundles/mmhsite/img/content
-    app.path.user_images: /mymoneyhelp/web/bundles/mmhsite/img/user_images
+    app.path.user_images: bundles/mmhsite/img/user_images
+
 
 
 framework:
@@ -144,6 +145,18 @@ liip_imagine:
 
                 background: { size: [350, 200], position: center, color: '#ECF0F4' }
 
+        my_avatar:
+
+            # adjust the image quality to 90%
+            quality: 90
+
+            # list of transformations to apply (the "filters")
+            filters:
+                upscale: { min: [120, 120] }
+                thumbnail: { size: [120, 120], mode: outbound }
+
+                background: { size: [120, 120], position: center, color: '#ECF0F4' }
+
 
 
 # app/config/config.yml
@@ -152,17 +165,35 @@ easy_admin:
    entities:
        User:
             class: MMH\SiteBundle\Entity\User
+            label: 'Utilisateurs'
+            list:
+                title: 'Liste des utilisateurs inscrits'
+                fields:
+                    - { property: 'username', label: 'Nom'}
+                    - { property: 'familyname', label: 'Nom de famille'}
+                    - { property: 'userImage', type: 'image', base_path: %app.path.user_images%, label: 'Avatar'}
+                    - { property: 'email', type: 'email', label: 'Email'}
+                    - { property: 'enabled', label: 'Actif'}
+                    - { property: 'roles', label: 'Rôle'}
+                    - { property: 'lastLogin', label: 'Dernière Connexion'}
+
             form:
                 fields:
-                    - lastLogin
-                    - { property: 'username' }
-                    - { property: 'email', type: 'email' }
-                    - { property: 'plainPassword', type: 'password', label: 'Password', help: 'Passwords must have at least 8 characters' }
-                    - { property: 'enabled', type: 'checkbox' }
+                    - { property: 'username', label: 'Nom'}
+                    - { property: 'familyname', label: 'Nom de famille'}
+                    - { property: 'email', type: 'email', label:'Email utilisateur' }
+                    - { property: 'emailCanonical', type: 'email', label:'Confirmation' }
+                    - { property: 'password', type: 'password', label: 'Mot de passe', help: 'Le mot de passe doit contenir au moins 8 caractères' }
+                    - { property: 'plainPassword', type: 'password', label: 'Confirmation du mot de passe' }
+                    - { property: 'enabled', label: 'Rendre cet utilisateur actif'}
+                    - { property: 'roles', label: 'Rôle', help: 'Vous disposez de 2 rôles possibles : ROLE_ADMIN(adminstrateur) et ROLE_USER(utilisateur simple)'}
+                    - { property: 'bio', label: 'Présentation', help: 'Cette présentation du porteur de projet apparaîtra à droite sur la page de son projet avec sa photo'}
+                    - { property: 'imageFile', label: 'Avatar utilisateur', type: 'vich_image' }
        Article:
          class: MMH\SiteBundle\Entity\Article
          label: 'Articles du blog'
          list:
+             title: 'Articles publiés'
              fields:
                  - { property: 'adminImage', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
                  - { property: 'title', label: 'Titre' }
@@ -177,6 +208,7 @@ easy_admin:
            class: MMH\SiteBundle\Entity\imageArticle
            label: 'Images des articles'
            list:
+                 title: 'Images associées aux articles'
                  fields:
                      - { property: 'path', type: 'image', base_path: %app.path.article_images%, label: 'Image' }
                      - article
@@ -193,21 +225,18 @@ easy_admin:
        Payment:
          class: MMH\SiteBundle\Entity\Payment
          label: 'Paiments'
-       User:
-         class: MMH\SiteBundle\Entity\User
-         label: 'Utilisateurs'
          list:
-             fields:
-                  - { property: 'name', label: 'Nom' }
-                  - { property: 'firstname', label: 'Prénom' }
+             title: 'Paiements enregistrés'
+
        imageProject:
          class: MMH\SiteBundle\Entity\imageProject
          label: 'Images des projets'
          list:
+               title: 'Images associées aux projets'
                fields:
                    - { property: 'path', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
-                   - project
-                   - headImage
+                   - { property: 'project', label: 'projet'}
+                   - { property: 'headImage', label: 'Image principale'}
                    - { property: 'localPath', label: 'url', type: 'url' }
          form:
              fields:
@@ -220,6 +249,7 @@ easy_admin:
          class: MMH\SiteBundle\Entity\Project
          label: 'Projets'
          list:
+             title: 'Projets enregistrés'
              fields:
                  - { property: 'title', label: 'Titre du projet'}
                  - { property: 'adminImage', type: 'image', base_path: %app.path.project_images%, label: 'Image' }
@@ -248,8 +278,11 @@ easy_admin:
                  - twitter
                  - linkedin
                  - pinterest
-         Comment:
-             class: MMH\SiteBundle\Entity\Comment
+       Comment:
+         class: MMH\SiteBundle\Entity\Comment
+         label: 'Commentaires'
+         list:
+             title: 'Commentaires postés sur le site'
 
    design:
        brand_color: '#2da555'
@@ -272,6 +305,11 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
     user_class: MMH\SiteBundle\Entity\User
+
+
+    registration:
+        form:
+            type: MMH\SiteBundle\Form\RegistrationType
 
 
 # *********************************************************************************************************
